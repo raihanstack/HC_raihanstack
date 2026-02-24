@@ -60,44 +60,104 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <link rel="stylesheet" href="style.css">
+
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Tailwind Config -->
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'sans-serif'] },
-          colors: { dark: { 900: '#020617' } }
+          colors: { 
+            dark: { 900: '#020617', 800: '#0f172a' },
+            teal: { 400: '#2dd4bf', 500: '#14b8a6' }
+          }
         }
       }
     }
   </script>
-
-  <!-- Background Style -->
-  <style>
-    .luxury-bg {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(34,211,238,.12), transparent 35%),
-        radial-gradient(circle at 85% 70%, rgba(234,179,8,.10), transparent 40%),
-        linear-gradient(135deg, #020617, #050505);
-    }
-  </style>
 </head>
 
-<body class="bg-dark-900 text-gray-300 font-sans min-h-screen flex flex-col overflow-x-hidden">
+<body class="bg-dark-900 text-gray-300 antialiased">
 
-  <div class="luxury-bg" aria-hidden="true"></div>
+  <div id="custom-cursor"></div>
+  <div id="cursor-blur"></div>
 
-  <!-- ================= NAVBAR ================= -->
+  <div class="luxury-bg">
+    <div class="bg-blob" style="top: 10%; left: 10%;"></div>
+    <div class="bg-blob" style="bottom: 10%; right: 10%; opacity: 0.5;"></div>
+  </div>
+
+  <canvas id="starCanvas"></canvas>
+
+  <script>
+    // --- 1. Cursor Logic ---
+    const cursor = document.getElementById('custom-cursor');
+    const blur = document.getElementById('cursor-blur');
+
+    window.addEventListener('mousemove', (e) => {
+      // Main small dot
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      
+      // Outer glow/blur
+      blur.style.left = e.clientX + 'px';
+      blur.style.top = e.clientY + 'px';
+    });
+
+    // --- 2. Starfall Logic ---
+    const canvas = document.getElementById('starCanvas');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function initCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    class Star {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * -canvas.height;
+        this.length = Math.random() * 25 + 10;
+        this.speed = Math.random() * 4 + 2;
+        this.opacity = Math.random() * 0.4 + 0.1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(45, 212, 191, ${this.opacity})`;
+        ctx.lineWidth = 1;
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x, this.y + this.length);
+        ctx.stroke();
+      }
+      update() {
+        this.y += this.speed;
+        if (this.y > canvas.height) this.reset();
+      }
+    }
+
+    function startAnimation() {
+      initCanvas();
+      stars = Array.from({ length: 80 }, () => new Star());
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(s => { s.update(); s.draw(); });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    window.addEventListener('resize', initCanvas);
+    startAnimation();
+  </script>
+  <div class="luxury-bg fixed inset-0 -z-10" aria-hidden="true"></div>
   <nav role="navigation" aria-label="Main Navigation" class="fixed top-2 left-2 right-2 w-auto border-b border-white/10 backdrop-blur-md bg-white/5 z-50 rounded-2xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
@@ -110,8 +170,8 @@
         <!-- Desktop Menu -->
         <div class="hidden lg:flex items-center space-x-8">
           <a href="#home" class="hover:text-teal-400 transition-colors duration-300">Home</a>
-          <a href="#services" class="hover:text-teal-400 transition-colors duration-300">Services</a>
           <a href="#about" class="hover:text-teal-400 transition-colors duration-300">About</a>
+          <a href="#services" class="hover:text-teal-400 transition-colors duration-300">Services</a>
           <a href="#skills" class="hover:text-teal-400 transition-colors duration-300">Skills</a>
           <a href="#projects" class="hover:text-teal-400 transition-colors duration-300">Projects</a>
           <a href="#contact" class="hover:text-teal-400 transition-colors duration-300">Contact</a>
@@ -155,8 +215,8 @@
     <div id="mobileMenu" class="lg:hidden max-h-0 overflow-hidden transition-all duration-500 bg-white/5 backdrop-blur-md rounded-b-xl mt-2 mx-2">
       <div class="flex flex-col px-4 py-3 space-y-3 text-white text-sm sm:text-base">
         <a href="#home" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">Home</a>
-        <a href="#services" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">Services</a>
         <a href="#about" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">About</a>
+        <a href="#services" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">Services</a>
         <a href="#skills" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">Skills</a>
         <a href="#projects" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">Projects</a>
         <a href="#contact" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">Contact</a>
@@ -164,240 +224,86 @@
     </div>
   </nav>
 
-  <script>
-function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const icon = document.getElementById('menuIcon');
-  if (menu.classList.contains('max-h-0')) {
-    menu.classList.remove('max-h-0');
-    menu.classList.add('max-h-screen');
-    icon.classList.remove('fa-bars');
-    icon.classList.add('fa-xmark');
-  } else {
-    menu.classList.add('max-h-0');
-    menu.classList.remove('max-h-screen');
-    icon.classList.add('fa-bars');
-    icon.classList.remove('fa-xmark');
-  }
-}
-</script>
-  <!-- ================= MAIN ================= -->
-  <main class="flex-grow px-4 sm:px-6 lg:px-8 relative z-10">
+  <main>
+<section id="home" class="relative pt-32 pb-16 md:pt-48 md:pb-32 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+    
+    <div class="lg:w-1/2 text-center lg:text-left z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 mb-8 animate-slide-up-initial">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+        </span>
+        <span class="text-xs font-bold tracking-widest text-teal-400 uppercase">Available for new projects</span>
+      </div>
 
-<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 overflow-hidden" id="home">
-    <!-- Background Blobs -->
-    <div class="absolute top-1/4 left-0 w-96 h-96 bg-teal-500/30 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow -z-20"></div>
-    <div class="absolute bottom-1/4 right-0 w-80 h-80 bg-cyan-500/30 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-delay -z-20"></div>
-    <div class="absolute inset-0 -z-30 bg-grid-pattern opacity-10"></div>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] mb-8 animate-fadeIn">
+        Architecting <span class="glow-text">Scalable</span> <br class="hidden md:block"> Digital Ecosystems
+      </h1>
 
-    <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10">
-
-        <!-- Left Text -->
-        <div class="lg:w-1/2 text-center lg:text-left">
-
-            <!-- Intro Badge -->
-            <div class="inline-flex items-center gap-3 px-4 py-2 mb-6 rounded-xl backdrop-blur-md bg-white/10 border border-white/20 opacity-0 animate-slide-up-initial">
-                <span class="w-3 h-3 rounded-full bg-teal-500 animate-pulse"></span>
-                <h1 class="text-lg sm:text-xl font-semibold text-gray-300 m-0">
-                    Hello, I'm <span class="text-white font-bold text-2xl">Mostafa Raihan</span>
-                </h1>
-            </div>
-
-            <!-- Title -->
-            <h2 class="text-[22px] md:text-[24px] lg:text-[28px] text-white tracking-tight mb-6 opacity-0 animate-fadeIn" style="animation-delay:0.2s;">
-                  Crafting Professional Web Applications with <span class="text-white glow-text">Django</span>, <span class="text-white glow-text">Next.js</span>, and Modern Tools
-            </h2>
-
-            <!-- Professional Description -->
-            <p class="mt-4 max-w-2xl lg:max-w-full text-sm sm:text-base opacity-100 animate-none">
-              I specialize in building <span class="text-white glow-text font-semibold">backend systems</span> using <span class="text-white glow-text font-semibold">Django DRF</span> and <span class="text-white glow-text font-semibold">PostgreSQL</span> that are <span class="text-white glow-text font-semibold">secure</span>, 
-              <span class="text-white glow-text font-semibold">scalable</span>, and <span class="text-white glow-text font-semibold">maintainable</span>.  
-              My frontend solutions with <span class="text-white glow-text font-semibold">Next.js</span>, <span class="text-white glow-text font-semibold">React.js</span>, and <span class="text-white glow-text font-semibold">Tailwind CSS</span> deliver responsive, interactive, and modern web applications.  
-              </p>
-
-            <!-- Technologies -->
-        <div class="flex flex-wrap gap-2 mt-6 justify-center lg:justify-start opacity-0 animate-fadeIn" style="animation-delay: 1s;">
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">Django</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">Django DRF</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400">Python</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-300">JavaScript</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300">ReactJS</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-gray-500/20 text-gray-300">NextJS</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300">TailwindCSS</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-300">Bootstrap</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-red-500/20 text-red-300">MySQL</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-green-500/20 text-green-300">PostgreSQL</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-orange-500/20 text-orange-300">MongoDB</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-red-600/20 text-red-400">Git</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-gray-600/20 text-gray-400">GitHub</span>
-                <span class="text-xs font-medium px-3 py-1 rounded-full bg-purple-600/20 text-purple-400">Linux</span>
-
-        </div>
-        </div>
-
-        <!-- Right Profile Image -->
-        <div class="lg:w-1/2 mt-12 lg:mt-0 flex justify-center lg:justify-end opacity-0 animate-scale-up" style="animation-delay: 1.8s;">
-            <div class="relative w-full max-w-lg p-4 rounded-2xl shadow-2xl backdrop-blur-md bg-white/20 border border-white/10 group hover:shadow-xl transition-shadow duration-500">
-                <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png"
-                     alt="Mostafa Raihan - Django Developer" loading="lazy"
-                     class="w-full h-auto rounded-xl transform group-hover:scale-105 transition-transform duration-700">
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- CSS -->
-<style>
-
-/* Scrollbar hidden */
-.scrollbar-hidden { scrollbar-width: none; -ms-overflow-style: none; }
-.scrollbar-hidden::-webkit-scrollbar { display: none; }
-
-/* Animations */
-@keyframes slideUpInitial { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
-.animate-slide-up-initial { animation: slideUpInitial 0.7s cubic-bezier(0.25,0.46,0.45,0.94) forwards; }
-
-@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
-.animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
-
-@keyframes scaleUp { from {opacity:0; transform:scale(0.9);} to {opacity:1; transform:scale(1);} }
-.animate-scale-up { animation: scaleUp 1s cubic-bezier(0.25,0.46,0.45,0.94) forwards; }
-
-/* Blob Animation */
-@keyframes blob-movement { 0%,100%{transform:translate(0,0) scale(1);} 25%{transform:translate(20px,-20px) scale(1.1);} 50%{transform:translate(0,30px) scale(0.9);} 75%{transform:translate(-20px,-10px) scale(1.1);} }
-.animate-blob-slow { animation: blob-movement 20s infinite ease-in-out; }
-.animate-blob-delay { animation: blob-movement 20s infinite ease-in-out reverse; animation-delay:5s; }
-
-/* Glow Text */
-.glow-text { text-shadow: 0 0 10px #ffffff,0 0 25px #092e20,0 0 35px #092e20; animation: glow-animation 2s ease-in-out infinite alternate; }
-@keyframes glow-animation { 0% { text-shadow:0 0 10px #ffffff,0 0 25px #092e20,0 0 35px #092e20; } 100% { text-shadow:0 0 20px #ffffff,0 0 40px #092e20,0 0 50px #092e20; } }
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-    .flex-wrap { flex-wrap: wrap; }
-}
-@media (max-width: 768px) {
-    .lg\:w-1/2 { width: 100%; }
-    .lg\:mt-0 { margin-top: 2rem; }
-    .sm\:flex-row { flex-direction: column; }
-    .sm\:items-center { align-items: center; }
-}
-
-/* Snap scroll */
-.snap-x { scroll-snap-type: x mandatory; }
-.snap-start { scroll-snap-align: start; }
-
-/* Node & badges hover */
-span:hover { transform: scale(1.05); transition: all 0.3s ease-in-out; }
-
-/* Horizontal scroll smooth */
-.mt-12.flex.overflow-x-auto { scroll-behavior: smooth; overflow-x: auto; overflow-y: hidden; }
-
-/* Optional: subtle shadow for hover on profile image */
-.group:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: all 0.3s ease-in-out; }
-</style>
-
-  <!-- ================= SCRIPT ================= -->
-  <script>
-  function toggleMenu() {
-      const menu = document.getElementById("mobileMenu");
-      const icon = document.getElementById("menuIcon");
-      if (menu.classList.contains("max-h-0")) {
-          menu.classList.remove("max-h-0");
-          menu.classList.add("max-h-96");
-          icon.classList.replace("fa-bars", "fa-xmark");
-      } else {
-          menu.classList.add("max-h-0");
-          menu.classList.remove("max-h-96");
-          icon.classList.replace("fa-xmark", "fa-bars");
-      }
-  }
-  </script>
-
-<section id="services" class="relative py-20 lg:py-32 overflow-hidden">
-  <!-- Background Glow Circles -->
-  <div class="absolute top-0 left-1/3 w-[400px] h-[400px] bg-cyan-500/20 blur-[140px] rounded-full"></div>
-  <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-500/20 blur-[160px] rounded-full"></div>
-
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-
-    <!-- Section Header -->
-    <div class="text-center mb-16 opacity-0 animate-fadeIn" style="animation-delay: 0.2s;">
-      <h3 class="text-lg font-semibold text-white uppercase tracking-wider">Development Approach</h3>
-      <h2 class="text-4xl sm:text-5xl font-extrabold text-white mt-2">Building Robust & Maintainable Backend Systems</h2>
-      <p class="mt-4 max-w-xl mx-auto text-gray-400 text-base sm:text-lg leading-relaxed">
-        I design backend systems that are 
-        <span class="text-white glow-text font-semibold">scalable</span>, 
-        <span class="text-white glow-text font-semibold">secure</span>, and 
-        <span class="text-white glow-text font-semibold">easy to maintain</span>. Using <span class="text-white glow-text">best practices</span> and <span class="text-white glow-text">clean architecture</span> with <span class="text-white glow-text">Django</span>.
+      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed mx-auto lg:mx-0">
+        Expertly bridging the gap between high-performance <span class="text-white">Django</span> backends and immersive <span class="text-white">Next.js</span> frontends.
       </p>
+
+      <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+        <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium backdrop-blur-sm">
+          <i class="fa-solid fa-bolt text-teal-400 mr-2"></i> Django REST API
+        </div>
+        <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium backdrop-blur-sm">
+          <i class="fa-solid fa-code text-teal-400 mr-2"></i> Next.js SSR
+        </div>
+      </div>
     </div>
 
-    <!-- Principles Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full">
-
-      <!-- Scalable Systems -->
-      <div class="relative p-8 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-3xl shadow-xl shadow-cyan-500/20 overflow-hidden transition-all group hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-400/30 opacity-0 animate-fadeIn" style="animation-delay: 0.5s;">
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4 text-purple-400 text-2xl group-hover:scale-110 transition-transform relative z-10">🔧</div>
-        <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Scalable Systems</h3>
-        <p class="text-gray-300 text-base relative z-10 leading-relaxed">
-          Build backend systems that handle growth efficiently. Using <span class="text-white glow-text">Django ORM</span> and <span class="text-white glow-text">Redis</span>.
-        </p>
+    <div class="lg:w-1/2 flex justify-center lg:justify-end animate-scale-up">
+      <div class="relative group">
+        <div class="absolute -inset-6 bg-gradient-to-r from-teal-500/20 to-blue-500/20 rounded-[3rem] blur-3xl group-hover:opacity-100 transition duration-1000 opacity-60"></div>
+        <div class="relative w-80 md:w-[480px] liquid-glass-card !p-2 border-white/20 shadow-2xl">
+          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png" 
+               alt="Mostafa Raihan Profile" 
+               class="w-full h-auto rounded-[1.8rem] transition-transform duration-700 group-hover:scale-105">
+        </div>
       </div>
-
-      <!-- Secure Systems -->
-      <div class="relative p-8 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-3xl shadow-xl shadow-green-500/20 overflow-hidden transition-all group hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-400/30 opacity-0 animate-fadeIn" style="animation-delay: 0.7s;">
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-        <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center mb-4 text-green-400 text-2xl group-hover:scale-110 transition-transform relative z-10">🔒</div>
-        <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Secure Systems</h3>
-        <p class="text-gray-300 text-base relative z-10 leading-relaxed">
-          Protect user data with secure authentication and authorization. Using <span class="text-white glow-text">JWT</span> and <span class="text-white glow-text">OAuth2</span>.
-        </p>
-      </div>
-
-      <!-- Maintainable Code -->
-      <div class="relative p-8 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-3xl shadow-xl shadow-blue-500/20 overflow-hidden transition-all group hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-400/30 opacity-0 animate-fadeIn" style="animation-delay: 0.9s;">
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-        <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4 text-blue-400 text-2xl group-hover:scale-110 transition-transform relative z-10">📝</div>
-        <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Maintainable Code</h3>
-        <p class="text-gray-300 text-base relative z-10 leading-relaxed">
-          Write clean, modular, and reusable code. Using <span class="text-white glow-text">DRY principles</span> and <span class="text-white glow-text">CBVs</span>.
-        </p>
-      </div>
-
     </div>
   </div>
 </section>
 
-<style>
-/* Glow Text */
-.glow-text {
-  text-shadow: 0 0 10px rgba(0,255,255,0.7), 0 0 20px rgba(0,255,255,0.5);
-  transition: transform 0.3s ease, text-shadow 0.3s ease;
-}
-.glow-text:hover {
-  transform: scale(1.1);
-  text-shadow: 0 0 25px rgba(0,255,255,1), 0 0 50px rgba(0,255,255,0.7);
-}
+    <section id="services" class="py-24 px-6 ">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-sm font-bold tracking-[0.3em] text-teal-500 uppercase mb-4">Services</h2>
+          <h3 class="text-3xl md:text-5xl font-extrabold text-white">The Tech Stack Flow</h3>
+        </div>
 
-/* Fade In Animation */
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-.animate-fadeIn {
-  animation: fadeIn 0.8s forwards;
-}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
+          <div class="liquid-glass-card group p-8 hover:bg-white/5 transition-all">
+            <div class="w-14 h-14 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-layer-group text-2xl text-teal-400"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3">Frontend Mastery</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">Crafting lightning-fast UIs using Next.js, React, and Tailwind CSS with a focus on Core Web Vitals.</p>
+          </div>
 
-/* Liquid Glass Hover Enhancement */
-.group:hover {
-  backdrop-filter: blur(25px) saturate(150%);
-  background-color: rgba(255, 255, 255, 0.15);
-}
-</style>
+          <div class="liquid-glass-card group p-8 bg-teal-500/5 border-teal-500/30 shadow-[0_0_30px_rgba(45,212,191,0.1)] hover:bg-teal-500/10 transition-all">
+            <div class="w-14 h-14 bg-teal-500/20 rounded-2xl flex items-center justify-center mb-6">
+              <i class="fa-solid fa-gears text-2xl text-teal-400 animate-spin-slow"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3">Backend Engine</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">Building robust APIs and secure business logic with Python, Django, and DRF architecture.</p>
+          </div>
 
+          <div class="liquid-glass-card group p-8 hover:bg-white/5 transition-all">
+            <div class="w-14 h-14 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-database text-2xl text-teal-400"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3">Cloud & DB</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">Optimizing PostgreSQL databases and deploying scalable solutions via AWS/Docker containers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+  
 
 <section id="about" class="relative py-20 lg:py-32 overflow-hidden">
 
@@ -476,70 +382,27 @@ span:hover { transform: scale(1.05); transition: all 0.3s ease-in-out; }
   </div>
 </section>
 
-<style>
-/* Glow Text */
-.glow-text {
-  text-shadow: 0 0 10px #00fff0, 0 0 25px #00fff0, 0 0 35px #00fff0;
-  animation: glow-animation 2s ease-in-out infinite alternate;
-}
-@keyframes glow-animation {
-  0% { text-shadow: 0 0 10px #00fff0, 0 0 25px #00fff0, 0 0 35px #00fff0; }
-  100% { text-shadow: 0 0 20px #00fff0, 0 0 40px #00fff0, 0 0 50px #00fff0; }
-}
 
-/* Fade In Animation */
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-.animate-fadeIn {
-  animation: fadeIn 0.8s forwards;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  #about .grid { grid-template-columns: 1fr; text-align: center; }
-  #about .space-y-8 { text-align: center; }
-  #about .mx-auto { justify-content: center; }
-  #about .lg\:justify-start { justify-content: center; }
-}
-
-/* Glass card hover */
-#about .group:hover img {
-  transform: scale(1.05);
-}
-</style>
-
-
-
-<section class="py-20 lg:py-32" id="projects">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <!-- Section Header -->
-    <div class="text-center mb-16 opacity-0 animate-fadeIn" style="animation-delay: 0.2s;">
-      <h3 class="text-lg font-semibold text-teal-400 uppercase tracking-wider">Portfolio Showcase</h3>
-      <h2 class="text-4xl sm:text-5xl font-extrabold text-white mt-2">My Featured Real-World Projects</h2>
-      <p class="mt-4 max-w-xl mx-auto text-gray-400">
-        A selection of my best work demonstrating scalability, secure API design, and full-stack implementation using the Django ecosystem.
-      </p>
+<section id="projects" class="py-24 lg:py-36 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+    
+    <div class="text-center mb-20">
+      <h3 class="text-sm font-bold tracking-[0.4em] text-teal-400 uppercase mb-4 opacity-0 animate-fadeIn">Projects Showcase</h3>
+      <h2 class="text-4xl md:text-6xl font-black text-white leading-tight opacity-0 animate-fadeIn" style="animation-delay: 0.2s;">
+        Featured <span class="glow-text">Real-World</span> Projects
+      </h2>
     </div>
 
-    <!-- Projects Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
-      <!-- Project 1 -->
-      <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-white/10 backdrop-blur-3xl border border-white/20 transition-all duration-700 group opacity-0 animate-fadeIn hover:scale-105 hover:-translate-y-2 hover:shadow-teal-500/40" style="animation-delay:0.4s;">
-        <div class="relative h-48 overflow-hidden border-b border-white/10 group-hover:opacity-90 transition-opacity duration-500">
-          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/amertakaproject.png" alt="Amertaka Expense Tracker" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-t-2xl">
-          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center text-white font-semibold text-center p-2">
-            Amertaka Expense Tracker
-          </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      
+      <div class="liquid-glass-card group flex flex-col h-full opacity-0 animate-fadeIn" style="animation-delay: 0.4s;">
+        <div class="relative aspect-video overflow-hidden">
+          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/amertakaproject.png" alt="Amertaka" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-70"></div>
         </div>
-        <div class="p-6 relative z-10">
-          <h3 class="text-2xl font-bold text-white mb-2">Amertaka Expense Tracker</h3>
-          <p class="text-gray-400 text-sm mb-4">
-            A robust, highly secure API built with Django DRF handling inventory, payments, and complex user authentication (JWT).
-          </p>
+        <div class="p-8 flex flex-col flex-grow">
+          <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">Expense Tracker</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">Enterprise-grade finance API, handling real-time expense analytics and secure inventory logging.</p>
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">Django</span>
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-300">PostgreSQL</span>
@@ -556,19 +419,14 @@ span:hover { transform: scale(1.05); transition: all 0.3s ease-in-out; }
         </div>
       </div>
 
-      <!-- Project 2 -->
-      <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-white/10 backdrop-blur-3xl border border-white/20 transition-all duration-700 group opacity-0 animate-fadeIn hover:scale-105 hover:-translate-y-2 hover:shadow-teal-500/40" style="animation-delay:0.6s;">
-        <div class="relative h-48 overflow-hidden border-b border-white/10 group-hover:opacity-90 transition-opacity duration-500">
-          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/django-ecommerce.png" alt="Django E-commerce" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-t-2xl">
-          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center text-white font-semibold text-center p-2">
-            Django E-commerce
-          </div>
+      <div class="liquid-glass-card group flex flex-col h-full opacity-0 animate-fadeIn" style="animation-delay: 0.6s;">
+        <div class="relative aspect-video overflow-hidden">
+          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/django-ecommerce.png" alt="E-commerce" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-70"></div>
         </div>
-        <div class="p-6 relative z-10">
-          <h3 class="text-2xl font-bold text-white mb-2">Django E-commerce</h3>
-          <p class="text-gray-400 text-sm mb-4">
-            Built a fully functional online store with Django, PostgreSQL, and Stripe integration for secure payments.
-          </p>
+        <div class="p-8 flex flex-col flex-grow">
+          <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">Django E-commerce</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">Fully functional online store, product filtering, and robust admin dashboard.</p>
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">Django</span>
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-red-500/20 text-red-300">PostgreSQL</span>
@@ -585,23 +443,18 @@ span:hover { transform: scale(1.05); transition: all 0.3s ease-in-out; }
         </div>
       </div>
 
-      <!-- Project 3 -->
-      <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-white/10 backdrop-blur-3xl border border-white/20 transition-all duration-700 group opacity-0 animate-fadeIn hover:scale-105 hover:-translate-y-2 hover:shadow-teal-500/40" style="animation-delay:0.8s;">
-        <div class="relative h-48 overflow-hidden border-b border-white/10 group-hover:opacity-90 transition-opacity duration-500">
-          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/shopnextjs.png" alt="Shop Cart Project" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-t-2xl">
-          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center text-white font-semibold text-center p-2">
-            Shop Cart Project
-          </div>
+      <div class="liquid-glass-card group flex flex-col h-full opacity-0 animate-fadeIn" style="animation-delay: 0.8s;">
+        <div class="relative aspect-video overflow-hidden">
+          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/shopnextjs.png" alt="NextJS Shop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-70"></div>
         </div>
-        <div class="p-6 relative z-10">
-          <h3 class="text-2xl font-bold text-white mb-2">Shop Cart Project</h3>
-          <p class="text-gray-400 text-sm mb-4">
-            Built with Next.js and MongoDB, this project features a fully functional shopping cart with user authentication.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-4">
+        <div class="p-8 flex flex-col flex-grow">
+          <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">Next.js Shop Cart</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">Modern frontend using SSR for SEO, featuring MongoDB integration and smooth cart state management.</p>
+         <div class="flex flex-wrap gap-2 mb-4">
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">Next.js</span>
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-300">MongoDB</span>
-            <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-300">JavaScript</span>
+            <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-300">Stripe</span>
           </div>
           <div class="flex gap-3 mt-4 flex-wrap">
             <a href="https://shop-cart-project-icst.vercel.app"   rel="noopener noreferrer" class="text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-lg">
@@ -618,30 +471,6 @@ span:hover { transform: scale(1.05); transition: all 0.3s ease-in-out; }
   </div>
 </section>
 
-<!-- Styles -->
-<style>
-/* Fade In Animation */
-@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
-.animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
-
-/* Glass Hover + Depth */
-.group:hover { 
-  backdrop-filter: blur(25px) saturate(150%);
-  background-color: rgba(255, 255, 255, 0.12);
-  transform: translateY(-0.5rem) scale(1.05);
-  box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
-}
-
-/* Smooth image zoom on hover */
-.group-hover\:scale-110:hover { transform: scale(1.10); transition: transform 0.5s; }
-
-/* Responsive grid adjustments */
-@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
-@media (min-width: 641px) and (max-width: 1024px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-</style>
-
-
-
 
 <section id="skills" class="py-28 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <!-- Background Blobs -->
@@ -650,9 +479,7 @@ span:hover { transform: scale(1.05); transition: all 0.3s ease-in-out; }
 
   <!-- Section Title -->
   <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-white glow-text inline-block px-6 py-3 rounded-xl">
-          Tech Stack
-      </h2>
+      <h3 class="text-sm font-bold tracking-[0.4em] text-teal-400 uppercase mb-4 opacity-0 animate-fadeIn">Skills</h3>
       <p class="mt-4 text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">
           Modern technologies I use to build secure, scalable, and maintainable web applications.
       </p>
@@ -820,192 +647,70 @@ span:hover { transform: scale(1.05); transition: all 0.3s ease-in-out; }
 
       </div>
   </div>
-</section>
+</section> 
 
-<style>
-/* Glow Text */
-.glow-text { 
-    text-shadow: 0 0 10px #00fff0, 0 0 25px #00fff0, 0 0 35px #00fff0; 
-    animation: glow-animation 2s ease-in-out infinite alternate; 
-}
-@keyframes glow-animation { 
-    0% { text-shadow:0 0 10px #00fff0,0 0 25px #00fff0,0 0 35px #00fff0; } 
-    100% { text-shadow:0 0 20px #00fff0,0 0 40px #00fff0,0 0 50px #00fff0; } 
-}
+<section class="contact-section py-28 relative overflow-hidden" id="contact">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--accent-teal)_0%,transparent_70%)] opacity-5 -z-10"></div>
 
-/* Liquid Glass + hover */
-.backdrop-blur-md { 
-    background: rgba(255,255,255,0.05); 
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px); 
-    border-radius: 1rem; 
-    border: 1px solid rgba(255,255,255,0.2);
-}
-.hover\:shadow-xl:hover { 
-    box-shadow: 0 8px 30px rgba(0,255,255,0.2), 0 0 20px rgba(0,255,255,0.1);
-}
-
-/* Gradient Connection Line */
-.gradient-line {
-    background: linear-gradient(to left, rgba(0,255,255,0.2) 0%, rgba(0,255,255,0) 100%);
-}
-.right-line {
-    background: linear-gradient(to right, rgba(0,255,255,0.2) 0%, rgba(0,255,255,0) 100%);
-}
-
-/* Blob Animation */
-@keyframes blob {
-  0%, 100% { transform: translate(0px,0px) scale(1) }
-  33% { transform: translate(30px,-20px) scale(1.05) }
-  66% { transform: translate(-20px,30px) scale(0.95) }
-}
-.animate-blob-slow { animation: blob 15s infinite; }
-.animate-blob-delay { animation: blob 20s infinite 5s; }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .absolute.w-1 { width: 1px !important; left: 50% !important; }
-    .absolute.h-1 { display: none !important; }
-    .flex.justify-start, .flex.justify-end { justify-content: center !important; }
-}
-</style>
-
-
-
-<section class="contact-section py-24 from-gray-900 via-gray-950 to-black min-h-screen flex items-center justify-center" id="contact">
-    <div class="container max-w-6xl mx-auto px-6">
-
-        <!-- Section Title -->
-        <div class="text-center mb-12">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 glow-text">
-                Get in Touch
-            </h2>
-            <p class="text-gray-300 text-lg">
-                Have a question or want to start a project? Fill out the form or reach me through social media.
+    <div class="container max-w-6xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h3 class="text-sm font-bold tracking-[0.4em] text-teal-400 uppercase mb-4 opacity-0 animate-fadeIn">Contact</h3>
+            <p class="text-gray-400 text-lg max-w-xl mx-auto">
+                Want to start a new project or just want to say hi? I'm always open to discussing new ideas.
             </p>
         </div>
 
-        <!-- Liquid Glass Container -->
-        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-6 md:p-12 flex flex-col md:flex-row gap-8 md:gap-12">
-
-            <!-- Contact Info Cards -->
-            <div class="flex-1 flex flex-col gap-6">
-
-
-                <!-- Email -->
-            <a id="email-link" href="#" class="glass-card">
-                <i class="fas fa-envelope text-yellow-400 text-2xl"></i>
-                <div>
-                    <h3 class="text-white font-bold text-lg">Email</h3>
-                    <p id="email-text" class="text-gray-300"></p>
-                </div>
-            </a>
-
-                <!-- Location -->
-                <a href="https://www.google.com/maps/search/?api=1&query=Feni,+Chattogram+Division,+Bangladesh"   rel="noopener noreferrer" class="glass-card">
-                    <i class="fas fa-map-marker-alt text-blue-400 text-2xl"></i>
+        <div class="liquid-glass-card p-8 md:p-12 flex flex-col lg:flex-row gap-10 items-stretch">
+            
+            <div class="flex-1 flex flex-col gap-6 justify-center">
+                <a id="email-link" href="#" class="contact-card group">
+                    <div class="icon-box">
+                        <i class="fas fa-envelope text-yellow-400"></i>
+                    </div>
                     <div>
-                        <h3 class="text-white font-bold text-lg">Location</h3>
-                        <p class="text-gray-300">Feni, Chattogram Division, Bangladesh</p>
+                        <h3 class="text-white font-bold text-xl mb-1">Email Me</h3>
+                        <p id="email-text" class="text-gray-400 font-medium"></p>
                     </div>
                 </a>
 
-                <!-- Social Icons -->
-                <div class="flex gap-4 mt-4 justify-center md:justify-start">
-                    <a href="https://www.facebook.com/raihanstack"   rel="noopener noreferrer" class="social-icon">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://github.com/raihanstack"   rel="noopener noreferrer" class="social-icon">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/raihanstack"   rel="noopener noreferrer" class="social-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
+                <div class="contact-card group">
+                    <div class="icon-box ">
+                        <i class="fas fa-map-marker-alt text-blue-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold text-xl mb-1">Location</h3>
+                        <p class="text-gray-400 font-medium">Feni, Chattogram, Bangladesh</p>
+                    </div>
                 </div>
 
+                <div class="mt-4 p-6 rounded-2xl bg-white/5 border border-white/10">
+                    <p class="text-sm font-bold text-teal-400 uppercase tracking-widest mb-4">Follow us Social</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/raihanstack" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://github.com/raihanstack" class="social-circle"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/raihanstack" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Google Map -->
-            <div class="flex-1 w-full h-80 md:h-auto">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d892.951311957645!2d91.5124508743394!3d23.01578703168498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37536acbdd6f3f15%3A0xe506b5d142562cce!2sNizpanua!5e1!3m2!1sen!2sbd!4v1771906226603!5m2!1sen!2sbd" 
-                        class="w-full h-full rounded-3xl border-0 shadow-lg" 
-                        allowfullscreen
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+            <div class="flex-1 min-h-[400px] rounded-3xl overflow-hidden border border-white/10 shadow-inner relative">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14286.537869947328!2d91.50622814942477!3d23.022235115547296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37536acbdd6f3f15%3A0xe506b5d142562cce!2sNizpanua!5e1!3m2!1sen!2sbd!4v1771928860503!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
         </div>
     </div>
 </section>
 
-<style>
-/* ===================== Glass Card ===================== */
-.glass-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.5rem;
-    border-radius: 1.5rem;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    color: white;
-    transition: all 0.3s ease;
-}
-.glass-card:hover {
-    transform: scale(1.05);
-    backdrop-filter: blur(25px);
-    background: rgba(255,255,255,0.1);
-}
+  </main>
 
-/* ===================== Social Icons ===================== */
-.social-icon {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: white;
-    font-size: 1.75rem;
-    transition: all 0.3s ease;
-}
-.social-icon:hover {
-    background: rgba(255,255,255,0.2);
-    color: #14b8a6;
-    transform: scale(1.15);
-}
+  <footer class="py-12 text-center border-t border-white/5">
+    <p class="text-xs tracking-widest text-gray-500 uppercase">© 2026 Mostafa Raihan.</p>
+  </footer>
 
-/* ===================== Glow Text ===================== */
-.glow-text {
-    text-shadow: 0 0 10px #00ff99, 0 0 25px #00ff99, 0 0 35px #00ff99;
-    animation: glow-animation 2s ease-in-out infinite alternate;
-}
-@keyframes glow-animation {
-    0% { text-shadow: 0 0 10px #00ff99, 0 0 25px #00ff99, 0 0 35px #00ff99; }
-    100% { text-shadow: 0 0 20px #00ff99, 0 0 40px #00ff99, 0 0 50px #00ff99; }
-}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js"></script>
 
-/* ===================== Responsive ===================== */
-@media (max-width: 768px) {
-    .contact-section .md\\:flex-row { flex-direction: column; }
-    .glass-card { justify-content: flex-start; }
-    .social-icon { width: 50px; height: 50px; font-size: 1.5rem; }
-    iframe { height: 300px; }
-}
-</style>
 
-<script>
-const user = "raihan.invite";
-const domain = "gmail.com";
-const email = user + "@" + domain;
-document.getElementById("email-link").href = "mailto:" + email;
-document.getElementById("email-text").innerText = email;
-</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
