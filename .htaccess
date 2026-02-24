@@ -1,7 +1,4 @@
 RewriteEngine On
-
-# HTTP থেকে HTTPS redirect
-RewriteCond %{HTTPS} off [OR]
-# non-www থেকে www redirect
-RewriteCond %{HTTP_HOST} ^raihanstack\.pages\.dev$ [NC]
+# Redirect non-www to www
+RewriteCond %{HTTP_HOST} ^raihanstack\.pages\.dev [NC]
 RewriteRule ^(.*)$ https://www.raihanstack.pages.dev/$1 [L,R=301]
