@@ -1,4 +1,4 @@
 RewriteEngine On
 # Redirect non-www to www
 RewriteCond %{HTTP_HOST} ^raihanstack\.pages\.dev [NC]
-RewriteRule ^(.*)$ https://www.raihanstack.pages.dev/$1 [L,R=301]
+RewriteRule ^(.*)$ https://raihanstack.pages.dev/$1 [L,R=301]
