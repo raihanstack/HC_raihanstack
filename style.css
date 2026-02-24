@@ -1,6 +1,6 @@
-/* Project: RaihanStack Portfolio 
-  Theme: Liquid Glass & Dark Luxury
-  Focus: Performance, Responsiveness & Professionalism
+/* Project: RaihanStack Portfolio Core Styles
+  Theme: Dark Luxury & Liquid Glass
+  Optimization: High Performance & Snappy Transitions
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -13,13 +13,14 @@
   --text-muted: #94a3b8;
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
-  --transition-smooth: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  /* Fast Animation Timings */
+  --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* --- 1. Global Resets --- */
+/* --- 1. Global Reset & Base --- */
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 }
@@ -33,12 +34,12 @@ body {
   background-color: var(--primary-dark);
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
-  line-height: 1.6;
+  line-height: 1.5;
   overflow-x: hidden;
-  cursor: none; /* Desktop e custom cursorer jonno */
+  cursor: none; /* Custom cursor (Desktop only) */
 }
 
-/* --- 2. Interactive UI (Cursor & Backgrounds) --- */
+/* --- 2. Interactive Background & UI --- */
 #custom-cursor {
   width: 8px; height: 8px;
   background: var(--accent-teal);
@@ -49,41 +50,27 @@ body {
 }
 
 #cursor-blur {
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(45, 212, 191, 0.12) 0%, rgba(2, 6, 23, 0) 70%);
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.1) 0%, transparent 70%);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  transition: transform 0.2s ease-out;
+  transition: transform 0.1s ease-out;
 }
 
 .luxury-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
+  position: fixed; inset: 0; z-index: -2;
   background: radial-gradient(circle at 50% -20%, #0d2e2a 0%, var(--primary-dark) 85%);
 }
 
 #starCanvas {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.6;
+  position: fixed; inset: 0; z-index: -1;
+  pointer-events: none; opacity: 0.5;
 }
 
-.bg-blob {
-  position: absolute;
-  width: min(600px, 80vw);
-  height: min(600px, 80vw);
-  background: radial-gradient(circle, rgba(20, 184, 166, 0.08) 0%, transparent 70%);
-  filter: blur(100px);
-  pointer-events: none;
-}
-
-/* --- 3. Core Components --- */
+/* --- 3. Key Components --- */
 .glow-text {
   background: linear-gradient(135deg, #fff 30%, var(--accent-teal) 70%, var(--accent-blue) 100%);
   -webkit-background-clip: text;
@@ -93,135 +80,118 @@ body {
 
 .liquid-glass-card {
   background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
-  border-radius: 24px;
+  border-radius: 20px;
   padding: 2rem;
-  transition: var(--transition-smooth);
+  transition: var(--transition-fast);
   position: relative;
   z-index: 10;
 }
 
 .liquid-glass-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
   border-color: rgba(45, 212, 191, 0.3);
-  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
 }
 
 .btn-primary {
   background: var(--accent-teal);
   color: var(--primary-dark);
-  padding: 14px 32px;
-  border-radius: 14px;
+  padding: 12px 28px;
+  border-radius: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
   display: inline-flex;
   align-items: center;
-  transition: var(--transition-smooth);
+  transition: var(--transition-fast);
   border: none;
-  cursor: pointer;
 }
 
 .btn-primary:hover {
   background: #fff;
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(45, 212, 191, 0.25);
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(45, 212, 191, 0.2);
 }
 
-/* --- 4. Timeline & Skills Spine --- */
-.skills-spine, .absolute.top-0.w-1.bg-white\/20 {
-    display: block !important;
-    position: absolute;
-    left: 50% !important;
-    transform: translateX(-50%);
-    width: 2px;
-    background: linear-gradient(to bottom, transparent, rgba(45, 212, 191, 0.3) 15%, rgba(45, 212, 191, 0.3) 85%, transparent);
-    z-index: 0;
+/* --- 4. Timeline Spine System --- */
+.skills-spine {
+  position: absolute; left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(45, 212, 191, 0.2) 15%, rgba(45, 212, 191, 0.2) 85%, transparent);
+  z-index: 0;
 }
 
-/* Horizontal lines hide by default (Mobile) */
-.gradient-line {
-    display: none !important;
-}
+.gradient-line { display: none; }
 
-/* --- 5. Responsiveness & Breakpoints --- */
+/* --- 5. Responsiveness & Adaptive Design --- */
 
-/* Desktop Specific (769px and above) */
+/* Tablet & Desktop */
 @media (min-width: 769px) {
-    .gradient-line {
-        display: block !important;
-        position: absolute;
-        top: 50%;
-        height: 1px;
-        z-index: -1;
-        opacity: 0.4;
-    }
-    .justify-start .gradient-line {
-        right: 50%;
-        width: calc(50% - 88px);
-        background: linear-gradient(to left, var(--accent-teal), transparent);
-    }
-    .justify-end .gradient-line {
-        left: 50%;
-        width: calc(50% - 88px);
-        background: linear-gradient(to right, var(--accent-teal), transparent);
-    }
+  .gradient-line {
+    display: block; position: absolute; top: 50%;
+    height: 1px; z-index: -1; opacity: 0.3;
+  }
+  .justify-start .gradient-line {
+    right: 50%; width: calc(50% - 80px);
+    background: linear-gradient(to left, var(--accent-teal), transparent);
+  }
+  .justify-end .gradient-line {
+    left: 50%; width: calc(50% - 80px);
+    background: linear-gradient(to right, var(--accent-teal), transparent);
+  }
 }
 
-/* Tablet & Large Mobile (1024px and below) */
-@media (max-width: 1024px) {
-  .liquid-glass-card { padding: 1.5rem; }
-  .bg-blob { width: 450px; height: 450px; }
-}
-
-/* Mobile Devices (768px and below) */
+/* Mobile Devices */
 @media (max-width: 768px) {
-  body { cursor: auto; } /* Mobile e custom cursor off */
+  body { cursor: auto; }
   #custom-cursor, #cursor-blur { display: none; }
   
   .glow-text {
-    font-size: clamp(2.5rem, 10vw, 4rem) !important;
-    line-height: 1.1;
+    font-size: clamp(2.2rem, 8vw, 3.5rem) !important;
+    line-height: 1.2;
   }
   
-  .liquid-glass-card { border-radius: 18px; }
-  section { padding: 60px 0; }
-
-  /* Skills Timeline Mobile Adjustment */
-  #skills .flex-col { align-items: center; }
+  .liquid-glass-card { padding: 1.5rem; border-radius: 16px; }
+  section { padding: 50px 0; }
   
-  .relative.flex.justify-start, 
-  .relative.flex.justify-end {
-      justify-content: center !important;
-      width: 100%;
-      padding: 0 10px;
+  #skills .flex-col { align-items: center; }
+  .relative.flex.justify-start, .relative.flex.justify-end {
+    justify-content: center !important;
+    width: 100%; padding: 0 15px;
   }
 }
 
-/* Small Phones (480px and below) */
+/* Small Phones */
 @media (max-width: 480px) {
   .btn-primary { width: 100%; justify-content: center; }
-  .container { padding-left: 1rem; padding-right: 1rem; }
 }
 
-/* --- 6. Utility Animations --- */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
+/* --- 6. Snappy Animations --- */
+@keyframes fadeInSnappy {
+  from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .reveal {
-  animation: fadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: fadeInSnappy 0.4s ease-out forwards;
 }
 
 .animate-bounce-slow {
-  animation: bounce 3s infinite;
+  animation: bounce 2.5s ease-in-out infinite;
 }
 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-6px); }
+}
+
+/* GSAP Initialization Placeholder Classes */
+.animate-slide-up-initial, .animate-fadeIn, .animate-scale-up {
+  opacity: 0;
+  will-change: transform, opacity;
 }

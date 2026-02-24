@@ -654,27 +654,27 @@
 
     <div class="container max-w-6xl mx-auto px-6 relative z-10">
         <div class="text-center mb-16">
-            <h3 class="text-sm font-bold tracking-[0.4em] text-teal-400 uppercase mb-4 opacity-0 animate-fadeIn">Contact</h3>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Get In <span class="glow-text">Touch</span></h2>
             <p class="text-gray-400 text-lg max-w-xl mx-auto">
-                Want to start a new project or just want to say hi? I'm always open to discussing new ideas.
+                Available for new projects and collaborations. Let's build something extraordinary together.
             </p>
         </div>
 
         <div class="liquid-glass-card p-8 md:p-12 flex flex-col lg:flex-row gap-10 items-stretch">
             
             <div class="flex-1 flex flex-col gap-6 justify-center">
-                <a id="email-link" href="#" class="contact-card group">
-                    <div class="icon-box">
-                        <i class="fas fa-envelope text-yellow-400"></i>
+                <a id="email-link" href="#" class="contact-card group flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-500/30 transition-all duration-500">
+                    <div class="w-14 h-14 rounded-full bg-teal-500/10 flex items-center justify-center text-2xl">
+                        <i class="fas fa-envelope text-teal-400"></i>
                     </div>
                     <div>
                         <h3 class="text-white font-bold text-xl mb-1">Email Me</h3>
-                        <p id="email-text" class="text-gray-400 font-medium"></p>
+                        <p id="email-text" class="text-gray-400 font-medium italic">Loading...</p>
                     </div>
                 </a>
 
-                <div class="contact-card group">
-                    <div class="icon-box ">
+                <div class="contact-card group flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all duration-500">
+                    <div class="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center text-2xl">
                         <i class="fas fa-map-marker-alt text-blue-400"></i>
                     </div>
                     <div>
@@ -684,18 +684,27 @@
                 </div>
 
                 <div class="mt-4 p-6 rounded-2xl bg-white/5 border border-white/10">
-                    <p class="text-sm font-bold text-teal-400 uppercase tracking-widest mb-4">Follow us Social</p>
-                    <div class="flex gap-4">
-                        <a href="https://www.facebook.com/raihanstack" class="social-circle"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://github.com/raihanstack" class="social-circle"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/raihanstack" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
+                    <p class="text-sm font-bold text-teal-400 uppercase tracking-widest mb-6 text-center lg:text-left">Follow Me Socially</p>
+                    <div class="flex gap-4 justify-center lg:justify-start">
+                        <a href="https://www.facebook.com/raihanstack" target="_blank" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://github.com/raihanstack" target="_blank" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/raihanstack" target="_blank" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
 
-            <div class="flex-1 min-h-[400px] rounded-3xl overflow-hidden border border-white/10 shadow-inner relative">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14286.537869947328!2d91.50622814942477!3d23.022235115547296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37536acbdd6f3f15%3A0xe506b5d142562cce!2sNizpanua!5e1!3m2!1sen!2sbd!4v1771928860503!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            <div class="flex-1 aspect-square md:aspect-auto min-h-[350px] md:min-h-[400px] rounded-3xl overflow-hidden border border-white/10 relative group bg-gradient-to-br from-teal-500/5 to-blue-500/5 flex items-center justify-center">
+     
+              <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+              
+              <div class="relative text-center p-10">
+                  <div class="w-20 h-20 md:w-24 md:h-24 bg-teal-500/20 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+                      <i class="fas fa-paper-plane text-3xl md:text-4xl text-teal-400"></i>
+                  </div>
+                  <h4 class="text-xl md:text-2xl font-bold text-white mb-2">Let's Chat!</h4>
+                  <p class="text-gray-400 text-sm md:text-base">I usually respond within 24 hours.</p>
+              </div>
+          </div>
 
         </div>
     </div>

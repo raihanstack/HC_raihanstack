@@ -30,12 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- 3. 3D Tilt & Interactive Spotlight ---
-    // Cards hover korle liquid tilt effect
+// --- 3. Interactive Spotlight (No 3D Tilt) ---
     const interactiveCards = document.querySelectorAll('.liquid-glass-card, .contact-card');
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
+    
     interactiveCards.forEach(card => {
-        // Dynamic spotlight injection if not exists
         if (!card.querySelector('.spotlight')) {
             const spotlight = document.createElement('div');
             spotlight.className = 'spotlight';
@@ -43,29 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         card.addEventListener('mousemove', (e) => {
-            if (isTouch && window.innerWidth < 1024) return;
-
-            const { left, top, width, height } = card.getBoundingClientRect();
+            const { left, top } = card.getBoundingClientRect();
             const x = e.clientX - left;
             const y = e.clientY - top;
 
+            // Sudhu spotlight move hobe
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
-
-            const rotateX = (y - height / 2) / 20; // 20 value-ti tilt intensity baray
-            const rotateY = -(x - width / 2) / 20;
-
-            gsap.to(card, {
-                rotateX, rotateY,
-                duration: 0.5,
-                ease: "power2.out",
-                transformPerspective: 1000
-            });
         });
-
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.8, ease: "power3.out" });
-        });
+        
+        // Mouseleave e kono GSAP reset dorkar nei ekhon
     });
 
     // --- 4. Smart Scroll Reveal ---
