@@ -1,12 +1,4 @@
-/**
- * RaihanStack Portfolio Core Logic
- * High Performance & Fully Responsive
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. GSAP Hero Entrance ---
-    // Page load hole hero section smoothly bhese uthbe
     const entranceTl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.2 }});
     
     if(document.querySelector(".animate-slide-up-initial")) {
@@ -15,8 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
                   .to(".animate-scale-up", { opacity: 1, scale: 1, duration: 1.5 }, "-=1");
     }
 
-    // --- 2. Navigation Control ---
-    // Mobile menu toggle logic
     window.toggleMenu = () => {
         const menu = document.getElementById('mobileMenu');
         const icon = document.getElementById('menuIcon');
@@ -29,8 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.className = isOpen ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
     };
 
-    // --- 3. 3D Tilt & Interactive Spotlight ---
-// --- 3. Interactive Spotlight (No 3D Tilt) ---
     const interactiveCards = document.querySelectorAll('.liquid-glass-card, .contact-card');
     
     interactiveCards.forEach(card => {
@@ -44,21 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const { left, top } = card.getBoundingClientRect();
             const x = e.clientX - left;
             const y = e.clientY - top;
-
-            // Sudhu spotlight move hobe
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
         });
-        
-        // Mouseleave e kono GSAP reset dorkar nei ekhon
     });
 
-    // --- 4. Smart Scroll Reveal ---
-    // Intersection Observer diye performance friendly animation
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                // About section specific stagger
                 if (entry.target.id === 'about') {
                     const spans = entry.target.querySelectorAll('.flex-wrap span');
                     gsap.to(spans, { opacity: 1, y: 0, stagger: 0.05, duration: 0.6 });
@@ -73,16 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('section, #skills .relative.flex').forEach(el => {
         if (el.id !== 'home') {
             el.style.opacity = "0";
-            // Entrance offset
             const xOffset = el.classList.contains('justify-start') ? -40 : (el.classList.contains('justify-end') ? 40 : 0);
             const yOffset = xOffset === 0 ? 40 : 0;
-            
             gsap.set(el, { x: xOffset, y: yOffset });
             revealObserver.observe(el);
         }
     });
 
-    // --- 5. Dynamic Data & Navbar ---
     const user = "raihan.invite", domain = "gmail.com";
     const mailLink = document.getElementById("email-link");
     const mailText = document.getElementById("email-text");
@@ -97,3 +75,66 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.classList.toggle('shadow-2xl', isScrolled);
     }, { passive: true });
 });
+
+
+
+    // --- 1. Cursor Logic ---
+    const cursor = document.getElementById('custom-cursor');
+    const blur = document.getElementById('cursor-blur');
+
+    window.addEventListener('mousemove', (e) => {
+      // Main small dot
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      
+      // Outer glow/blur
+      blur.style.left = e.clientX + 'px';
+      blur.style.top = e.clientY + 'px';
+    });
+
+    // --- 2. Starfall Logic ---
+    const canvas = document.getElementById('starCanvas');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function initCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    class Star {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * -canvas.height;
+        this.length = Math.random() * 25 + 10;
+        this.speed = Math.random() * 4 + 2;
+        this.opacity = Math.random() * 0.4 + 0.1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.lineWidth = 1;
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x, this.y + this.length);
+        ctx.stroke();
+      }
+      update() {
+        this.y += this.speed;
+        if (this.y > canvas.height) this.reset();
+      }
+    }
+
+    function startAnimation() {
+      initCanvas();
+      stars = Array.from({ length: 80 }, () => new Star());
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(s => { s.update(); s.draw(); });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    window.addEventListener('resize', initCanvas);
+    startAnimation();

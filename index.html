@@ -95,68 +95,6 @@
 
   <canvas id="starCanvas"></canvas>
 
-  <script>
-    // --- 1. Cursor Logic ---
-    const cursor = document.getElementById('custom-cursor');
-    const blur = document.getElementById('cursor-blur');
-
-    window.addEventListener('mousemove', (e) => {
-      // Main small dot
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      
-      // Outer glow/blur
-      blur.style.left = e.clientX + 'px';
-      blur.style.top = e.clientY + 'px';
-    });
-
-    // --- 2. Starfall Logic ---
-    const canvas = document.getElementById('starCanvas');
-    const ctx = canvas.getContext('2d');
-    let stars = [];
-
-    function initCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    class Star {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * -canvas.height;
-        this.length = Math.random() * 25 + 10;
-        this.speed = Math.random() * 4 + 2;
-        this.opacity = Math.random() * 0.4 + 0.1;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(45, 212, 191, ${this.opacity})`;
-        ctx.lineWidth = 1;
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x, this.y + this.length);
-        ctx.stroke();
-      }
-      update() {
-        this.y += this.speed;
-        if (this.y > canvas.height) this.reset();
-      }
-    }
-
-    function startAnimation() {
-      initCanvas();
-      stars = Array.from({ length: 80 }, () => new Star());
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(s => { s.update(); s.draw(); });
-        requestAnimationFrame(animate);
-      }
-      animate();
-    }
-
-    window.addEventListener('resize', initCanvas);
-    startAnimation();
-  </script>
   <div class="luxury-bg fixed inset-0 -z-10" aria-hidden="true"></div>
   <nav role="navigation" aria-label="Main Navigation" class="fixed top-2 left-2 right-2 w-auto border-b border-white/10 backdrop-blur-md bg-white/5 z-50 rounded-2xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -181,11 +119,10 @@
         <div class="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
 
           <!-- Social Icons -->
-
            <div class="flex justify-center gap-2" aria-label="Social Media Links">
-                        <a href="https://www.facebook.com/raihanstack" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://github.com/raihanstack" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/raihanstack" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com/raihanstack" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/raihanstack" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/raihanstack" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-linkedin-in"></i></a>
             </div>
 
           <!-- Hamburger Menu -->
@@ -210,7 +147,7 @@
     </div>
   </nav>
 
-  <main>
+<main>
 <section id="home" class="relative pt-32 pb-16 md:pt-48 md:pb-32 px-6">
   <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
     
@@ -243,11 +180,11 @@
 
     <div class="lg:w-1/2 flex justify-center lg:justify-end animate-scale-up">
       <div class="relative group">
-        <div class="absolute -inset-6 bg-gradient-to-r from-teal-500/20 to-blue-500/20 rounded-[3rem] blur-3xl group-hover:opacity-100 transition duration-1000 opacity-60"></div>
-        <div class="relative w-80 md:w-[480px] liquid-glass-card !p-2 border-white/20 shadow-2xl">
+        <div class="absolute -inset-6 bg-gradient-to-r from-white-500/20 to-blue-500/20 rounded-[3rem] blur-3xl group-hover:opacity-100 transition duration-1000 opacity-60"></div>
+        <div class="relative w-80 md:w-[480px] liquid-glass-card flex items-center justify-center group">
           <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png" 
-               alt="Mostafa Raihan Profile" 
-               class="w-full h-auto rounded-[1.8rem] transition-transform duration-700 group-hover:scale-105">
+              alt="raihanstack" 
+              class="w-full h-auto rounded-[1.8rem] transition-transform duration-700 group-hover:scale-105">
         </div>
       </div>
     </div>
@@ -292,7 +229,6 @@
   
 
 <section id="about" class="relative py-20 lg:py-32 overflow-hidden">
-
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
 
     <!-- Header -->
@@ -312,14 +248,22 @@
         <div class="relative group w-72 h-72 lg:w-96 lg:h-96 rounded-3xl">
 
           <!-- Glass Glow Border -->
-          <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-400 opacity-30 blur-2xl group-hover:opacity-60 transition duration-500"></div>
-
-          <!-- Glass Card -->
-          <div class="relative rounded-3xl overflow-hidden backdrop-blur-3xl bg-white/10 border border-white/20 shadow-2xl w-full h-full flex items-center justify-center transition-all group-hover:scale-105 group-hover:backdrop-brightness-125">
-            <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png"
-                 alt="Mostafa Raihan"
-                 class="w-full h-full object-cover rounded-3xl transition-transform duration-700">
-          </div>
+          <div class="relative group w-80 md:w-[480px] mx-auto">
+            
+            <!-- Gradient Glow / Halo Background -->
+            <div class="absolute -inset-6 rounded-[3rem] blur-3xl 
+                        bg-gradient-to-r from-white/20 via-teal-200/10 to-blue-500/20
+                        opacity-60 group-hover:opacity-100 transition-opacity duration-1000">
+            </div>
+            
+            <!-- Liquid Glass Card -->
+            <div class="relative w-full liquid-glass-card flex items-center justify-center z-10">
+              <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png" 
+                  alt="Mostafa Raihan Profile" 
+                  class="w-full h-auto rounded-[1.8rem] transition-transform duration-700 group-hover:scale-105">
+            </div>
+  
+        </div>
         </div>
       </div>
 
@@ -368,47 +312,56 @@
   </div>
 </section>
 
-
 <section id="projects" class="py-24 lg:py-36 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
-    
+
+    <!-- Header -->
     <div class="text-center mb-20">
-      <h3 class="text-sm font-bold tracking-[0.4em] text-teal-400 uppercase mb-4 opacity-0 animate-fadeIn">Projects Showcase</h3>
+      <h3 class="text-sm font-bold tracking-[0.4em] text-teal-400 uppercase mb-4 opacity-0 animate-fadeIn">
+        Projects Showcase
+      </h3>
       <h2 class="text-4xl md:text-6xl font-black text-white leading-tight opacity-0 animate-fadeIn" style="animation-delay: 0.2s;">
         Featured <span class="glow-text">Real-World</span> Projects
       </h2>
     </div>
 
+    <!-- Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      
-      <div class="liquid-glass-card group flex flex-col h-full opacity-0 animate-fadeIn" style="animation-delay: 0.4s;">
+
+      <!-- Card 1 -->
+      <div class="liquid-glass-card group opacity-0 animate-fadeIn" style="animation-delay: 0.4s;">
         <div class="relative aspect-video overflow-hidden">
-          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/amertakaproject.png" alt="Amertaka" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-70"></div>
+          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/amertakaproject.png" 
+               alt="Amertaka" 
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="overlay-gradient"></div>
         </div>
         <div class="p-8 flex flex-col flex-grow">
           <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">Expense Tracker</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-6">Enterprise-grade finance API, handling real-time expense analytics and secure inventory logging.</p>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">Handling real-time expense analytics and secure inventory logging.</p>
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">Django</span>
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-300">PostgreSQL</span>
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-300">Python</span>
           </div>
           <div class="flex gap-3 mt-4 flex-wrap">
-            <a href="https://amertaka.vercel.app"   rel="noopener noreferrer" class="text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-lg">
+            <a href="https://amertaka.vercel.app" rel="noopener noreferrer" class="text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-lg">
               Live <i class="fa-solid fa-earth-africa"></i>
             </a>
-            <a href="https://github.com/raihanstack/Django_Expense_Manage"   rel="noopener noreferrer" class="text-sm font-semibold text-gray-300 border border-gray-600 hover:border-white/50 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-md">
+            <a href="https://github.com/raihanstack/Django_Expense_Manage" rel="noopener noreferrer" class="text-sm font-semibold text-gray-300 border border-gray-600 hover:border-white/50 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-md">
               Code <i class="fa-solid fa-code"></i>
             </a>
           </div>
         </div>
       </div>
 
-      <div class="liquid-glass-card group flex flex-col h-full opacity-0 animate-fadeIn" style="animation-delay: 0.6s;">
+      <!-- Card 2 -->
+      <div class="liquid-glass-card group opacity-0 animate-fadeIn" style="animation-delay: 0.6s;">
         <div class="relative aspect-video overflow-hidden">
-          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/django-ecommerce.png" alt="E-commerce" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-70"></div>
+          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/django-ecommerce.png" 
+               alt="E-commerce" 
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="overlay-gradient"></div>
         </div>
         <div class="p-8 flex flex-col flex-grow">
           <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">Django E-commerce</h3>
@@ -419,34 +372,37 @@
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-300">Python</span>
           </div>
           <div class="flex gap-3 mt-4 flex-wrap">
-            <a href="https://babyandfashion.vercel.app"   rel="noopener noreferrer" class="text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-lg">
+            <a href="https://babyandfashion.vercel.app" rel="noopener noreferrer" class="text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-lg">
               Live <i class="fa-solid fa-earth-africa"></i>
             </a>
-            <a href="https://github.com/raihanstack/Django_Shop_783827"   rel="noopener noreferrer" class="text-sm font-semibold text-gray-300 border border-gray-600 hover:border-white/50 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-md">
+            <a href="https://github.com/raihanstack/Django_Shop_783827" rel="noopener noreferrer" class="text-sm font-semibold text-gray-300 border border-gray-600 hover:border-white/50 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-md">
               Code <i class="fa-solid fa-code"></i>
             </a>
           </div>
         </div>
       </div>
 
-      <div class="liquid-glass-card group flex flex-col h-full opacity-0 animate-fadeIn" style="animation-delay: 0.8s;">
+      <!-- Card 3 -->
+      <div class="liquid-glass-card group opacity-0 animate-fadeIn" style="animation-delay: 0.8s;">
         <div class="relative aspect-video overflow-hidden">
-          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/shopnextjs.png" alt="NextJS Shop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-70"></div>
+          <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/shopnextjs.png" 
+               alt="NextJS Shop" 
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="overlay-gradient"></div>
         </div>
         <div class="p-8 flex flex-col flex-grow">
           <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">Next.js Shop Cart</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-6">Modern frontend using SSR for SEO, featuring MongoDB integration and smooth cart state management.</p>
-         <div class="flex flex-wrap gap-2 mb-4">
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">Featuring MongoDB integration and smooth cart state management.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">Next.js</span>
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-300">MongoDB</span>
             <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-300">Stripe</span>
           </div>
           <div class="flex gap-3 mt-4 flex-wrap">
-            <a href="https://shop-cart-project-icst.vercel.app"   rel="noopener noreferrer" class="text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-lg">
+            <a href="https://shop-cart-project-icst.vercel.app" rel="noopener noreferrer" class="text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-lg">
               Live <i class="fa-solid fa-earth-africa"></i>
             </a>
-            <a href="https://github.com/raihanstack/Shop-Cart-Project-Next.js-MongoDB-ICST-Project"    rel="noopener noreferrer" class="text-sm font-semibold text-gray-300 border border-gray-600 hover:border-white/50 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-md">
+            <a href="https://github.com/raihanstack/Shop-Cart-Project-Next.js-MongoDB-ICST-Project" rel="noopener noreferrer" class="text-sm font-semibold text-gray-300 border border-gray-600 hover:border-white/50 py-2 px-4 rounded-lg transition transform hover:scale-105 hover:shadow-md">
               Code <i class="fa-solid fa-code"></i>
             </a>
           </div>
