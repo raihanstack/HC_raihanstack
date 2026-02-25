@@ -158,6 +158,39 @@ body {
 
 .gradient-line { display: none; }
 
+.about-text {
+  color: #d1d5db; /* Tailwind text-gray-300 */
+  line-height: 1.5;
+  font-size: 0.875rem; /* text-sm for mobile */
+}
+
+.about-text .highlight {
+  color: #ffffff; /* white text */
+  font-weight: 600; /* semi-bold */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4); /* glow effect */
+  font-size: 0.75rem; /* smaller on mobile */
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .about-text {
+    font-size: 1rem; /* sm:text-base */
+  }
+  .about-text .highlight {
+    font-size: 0.875rem; /* sm:text-sm */
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .about-text {
+    font-size: 1.125rem; /* lg:text-lg */
+  }
+  .about-text .highlight {
+    font-size: 1.125rem; /* lg:text-lg */
+  }
+}
+
 @media (min-width: 769px) {
   .gradient-line {
     display: block;
