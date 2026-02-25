@@ -79,6 +79,103 @@ body {
   font-weight: 800;
 }
 
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+}
+
+.nav-link span {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover span {
+  max-width: 80px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: linear-gradient(to right, #14b8a6, #06b6d4);
+  color: white;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+}
+
+.social-icon:hover {
+  background: linear-gradient(to right, #14b8a6, #06b6d4);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.mobile-link {
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+  color: #cbd5e1;
+}
+
+.mobile-link:hover {
+  background: rgba(20,184,166,0.2);
+  color: white;
+}
+
+.mobile-link-pro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #cbd5e1;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.mobile-link-pro i {
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.mobile-link-pro:hover {
+  background: linear-gradient(to right, #14b8a6, #06b6d4);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.mobile-link-pro:hover i {
+  transform: scale(1.1);
+}
+
 .liquid-glass-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(14px);
@@ -93,6 +190,27 @@ body {
   position: relative;
   z-index: 10;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.liquid-glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(45,212,191,0.3), transparent 40%);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.liquid-glass-card:hover::before {
+  opacity: 1;
 }
 
 .liquid-glass-card:hover {
@@ -159,16 +277,16 @@ body {
 .gradient-line { display: none; }
 
 .about-text {
-  color: #d1d5db; /* Tailwind text-gray-300 */
+  color: #d1d5db; 
   line-height: 1.5;
-  font-size: 0.875rem; /* text-sm for mobile */
+  font-size: 0.875rem; 
 }
 
 .about-text .highlight {
-  color: #ffffff; /* white text */
-  font-weight: 600; /* semi-bold */
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4); /* glow effect */
-  font-size: 0.75rem; /* smaller on mobile */
+  color: #ffffff; 
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4); 
+  font-size: 0.75rem; 
 }
 
 /* Tablet */
@@ -257,3 +375,4 @@ body {
   opacity: 0;
   will-change: transform, opacity;
 }
+

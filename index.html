@@ -3,35 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>raihanstack | Mostafa Raihan - Full Stack Django & React Developer</title>
 
   <!-- Primary Title & Meta -->
-  <title>Mostafa Raihan | Full Stack Developer & Web Engineer</title>
-  <meta name="description" content="Mostafa Raihan | Full stack developer in Django, Next.js, React.js & PostgreSQL. Explore responsive web applications and projects.">
-  <meta name="keywords" content="Django Developer, Next.js, React.js, Tailwind CSS, PostgreSQL, REST API, Web Applications, Portfolio, raihanstack, mostafaraihan,">
+  <meta name="description" content="Mostafa Raihan (raihanstack) is a professional Full Stack Developer specializing in Django, REST APIs, and React.js. Building scalable and secure web solutions.">
+  <meta name="keywords" content="raihanstack, Mostafa Raihan, Django Developer, Full Stack Developer Bangladesh, Python REST API Specialist, React Next.js Developer, Web Engineer">
   <meta name="author" content="Mostafa Raihan">
   <meta name="robots" content="index, follow">
+  <meta name="revisit-after" content="7 days">
   <meta http-equiv="Content-Language" content="en">
+  
 
   <!-- Favicon & Icons -->
   <link rel="icon" href="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Open Graph / Social Meta -->
-  <meta property="og:title" content="Mostafa Raihan | Django Developer & Web Engineer">
-  <meta property="og:description" content="Building scalable, efficient, and modern web applications with Django, Next.js, React, PostgreSQL, and MongoDB.">
+  <meta property="og:title" content="raihanstack | Mostafa Raihan - Portfolio">
+  <meta property="og:description" content="Professional Full Stack Developer focused on Django Backend and Modern Frontend with React/Next.js.">
   <meta property="og:image" content="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png">
   <meta property="og:url" content="https://raihanstack.pages.dev">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Mostafa Raihan Portfolio">
+  <meta property="og:site_name" content="raihanstack Portfolio">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mostafa Raihan | Django Developer">
-  <meta name="twitter:description" content="Scalable, efficient, and modern web applications built with Django, Next.js, React, and PostgreSQL.">
+  <meta name="twitter:title" content="Mostafa Raihan (@raihanstack) | Web Developer">
+  <meta name="twitter:description" content="I build robust backend systems and modern web apps using Django & React.">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png">
   <meta name="twitter:site" content="@raihanstack">
-  <meta name="twitter:creator" content="@raihanstack">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://raihanstack.pages.dev/">
@@ -42,18 +41,18 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Mostafa Raihan",
+    "alternateName": "raihanstack",
     "url": "https://raihanstack.pages.dev",
+    "image": "https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png",
     "sameAs": [
-      "https://www.facebook.com/raihanstack",
       "https://github.com/raihanstack",
-      "https://www.linkedin.com/in/raihanstack"
+      "https://linkedin.com/in/raihanstack",
+      "https://facebook.com/raihanstack",
+      "https://twitter.com"
     ],
-    "jobTitle": "Django Developer & Web Engineer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Self-Employed"
-    },
-    "image": "https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png"
+    "jobTitle": "Full Stack Web Developer",
+    "knowsAbout": ["Django", "Python", "REST API", "React.js", "Next.js", "PostgreSQL", "System Design"],
+    "description": "Professional Web Engineer specializing in Backend Development and Scalable API Systems."
   }
   </script>
 
@@ -82,7 +81,6 @@
     }
   </script>
 </head>
-
 <body class="bg-dark-900 text-gray-300 antialiased">
 
   <div id="custom-cursor"></div>
@@ -96,56 +94,124 @@
   <canvas id="starCanvas"></canvas>
 
   <div class="luxury-bg fixed inset-0 -z-10" aria-hidden="true"></div>
-  <nav role="navigation" aria-label="Main Navigation" class="fixed top-2 left-2 right-2 w-auto border-b border-white/10 backdrop-blur-md bg-white/5 z-50 rounded-2xl">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
+<nav id="navbar" class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 transition-all duration-500">
+  
+  <div class="flex items-center justify-between px-6 py-3 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl">
 
-        <!-- Logo -->
-        <a href="#home" class="text-white font-bold text-xl hover:text-teal-400 transition-colors duration-300">
-          @raihanstack
+    <!-- Logo -->
+    <a href="#home" class="flex items-center gap-2 group">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center shadow-lg">
+        <i class="fa-solid fa-code text-white"></i>
+      </div>
+      <span class="text-white font-semibold tracking-wide text-lg group-hover:text-teal-400 transition">
+        @raihanstack
+      </span>
+    </a>
+
+    <!-- Center Menu -->
+    <div class="hidden lg:flex items-center gap-3">
+
+      <a href="#home" class="nav-link active">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="#about" class="nav-link">
+        <i class="fa-solid fa-user"></i>
+        <span>About</span>
+      </a>
+
+      <a href="#services" class="nav-link">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Services</span>
+      </a>
+
+      <a href="#skills" class="nav-link">
+        <i class="fa-solid fa-code"></i>
+        <span>Skills</span>
+      </a>
+
+      <a href="#projects" class="nav-link">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>Projects</span>
+      </a>
+
+      <a href="#contact" class="nav-link">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Contact</span>
+      </a>
+
+    </div>
+
+    <!-- Right Side -->
+    <div class="flex items-center gap-3">
+
+      <!-- Social Icons (Desktop + Mobile Show) -->
+      <div class="flex items-center gap-2">
+
+        <a href="https://www.facebook.com/raihanstack" target="_blank" class="social-icon">
+          <i class="fa-brands fa-facebook-f"></i>
         </a>
 
-        <!-- Desktop Menu -->
-        <div class="hidden lg:flex items-center space-x-8">
-          <a href="#home" class="hover:text-teal-400 transition-colors duration-300">Home</a>
-          <a href="#about" class="hover:text-teal-400 transition-colors duration-300">About</a>
-          <a href="#services" class="hover:text-teal-400 transition-colors duration-300">Services</a>
-          <a href="#skills" class="hover:text-teal-400 transition-colors duration-300">Skills</a>
-          <a href="#projects" class="hover:text-teal-400 transition-colors duration-300">Projects</a>
-          <a href="#contact" class="hover:text-teal-400 transition-colors duration-300">Contact</a>
-        </div>
+        <a href="https://github.com/raihanstack" target="_blank" class="social-icon">
+          <i class="fa-brands fa-github"></i>
+        </a>
 
-        <!-- Right Section -->
-        <div class="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
+        <a href="https://www.linkedin.com/in/raihanstack" target="_blank" class="social-icon">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
 
-          <!-- Social Icons -->
-           <div class="flex justify-center gap-2" aria-label="Social Media Links">
-                <a href="https://www.facebook.com/raihanstack" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://github.com/raihanstack" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/raihanstack" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-500"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-
-          <!-- Hamburger Menu -->
-          <button onclick="toggleMenu()" aria-label="Toggle Mobile Menu" class="text-white text-2xl lg:hidden ml-2 p-2 rounded-lg hover:bg-white/10 transition duration-300">
-            <i id="menuIcon" class="fa-solid fa-bars"></i>
-          </button>
-
-        </div>
       </div>
+
+      <!-- Mobile Button -->
+      <button onclick="toggleMenu()" class="lg:hidden text-white text-xl ml-2">
+        <i id="menuIcon" class="fa-solid fa-bars"></i>
+      </button>
+
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="lg:hidden max-h-0 overflow-hidden transition-all duration-500 bg-white/5 backdrop-blur-md rounded-b-xl mt-2 mx-2">
-      <div class="flex flex-col px-4 py-3 space-y-3 text-white text-sm sm:text-base">
-        <a href="#home" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">Home</a>
-        <a href="#about" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">About</a>
-        <a href="#services" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">Services</a>
-        <a href="#skills" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">Skills</a>
-        <a href="#projects" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">Projects</a>
-        <a href="#contact" onclick="toggleMenu()" class="hover:text-teal-400 transition-colors duration-300">Contact</a>
-      </div>
-    </div>
-  </nav>
+  </div>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" 
+     class="lg:hidden hidden mt-4 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 p-6">
+
+  <div class="grid grid-cols-2 gap-4 text-center">
+
+    <a href="#home" class="mobile-link-pro">
+      <i class="fa-solid fa-house mb-1"></i>
+      <span>Home</span>
+    </a>
+
+    <a href="#about" class="mobile-link-pro">
+      <i class="fa-solid fa-user mb-1"></i>
+      <span>About</span>
+    </a>
+
+    <a href="#services" class="mobile-link-pro">
+      <i class="fa-solid fa-briefcase mb-1"></i>
+      <span>Services</span>
+    </a>
+
+    <a href="#skills" class="mobile-link-pro">
+      <i class="fa-solid fa-code mb-1"></i>
+      <span>Skills</span>
+    </a>
+
+    <a href="#projects" class="mobile-link-pro">
+      <i class="fa-solid fa-diagram-project mb-1"></i>
+      <span>Projects</span>
+    </a>
+
+    <a href="#contact" class="mobile-link-pro">
+      <i class="fa-solid fa-envelope mb-1"></i>
+      <span>Contact</span>
+    </a>
+
+  </div>
+</div>
+
+</nav>
 
 <main>
 <section id="home" class="relative pt-32 pb-12 md:pt-48 md:pb-16 px-6">
@@ -288,7 +354,7 @@
           <!-- Liquid Glass Card -->
           <div class="relative w-full h-full liquid-glass-card flex items-center justify-center z-10 rounded-3xl overflow-hidden">
             <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/profile.png" 
-                alt="Mostafa Raihan Profile" 
+                alt="raihanstack" 
                 class="w-full h-full object-cover rounded-3xl transition-transform duration-700 group-hover:scale-105">
           </div>
 
@@ -359,7 +425,7 @@
       <div class="liquid-glass-card group opacity-0 animate-fadeIn" style="animation-delay: 0.4s;">
         <div class="relative aspect-video overflow-hidden rounded-2xl">
           <img src="https://raw.githubusercontent.com/raihanstack/Raihan_Portfolio/refs/heads/master/static/images/amertakaproject.png" 
-               alt="Amertaka" 
+               alt="expense" 
                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
           <div class="overlay-gradient absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         </div>
