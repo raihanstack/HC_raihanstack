@@ -98,9 +98,9 @@
   
   <div class="flex items-center justify-between px-6 py-3 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl">
 
-<!-- Logo -->
 <div class="m-0">
-  <a href="#home" title="raihanstack" class="flex items-center gap-2 sm:gap-3 group">
+  <a href="#home" title="raihanstack" 
+     class="flex items-center gap-2 sm:gap-3 group">
 
     <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-full 
                  bg-gradient-to-br from-teal-400 to-cyan-500 
@@ -111,11 +111,11 @@
     </span>
 
     <!-- Text -->
-    <span class="text-white font-semibold tracking-wide text-md sm:text-lg 
-                 transition duration-300 
-                 group-hover:text-teal-400">
-      <h1>raihanstack</h1>
-    </span>
+    <h1 class="text-white font-semibold tracking-wide text-md sm:text-lg 
+               transition duration-300 
+               group-hover:text-teal-400">
+      raihanstack
+    </h1>
 
   </a>
 </div>
@@ -238,26 +238,32 @@
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
         </span>
-        <span class="text-xs font-bold tracking-widest text-teal-400 uppercase">Open for new projects</span>
+        <span class="text-xs font-bold tracking-widest text-teal-400 uppercase">Available for New Projects</span>
       </div>
 
-      <!-- Headline -->
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-snug mb-6 animate-fadeIn">
-        Building <span class="glow-text">Reliable</span> <br class="hidden md:block"> Digital Solutions
-      </h1>
+      <!-- Main H1 -->
+    <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-snug mb-6 animate-fadeIn">
+      Building <span class="glow-text">Powerful</span> & <span class="glow-text">Scalable</span> Digital Experiences
+    </h1>
 
       <!-- Subheading / Description -->
       <p class="text-gray-400 text-base md:text-lg max-w-2xl mb-8 leading-relaxed mx-auto lg:mx-0">
-        I create fast, scalable, and maintainable web applications using <span class="text-white">Django</span> and <span class="text-white">Next.js</span> to help businesses succeed online.
+        I create high-performance, scalable, and secure web applications that empower businesses to innovate, engage users, and thrive in the digital world.
       </p>
 
       <!-- Skills Tags -->
       <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
         <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium backdrop-blur-sm">
-          <i class="fa-solid fa-bolt text-teal-400 mr-2"></i> Django REST API
+          <i class="fa-solid fa-code text-teal-400 mr-2"></i> Server-Side Rendering
         </div>
         <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium backdrop-blur-sm">
-          <i class="fa-solid fa-code text-teal-400 mr-2"></i> Next.js SSR
+          <i class="fa-solid fa-database text-teal-400 mr-2"></i> Database Architecture & Optimization
+        </div>
+        <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium backdrop-blur-sm">
+          <i class="fa-solid fa-server text-teal-400 mr-2"></i> Scalable Backend Systems
+        </div>
+        <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium backdrop-blur-sm">
+          <i class="fa-solid fa-mobile-screen-button text-teal-400 mr-2"></i> Responsive & Mobile-First Design
         </div>
       </div>
     </div>
@@ -285,32 +291,32 @@
             </div>
           </div>
 
-<!-- Code Block -->
-<pre class="font-mono text-[0.5rem] sm:text-[0.5rem] md:text-[0.7rem] lg:text-[0.8rem] leading-relaxed overflow-x-auto">
+          <!-- Code Block -->
+          <pre class="font-mono text-[0.5rem] sm:text-[0.5rem] md:text-[0.7rem] lg:text-[0.7rem] leading-relaxed overflow-x-auto">
 <span class="text-slate-600 italic">01</span> <span class="text-blue-400">class</span> <span class="text-white">Developer</span>:
 <span class="text-slate-600 italic">02</span>     <span class="text-white">def __init__</span>(<span class="text-red-300">self</span>, <span class="text-red-300">name</span>, <span class="text-red-300">role</span>):
 <span class="text-slate-600 italic">03</span>         <span class="text-white">self.name</span> = <span class="text-green-400">name</span>
-<span class="text-slate-600 italic">04</span>         <span class="text-white">self.role</span> = <span class="text-green-400">role</span>
-<span class="text-slate-600 italic">05</span>         <span class="text-white">self.skills</span> = [<span class="text-green-400">'Django', 'Next.js', 'React.js'</span>]
+<span class="text-slate-600 italic">04</span>         <span class="text.white">self.role</span> = <span class="text-green-400">role</span>
+<span class="text-slate-600 italic">05</span>         <span class="text-white">self.skills</span> = [<span class="text-green-400">'Web Apps', 'APIs', 'Responsive UI'</span>]
 <span class="text-slate-600 italic">06</span>         <span class="text-white">self.available</span> = <span class="text-purple-400">True</span>
 <span class="text-slate-600 italic">07</span>         <span class="text-white">self.motto</span> = <span class="text-green-400">"Reliable & Scalable Apps"</span>
 <span class="text-slate-600 italic">08</span> <span class="text-white">dev</span> = <span class="text-white">Developer</span>(<span class="text-green-400">'Mostafa Raihan'</span>, <span class="text-green-400">'Fullstack Developer'</span>)
 <span class="text-slate-600 italic">09</span> <span class="text-white">print(f"{dev.name} - {dev.role}")</span>
-</pre>
-
+          </pre>
         </div>
       </div>
     </div>
 
   </div>
 </section>
+
 <section id="services" class="py-16 px-6">
   <div class="max-w-7xl mx-auto">
 
     <!-- Section Header -->
     <div class="text-center mb-16">
       <h2 class="text-sm font-bold tracking-[0.3em] text-teal-500 uppercase mb-4">Services</h2>
-      <h3 class="text-3xl md:text-5xl font-extrabold text-white">The Tech Stack Flow</h3>
+      <h3 class="text-1xl md:text-4xl font-extrabold text-white">Full-Stack Development Expertise</h3>
     </div>
 
     <!-- Services Grid -->
@@ -322,7 +328,7 @@
           <i class="fa-solid fa-layer-group text-2xl text-teal-400"></i>
         </div>
         <h3 class="text-xl font-bold text-white mb-3">Frontend Mastery</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Crafting lightning-fast UIs using Next.js, React, and Tailwind CSS with a focus on Core Web Vitals.</p>
+        <p class="text-gray-400 text-sm leading-relaxed">Crafting lightning-fast, responsive UIs using Next.js, React, and Tailwind CSS while optimizing for Core Web Vitals.</p>
       </article>
 
       <!-- Backend -->
@@ -331,7 +337,7 @@
           <i class="fa-solid fa-gears text-2xl text-teal-400 animate-spin-slow"></i>
         </div>
         <h3 class="text-xl font-bold text-white mb-3">Backend Engine</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Building robust APIs and secure business logic with Python, Django, and DRF architecture.</p>
+        <p class="text-gray-400 text-sm leading-relaxed">Building secure, high-performance APIs and business logic with Python, Django, and modern RESTful practices.</p>
       </article>
 
       <!-- Cloud & Database -->
@@ -340,7 +346,7 @@
           <i class="fa-solid fa-database text-2xl text-teal-400"></i>
         </div>
         <h3 class="text-xl font-bold text-white mb-3">Cloud & Database</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Optimizing PostgreSQL or MySQL databases and deploying scalable solutions.</p>
+        <p class="text-gray-400 text-sm leading-relaxed">Optimizing SQL databases and deploying scalable cloud solutions with reliability and security in mind.</p>
       </article>
 
     </div>
