@@ -1,1 +1,221 @@
-"use strict";document.addEventListener("DOMContentLoaded",()=>{if("undefined"!=typeof gsap){let e=gsap.timeline({defaults:{ease:"power4.out",duration:1.2}});document.querySelector(".animate-slide-up-initial")&&e.to(".animate-slide-up-initial",{opacity:1,y:0}).to(".animate-fadeIn",{opacity:1,y:0,stagger:.1},"-=0.8").to(".animate-scale-up",{opacity:1,scale:1,duration:1.5},"-=1")}window.toggleMenu=function(){let e=document.getElementById("mobileMenu"),t=document.getElementById("menuIcon");e&&t&&(e.classList.toggle("hidden"),t.className=e.classList.contains("hidden")?"fa-solid fa-bars":"fa-solid fa-xmark")};let t=document.querySelectorAll(".liquid-glass-card, .contact-card");t.forEach(e=>{if(!e.querySelector(".spotlight")){let t=document.createElement("div");t.className="spotlight",e.appendChild(t)}e.addEventListener("mousemove",t=>{let s=e.getBoundingClientRect();e.style.setProperty("--mouse-x",`${t.clientX-s.left}px`),e.style.setProperty("--mouse-y",`${t.clientY-s.top}px`)})});let s=document.querySelectorAll("section, #skills .relative.flex");if("IntersectionObserver"in window&&"undefined"!=typeof gsap){let i=new IntersectionObserver((e,t)=>{e.forEach(e=>{e.isIntersecting&&(gsap.to(e.target,{opacity:1,x:0,y:0,duration:1,ease:"back.out(1.2)"}),t.unobserve(e.target))})},{threshold:.15});s.forEach(e=>{"home"!==e.id&&(e.style.opacity="0",gsap.set(e,{y:40}),i.observe(e))})}let a="raihan.invite",l="gmail.com",n=document.getElementById("email-link"),o=document.getElementById("email-text");n&&(n.href=`mailto:${a}@${l}`),o&&(o.innerText=`${a}@${l}`);let r=document.getElementById("navbar");window.addEventListener("scroll",()=>{if(!r)return;let e=window.scrollY>30;r.classList.toggle("backdrop-blur-lg",e),r.classList.toggle("bg-dark-950/80",e),r.classList.toggle("shadow-2xl",e),r.classList.toggle("scale-[0.97]",e)},{passive:!0});let c=document.querySelectorAll("section"),d=document.querySelectorAll(".nav-link");window.addEventListener("scroll",()=>{let e="";c.forEach(t=>{let s=t.offsetTop-120;window.scrollY>=s&&(e=t.getAttribute("id"))}),d.forEach(t=>{t.classList.remove("active"),t.getAttribute("href")===`#${e}`&&t.classList.add("active")})})});const cursor=document.getElementById("custom-cursor"),blur=document.getElementById("cursor-blur");cursor&&blur&&window.addEventListener("mousemove",e=>{cursor.style.left=`${e.clientX}px`,cursor.style.top=`${e.clientY}px`,blur.style.left=`${e.clientX}px`,blur.style.top=`${e.clientY}px`});const canvas=document.getElementById("starCanvas");if(canvas){let e=canvas.getContext("2d"),t=[];function s(){canvas.width=window.innerWidth,canvas.height=window.innerHeight}class i{constructor(){this.reset()}reset(){this.x=Math.random()*canvas.width,this.y=-(Math.random()*canvas.height),this.length=25*Math.random()+10,this.speed=4*Math.random()+2,this.opacity=.4*Math.random()+.1}draw(){e.beginPath(),e.strokeStyle=`rgba(255,255,255,${this.opacity})`,e.lineWidth=1,e.moveTo(this.x,this.y),e.lineTo(this.x,this.y+this.length),e.stroke()}update(){this.y+=this.speed,this.y>canvas.height&&this.reset()}}function a(){e.clearRect(0,0,canvas.width,canvas.height),t.forEach(e=>{e.update(),e.draw()}),requestAnimationFrame(a)}function l(){s(),t=Array.from({length:80},()=>new i),a()}window.addEventListener("resize",s),l()}
+"use strict";
+
+document.addEventListener("DOMContentLoaded", () => {
+    // GSAP Initial Animations
+    if (typeof gsap !== "undefined") {
+        const tl = gsap.timeline({
+            defaults: {
+                ease: "power4.out",
+                duration: 1.2
+            }
+        });
+
+        if (document.querySelector(".animate-slide-up-initial")) {
+            tl.to(".animate-slide-up-initial", {
+                opacity: 1,
+                y: 0
+            })
+            .to(".animate-fadeIn", {
+                opacity: 1,
+                y: 0,
+                stagger: 0.1
+            }, "-=0.8");
+        }
+    }
+
+    // Mobile Menu Toggle
+    window.toggleMenu = function () {
+        const menu = document.getElementById("mobileMenu");
+        const icon = document.getElementById("menuIcon");
+        if (menu && icon) {
+            const isHidden = menu.classList.contains("hidden");
+            if (isHidden) {
+                menu.classList.remove("hidden");
+                gsap.fromTo(menu, 
+                    { opacity: 0, y: -20 }, 
+                    { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+                );
+                icon.className = "fa-solid fa-xmark";
+            } else {
+                gsap.to(menu, {
+                    opacity: 0,
+                    y: -20,
+                    duration: 0.3,
+                    ease: "power2.in",
+                    onComplete: () => menu.classList.add("hidden")
+                });
+                icon.className = "fa-solid fa-bars";
+            }
+        }
+    };
+
+    // Spotlight Effect for Cards
+    const cards = document.querySelectorAll(".liquid-glass-card, .contact-card");
+    cards.forEach((card) => {
+        if (!card.querySelector(".spotlight")) {
+            const spotlight = document.createElement("div");
+            spotlight.className = "spotlight";
+            card.appendChild(spotlight);
+        }
+
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty("--mouse-x", `${x}px`);
+            card.style.setProperty("--mouse-y", `${y}px`);
+        });
+    });
+
+    // Scroll Animations with Intersection Observer
+    const animatedElements = document.querySelectorAll("section, #skills .relative.flex");
+    if ("IntersectionObserver" in window && typeof gsap !== "undefined") {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    gsap.to(entry.target, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: "power3.out"
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animatedElements.forEach((el) => {
+            if (el.id !== "home") {
+                gsap.set(el, { opacity: 0, y: 30 });
+                observer.observe(el);
+            }
+        });
+    }
+
+    // Email Obfuscation
+    const user = "raihan.invite";
+    const domain = "gmail.com";
+    const emailLink = document.getElementById("email-link");
+    const emailText = document.getElementById("email-text");
+
+    if (emailLink) emailLink.href = `mailto:${user}@${domain}`;
+    if (emailText) emailText.innerText = `${user}@${domain}`;
+
+    // Navbar Scroll Effect
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+        if (!navbar) return;
+        const scrolled = window.scrollY > 30;
+        navbar.classList.toggle("backdrop-blur-xl", scrolled);
+        navbar.classList.toggle("bg-white/10", scrolled);
+        navbar.classList.toggle("shadow-2xl", scrolled);
+        navbar.classList.toggle("scale-[0.98]", scrolled);
+    }, { passive: true });
+
+    // Active Nav Link on Scroll
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 150) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("active");
+            }
+        });
+    });
+
+    // Custom Cursor Performance Optimization
+    const cursor = document.getElementById("custom-cursor");
+    const blur = document.getElementById("cursor-blur");
+    
+    if (cursor && blur && window.innerWidth > 768) {
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        let lastTimestamp = 0;
+
+        window.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor(timestamp) {
+            const dt = timestamp - lastTimestamp;
+            lastTimestamp = timestamp;
+
+            // Smooth interpolation
+            cursorX += (mouseX - cursorX) * 0.2;
+            cursorY += (mouseY - cursorY) * 0.2;
+
+            cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+            blur.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+
+            requestAnimationFrame(animateCursor);
+        }
+        requestAnimationFrame(animateCursor);
+    }
+});
+
+// Star Canvas Effect
+const canvas = document.getElementById("starCanvas");
+if (canvas) {
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    class Star {
+        constructor() {
+            this.reset();
+        }
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = -(Math.random() * canvas.height);
+            this.length = Math.random() * 20 + 10;
+            this.speed = Math.random() * 3 + 2;
+            this.opacity = Math.random() * 0.5 + 0.1;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(this.x, this.y + this.length);
+            ctx.stroke();
+        }
+        update() {
+            this.y += this.speed;
+            if (this.y > canvas.height) this.reset();
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach((star) => {
+            star.update();
+            star.draw();
+        });
+        requestAnimationFrame(animate);
+    }
+
+    function init() {
+        resize();
+        stars = Array.from({ length: 100 }, () => new Star());
+        animate();
+    }
+
+    window.addEventListener("resize", resize);
+    init();
+}

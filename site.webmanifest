@@ -1,0 +1,21 @@
+{
+  "name": "raihanstack | Mostafa Raihan",
+  "short_name": "raihanstack",
+  "description": "Professional Full Stack Developer Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#2dd4bf",
+  "icons": [
+    {
+      "src": "img/profile.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "img/profile.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}
