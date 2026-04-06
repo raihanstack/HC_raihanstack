@@ -155,7 +155,7 @@
 
   <!-- Tailwind CDN (development) -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { sans: ["Inter", "sans-serif"], mono: ["Fira Code", "monospace"] }, colors: { dark: { 950: "#0b0e14", 900: "#151921", 800: "#1c2333" }, teal: { 400: "#00ffc3", 500: "#00e5b0" } } } } }</script>
+  <script>tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { sans: ["Inter", "sans-serif"], mono: ["Fira Code", "monospace"] }, colors: { bg: { base: "#0b0e14", surface: "#0d1117", elevated: "#161b22" }, accent: { DEFAULT: "#00ffc3", blue: "#2f81f7", purple: "#bc8cff" }, text: { primary: "#e6edf3", secondary: "#8b949e", dim: "#484f58" } } } } }</script>
 
   <!-- Lenis Smooth Scroll -->
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
@@ -300,25 +300,26 @@
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
             </span>
-            <span
-              class="text-[10px] sm:text-xs font-bold tracking-widest text-teal-400 uppercase">root@raihanstack:~$ whoami</span>
+            <span class="text-[9px] sm:text-[10px] font-mono font-medium tracking-[.18em] text-[#00ffc3] uppercase">root@raihanstack:~$ whoami</span>
           </div>
-          <h1
-            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight animate-slide-up-initial">
-            Architecting <span class=glow-text>Scalable</span> &amp; <span class=glow-text>Secure</span> Backend Systems
+          <h1 class="display-text animate-slide-up-initial mb-6">
+            Architecting <span class="glow-text">Scalable</span> &amp;
+            <span class="glow-text">Secure</span> Backend Systems
           </h1>
           <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed mx-auto lg:mx-0 animate-fadeIn">
             Expert in **Python & Django** development. I engineer high-performance APIs, optimize database
             architectures, and build robust infrastructures designed for scale.
           </p>
-          <div class="flex flex-wrap gap-4 justify-center lg:justify-start animate-fadeIn">
+          <div class="flex flex-wrap gap-3 justify-center lg:justify-start animate-fadeIn">
             <a href="https://github.com/raihanstack" target="_blank"
-              class="px-5 py-3 bg-teal-500 text-white rounded-xl text-sm font-bold shadow-[0_0_20px_rgba(20,184,166,0.2)] flex items-center gap-3 hover:scale-105 transition-all">
-              <i class="fa-solid fa-download text-lg"></i> GET_SDK (Resume)
+              class="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg font-mono text-[11px] font-semibold tracking-[.1em] text-[#0b0e14] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,255,195,0.3)]"
+              style="background:var(--accent)">
+              <i class="fa-solid fa-download text-sm"></i> GET_SDK.RESUME
             </a>
             <a href="#contact"
-              class="px-5 py-3 bg-white/5 border border-white/10 rounded-xl text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-3 hover:border-teal-500/50 transition-colors">
-              <i class="fa-solid fa-plug text-teal-400 text-lg"></i> System_Integration
+              class="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg font-mono text-[11px] font-semibold tracking-[.1em] transition-all duration-300 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
+              style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);color:var(--text-secondary)">
+              <i class="fa-solid fa-plug text-sm" style="color:var(--accent)"></i> INIT_CONNECTION
             </a>
           </div>
         </div>
@@ -445,10 +446,10 @@
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-20 animate-fadeIn">
           <span class="section-label">> GET /api/v1/capabilities</span>
-          <h2 class="section-title text-white">Full-Stack Solutions</h2>
-          <p class="scannable-text text-gray-400 mt-4 text-center">
-            Deploying high-performance digital systems focused on **low-latency**, **multi-tenant security**, and
-            **architectural scalability**.
+          <h2 class="section-title" style="color:var(--text-primary)">Full-Stack Solutions</h2>
+          <p class="scannable-text mt-4 text-center">
+            Deploying high-performance systems focused on low-latency delivery,
+            multi-tenant security layers, and architectural scalability.
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
@@ -519,10 +520,10 @@
         <header class="text-center mb-20 animate-fadeIn relative">
           <div class="grid-coord tl">[COORD_X:02 // Y:01]</div>
           <span class="section-label">> IDENTIFY --target=raihanstack</span>
-          <h2 class="section-title text-white">The Engineering Mindset</h2>
-          <p class="scannable-text mt-6 text-gray-400">
-            I engineer modern systems that prioritize absolute performance. My methodology is defined by **mathematical
-            precision**, **structural efficiency**, and **high-concurrency logic**.
+          <h2 class="section-title" style="color:var(--text-primary)">The Engineering Mindset</h2>
+          <p class="scannable-text mt-6">
+            I engineer modern systems that prioritize absolute performance. My methodology is defined by
+            mathematical precision, structural efficiency, and high-concurrency logic.
           </p>
         </header>
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -748,10 +749,10 @@
       <div class="grid-coord tl">[COORD_X:04 // Y:01]</div>
       <div class="text-center mb-20 animate-fadeIn relative">
         <span class="section-label">> FETCH /usr/bin/tech_stack</span>
-        <h2 class="section-title text-white">Advanced Technology Cluster</h2>
-        <p class="scannable-text mt-6 text-gray-400">
-          Utilizing industry-leading technologies to build secure, maintainable, and highly efficient distributed
-          systems.
+        <h2 class="section-title" style="color:var(--text-primary)">Advanced Technology Cluster</h2>
+        <p class="scannable-text mt-6">
+          Utilizing industry-leading technologies to build secure, maintainable,
+          and highly efficient distributed systems.
         </p>
       </div>
       <div class="space-y-16">
