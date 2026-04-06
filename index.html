@@ -12,7 +12,10 @@
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="revisit-after" content="7 days">
 <meta http-equiv="Content-Language" content="en">
-<meta name="theme-color" content="#2dd4bf">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#020617">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="msapplication-TileColor" content="#020617">
 
 <!-- Geo / Location Meta -->
@@ -157,6 +160,7 @@
 </div>
 <canvas id=starCanvas></canvas>
 <div class="luxury-bg fixed inset-0 -z-10" aria-hidden=true></div>
+<header id="header" class="relative">
 <nav id=navbar class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 transition-all duration-500">
 <div class="flex items-center justify-between px-6 py-3 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl">
 <div class=m-0>
@@ -170,28 +174,28 @@ raihanstack
 </a>
 </div>
 <div class="hidden lg:flex items-center gap-3">
-<a href=#home class="nav-link active">
-<i class="fa-solid fa-house"></i>
+<a href=#home class="nav-link active" aria-label="Home">
+<i class="fa-solid fa-house" aria-hidden="true"></i>
 <span>Home</span>
 </a>
-<a href=#about class=nav-link>
-<i class="fa-solid fa-user"></i>
+<a href=#about class=nav-link aria-label="About Me">
+<i class="fa-solid fa-user" aria-hidden="true"></i>
 <span>About</span>
 </a>
-<a href=#services class=nav-link>
-<i class="fa-solid fa-briefcase"></i>
+<a href=#services class=nav-link aria-label="Services">
+<i class="fa-solid fa-briefcase" aria-hidden="true"></i>
 <span>Services</span>
 </a>
-<a href=#skills class=nav-link>
-<i class="fa-solid fa-code"></i>
+<a href=#skills class=nav-link aria-label="Skills">
+<i class="fa-solid fa-code" aria-hidden="true"></i>
 <span>Skills</span>
 </a>
-<a href=#projects class=nav-link>
-<i class="fa-solid fa-diagram-project"></i>
+<a href=#projects class=nav-link aria-label="Projects">
+<i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
 <span>Projects</span>
 </a>
-<a href=#contact class=nav-link>
-<i class="fa-solid fa-envelope"></i>
+<a href=#contact class=nav-link aria-label="Contact">
+<i class="fa-solid fa-envelope" aria-hidden="true"></i>
 <span>Contact</span>
 </a>
 </div>
@@ -207,8 +211,8 @@ raihanstack
 <i class="fa-brands fa-linkedin-in"></i>
 </a>
 </div>
-<button onclick=toggleMenu() class="lg:hidden text-white text-xl ml-2">
-<i id=menuIcon class="fa-solid fa-bars"></i>
+<button onclick=toggleMenu() class="lg:hidden text-white text-xl ml-2" aria-label="Toggle mobile menu">
+<i id=menuIcon class="fa-solid fa-bars" aria-hidden="true"></i>
 </button>
 </div>
 </div>
@@ -241,6 +245,7 @@ raihanstack
 </div>
 </div>
 </nav>
+</header>
 <main>
 <section id=home class="relative pt-32 pb-12 md:pt-48 md:pb-16 px-6">
 <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -252,95 +257,90 @@ raihanstack
 </span>
 <span class="text-xs font-bold tracking-widest text-teal-400 uppercase">Available for New Projects</span>
 </div>
-<h1 class="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight opacity-0 animate-fadeIn">
-Building <span class=glow-text>Powerful</span> &amp; <span class=glow-text>Scalable</span> Digital Experiences
+<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight animate-slide-up-initial">
+Architecting <span class=glow-text>Scalable</span> &amp; <span class=glow-text>Secure</span> Backend Systems
 </h1>
-<p class="text-gray-400 text-base md:text-lg max-w-2xl mb-8 leading-relaxed mx-auto lg:mx-0">
-I create high-performance, scalable, and secure web applications that empower businesses to innovate, engage users, and thrive in the digital world.
+<p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed mx-auto lg:mx-0 animate-fadeIn">
+Expert in **Python & Django** development. I engineer high-performance APIs, optimize database architectures, and build robust infrastructures designed for scale.
 </p>
-<div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-<div class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium backdrop-blur-sm">
-<i class="fa-solid fa-code text-teal-400 mr-2"></i> Server-Side Rendering
+<div class="flex flex-wrap gap-4 justify-center lg:justify-start animate-fadeIn">
+<div class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-3 hover:border-teal-500/50 transition-colors">
+<i class="fa-brands fa-python text-teal-400 text-lg"></i> Python Engineering
 </div>
-<div class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium backdrop-blur-sm">
-<i class="fa-solid fa-database text-teal-400 mr-2"></i> Database Architecture & Optimization
+<div class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-3 hover:border-teal-500/50 transition-colors">
+<i class="fa-solid fa-gears text-teal-400 text-lg"></i> Django & DRF
 </div>
-<div class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium backdrop-blur-sm">
-<i class="fa-solid fa-server text-teal-400 mr-2"></i> Scalable Backend Systems
-</div>
-<div class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium backdrop-blur-sm">
-<i class="fa-solid fa-mobile-screen-button text-teal-400 mr-2"></i> Responsive & Mobile-First Design
+<div class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-3 hover:border-teal-500/50 transition-colors">
+<i class="fa-solid fa-server text-teal-400 text-lg"></i> Cloud Infrastructure
 </div>
 </div>
 </div>
-<div class="lg:w-1/2 flex justify-center lg:justify-end w-full">
-<div class="relative group w-full max-w-[320px] sm:max-w-[400px] md:max-w-[450px] lg:max-w-[500px]">
-<div class="absolute -inset-4 bg-gradient-to-r from-white/20 via-teal-400/20 to-blue-500/20 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition duration-1000"></div>
-<div class="relative liquid-glass-card flex flex-col p-2 sm:p-3 md:p-4 rounded-3xl border border-white/10 bg-[#050505]/80 backdrop-blur-xl shadow-2xl hover:scale-[1.02] transition-transform duration-300">
-<div class="flex items-center justify-between px-2 py-1 border-b border-white/10 mb-3">
+<div class="lg:w-1/2 flex justify-center lg:justify-end w-full animate-fadeIn transition-all duration-700">
+<div class="relative w-full max-w-[500px]">
+<div class="absolute -inset-4 bg-gradient-to-r from-teal-500/20 to-blue-500/20 rounded-3xl blur-2xl opacity-40 animate-pulse"></div>
+<div class="relative liquid-glass-card flex flex-col p-0 rounded-3xl border border-white/10 bg-[#020617]/90 backdrop-blur-2xl shadow-2xl overflow-hidden hover:border-teal-500/30 transition-all duration-500">
+<div class="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/5">
 <div class="flex gap-2">
-<div class="w-3 h-3 rounded-full bg-red-500"></div>
-<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-<div class="w-3 h-3 rounded-full bg-green-500"></div>
+<div class="w-3 h-3 rounded-full bg-[#ff5f56] shadow-lg"></div>
+<div class="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-lg"></div>
+<div class="w-3 h-3 rounded-full bg-[#27c93f] shadow-lg"></div>
 </div>
-<div class="text-xs font-mono text-slate-500 flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-developer.py
+<div class="text-[10px] font-mono text-gray-500 tracking-widest uppercase flex items-center gap-2">
+<i class="fa-brands fa-python text-teal-400"></i>
+main.py — raihan_stack
+</div>
+<div class="w-12"></div>
+</div>
+<div class="p-6 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto min-h-[300px]">
+<div id="terminal-content" class="space-y-1.5">
+<!-- Terminal lines populated by script.js -->
+<div class="text-gray-500 italic">Initializing raihan_stack environment...</div>
 </div>
 </div>
-<pre class="font-mono text-[0.5rem] sm:text-[0.5rem] md:text-[0.7rem] lg:text-[0.7rem] leading-relaxed overflow-x-auto">
-<span class="text-slate-600 italic">01</span> <span class=text-blue-400>class</span> <span class=text-white>Developer</span>:
-<span class="text-slate-600 italic">02</span>     <span class=text-white>def __init__</span>(<span class=text-red-300>self</span>, <span class=text-red-300>name</span>, <span class=text-red-300>role</span>):
-<span class="text-slate-600 italic">03</span>         <span class=text-white>self.name</span> = <span class=text-green-400>name</span>
-<span class="text-slate-600 italic">04</span>         <span class=text-white>self.role</span> = <span class=text-green-400>role</span>
-<span class="text-slate-600 italic">05</span>         <span class=text-white>self.skills</span> = [<span class=text-green-400>'Web Apps', 'APIs', 'Responsive UI'</span>]
-<span class="text-slate-600 italic">06</span>         <span class=text-white>self.available</span> = <span class=text-purple-400>True</span>
-<span class="text-slate-600 italic">07</span>         <span class=text-white>self.motto</span> = <span class=text-green-400>"Reliable & Scalable Apps"</span>
-<span class="text-slate-600 italic">08</span> <span class=text-white>dev</span> = <span class=text-white>Developer</span>(<span class=text-green-400>'Mostafa Raihan'</span>, <span class=text-green-400>'Fullstack Developer'</span>)
-<span class="text-slate-600 italic">09</span> <span class=text-white>print(f"{dev.name} - {dev.role}")</span>
-          </pre>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id=services class="py-16 px-6">
+<section id=services class="py-24 px-6 md:px-12 bg-dark-900/40 relative">
 <div class="max-w-7xl mx-auto">
-<div class="text-center mb-16">
-<h2 class="text-sm font-bold tracking-[0.3em] text-teal-500 uppercase mb-4">Services</h2>
-<h3 class="text-1xl md:text-4xl font-extrabold text-white">Full-Stack Development Expertise</h3>
+<div class="text-center mb-20 animate-fadeIn">
+<h2 class="text-sm font-bold tracking-[0.4em] text-teal-400 uppercase mb-4">Core Services</h2>
+<h3 class="section-title text-white">Full-Stack Expertise</h3>
+<p class="text-gray-400 mt-4 max-w-2xl mx-auto">Providing end-to-end digital solutions with a focus on performance, scalability, and security.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
 <article class="liquid-glass-card group p-8 hover:bg-white/5 transition-all">
 <div class="w-14 h-14 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<i class="fa-solid fa-layer-group text-2xl text-teal-400"></i>
+<i class="fa-solid fa-code text-2xl text-teal-400"></i>
 </div>
-<h3 class="text-xl font-bold text-white mb-3">Frontend Mastery</h3>
-<p class="text-gray-400 text-sm leading-relaxed">Crafting lightning-fast, responsive UIs using Next.js, React, and Tailwind CSS while optimizing for Core Web Vitals.</p>
+<h3 class="text-xl font-bold text-white mb-3">REST API Design</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Architecting high-performance RESTful APIs using Django REST Framework with a focus on security, documentation, and scalability.</p>
 </article>
 <article class="liquid-glass-card group p-8 bg-teal-500/5 border-teal-500/30 shadow-[0_0_30px_rgba(45,212,191,0.1)] hover:bg-teal-500/10 transition-all">
 <div class="w-14 h-14 bg-teal-500/20 rounded-2xl flex items-center justify-center mb-6">
-<i class="fa-solid fa-gears text-2xl text-teal-400 animate-spin-slow"></i>
+<i class="fa-solid fa-database text-2xl text-teal-400 animate-pulse"></i>
 </div>
-<h3 class="text-xl font-bold text-white mb-3">Backend Engine</h3>
-<p class="text-gray-400 text-sm leading-relaxed">Building secure, high-performance APIs and business logic with Python, Django, and modern RESTful practices.</p>
+<h3 class="text-xl font-bold text-white mb-3">Database Architecture</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Designing complex **MySQL** and MongoDB schemas. Optimizing queries and ensuring data integrity through advanced ORM techniques.</p>
 </article>
 <article class="liquid-glass-card group p-8 hover:bg-white/5 transition-all">
 <div class="w-14 h-14 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<i class="fa-solid fa-database text-2xl text-teal-400"></i>
+<i class="fa-solid fa-shield-halved text-2xl text-teal-400"></i>
 </div>
-<h3 class="text-xl font-bold text-white mb-3">Cloud & Database</h3>
-<p class="text-gray-400 text-sm leading-relaxed">Optimizing SQL databases and deploying scalable cloud solutions with reliability and security in mind.</p>
+<h3 class="text-xl font-bold text-white mb-3">Cloud Engineering</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Hardening backend systems, implementing JWT/OAuth2 security, and deploying scalable services using **MongoDB Atlas** and Cloud CI/CD.</p>
 </article>
 </div>
 </div>
 </section>
-<section id=about class="relative py-16 lg:py-28 overflow-hidden">
-<div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-<header class="text-center mb-12 lg:mb-16">
-<h2 class="text-sm tracking-[0.4em] uppercase text-cyan-400 font-medium">About Me</h2>
-<p class="mt-4 text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
-I build web applications that are simple, efficient, and scalable. My work combines strategy, design, and modern technology to deliver real results.
+<section id=about class="relative py-24 lg:py-32 overflow-hidden border-t border-white/5">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+<header class="text-center mb-20 animate-fadeIn">
+<h2 class="text-sm tracking-[0.4em] uppercase text-cyan-400 font-medium mb-4">The Developer</h2>
+<h3 class="section-title text-white">Bridging Design & Logic</h3>
+<p class="mt-6 text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
+I architect modern web applications that prioritize performance and user experience. My philosophy is rooted in simplicity, efficiency, and robust engineering.
 </p>
 </header>
 <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
@@ -354,9 +354,11 @@ I build web applications that are simple, efficient, and scalable. My work combi
 </figure>
 </div>
 <div class="space-y-6 lg:space-y-8 text-center lg:text-left">
-<h3 class="text-2xl sm:text-3xl font-semibold text-white">Hi, I'm Mostafa Raihan</h3>
-<p class=about-text>
-I am a <span class=highlight>Full-Stack Developer</span> specializing in building clear, efficient, and scalable web applications. My work focuses on <span class=highlight>functionality</span>, <span class=highlight>simplicity</span>, and <span class=highlight>modern design</span> principles.
+<h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
+Backend Systems <span class="text-teal-400">Architect</span>
+</h3>
+<p class="text-gray-300 text-lg leading-relaxed font-medium">
+I specialize in building **high-concurrency**, **scalable**, and **secure** backend architectures. With a deep focus on **Python & Django**, I engineer robust APIs and optimize database systems that power modern digital experiences.
 </p>
 <div class="flex flex-wrap gap-2 mt-4 sm:mt-6 justify-center lg:justify-start">
 <span class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">Django</span>
@@ -373,41 +375,48 @@ I am a <span class=highlight>Full-Stack Developer</span> specializing in buildin
 <span class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-red-600/20 text-red-400">Git</span>
 <span class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-gray-600/20 text-gray-400">GitHub</span>
 </div>
-<section class="mt-4 sm:mt-6">
-<h4 class="text-xl sm:text-xl font-semibold text-white mb-2">Education</h4>
-<ul class="space-y-2 text-gray-300 text-sm sm:text-base">
-<li>
-<span class="font-semibold text-white">Diploma in Computer Science</span>
-<br>
-– Institute of Computer Science and Technology (2023–2026)
-</li>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+<div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-500/30 transition-colors">
+<h4 class="text-sm font-bold text-teal-400 uppercase tracking-widest mb-3">Core Expertise</h4>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><i class="fa-solid fa-check text-teal-500 mr-2"></i> REST API Engineering</li>
+<li><i class="fa-solid fa-check text-teal-500 mr-2"></i> Database Architecture</li>
+<li><i class="fa-solid fa-check text-teal-500 mr-2"></i> System Security & Auth</li>
 </ul>
-</section>
+</div>
+<div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition-colors">
+<h4 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-3">Education</h4>
+<div class="space-y-1">
+<p class="text-white font-bold text-sm">Diploma in CS</p>
+<p class="text-gray-400 text-xs">ICST (2023–2026)</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </section>
-<section id=projects class="py-16 lg:py-28 relative overflow-hidden">
-<div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
-<div class="text-center mb-12 lg:mb-20">
-<h3 class="text-sm sm:text-base font-bold tracking-[0.4em] text-teal-400 uppercase mb-2 opacity-0 animate-fadeIn">
-Projects Showcase
-</h3>
-<h2 class="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight opacity-0 animate-fadeIn">
-Featured <span class=glow-text>Real-World</span> Projects
-</h2>
+<section id=projects class="py-24 lg:py-32 relative overflow-hidden border-t border-white/5">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+<div class="text-center mb-20 animate-fadeIn">
+<h2 class="text-sm sm:text-base font-bold tracking-[0.4em] text-teal-400 uppercase mb-4">Selected Work</h2>
+<h3 class="section-title text-white">Featured Digital Products</h3>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-<div class="liquid-glass-card group opacity-0 animate-fadeIn">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<article class="liquid-glass-card group opacity-0 animate-fadeIn" aria-labelledby="project-expensetracker-title">
 <div class="relative aspect-video overflow-hidden rounded-2xl">
-<img src=img/amertakaproject.webp alt="Expense Tracker Project screenshot by raihanstack" title="Expense Tracker Project" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading=lazy>
+<img src=img/amertakaproject.webp alt="Expense Tracker - Real-time expense analytics dashboard" title="Expense Tracker Project" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading=lazy>
 <div class="overlay-gradient absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
 </div>
 <div class="p-6 sm:p-8 flex flex-col flex-grow">
-<h3 class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors">Expense Tracker</h3>
+<h3 id="project-expensetracker-title" class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors">Expense Tracker</h3>
 <p class="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
-Handling real-time expense analytics and secure inventory logging.
+Real-time analytics engine with **Django Signals** and PostgreSQL indexing for high-speed tracking.
 </p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] font-bold px-2 py-1 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20 uppercase tracking-tighter"><i class="fa-solid fa-microchip mr-1"></i> Scalability Optimized</span>
+<span class="text-[10px] font-bold px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-tighter"><i class="fa-solid fa-code-fork mr-1"></i> API First</span>
+</div>
 <div class="flex flex-wrap gap-2 mb-3">
 <span class="text-xs font-medium px-2 py-1 rounded-full bg-teal-500/20 text-teal-300">Django</span>
 <span class="text-xs font-medium px-2 py-1 rounded-full bg-purple-500/20 text-purple-300">PostgreSQL</span>
@@ -415,24 +424,28 @@ Handling real-time expense analytics and secure inventory logging.
 </div>
 <div class="flex flex-wrap gap-3 mt-3">
 <a href=https://amertaka.vercel.app target=_blank rel="noopener noreferrer" class="inline-flex items-center justify-center bg-teal-500 text-white font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:bg-teal-600 hover:shadow-lg">
-Live <i class="fa-solid fa-earth-africa ml-2"></i>
+Live <i class="fa-solid fa-earth-africa ml-2" aria-hidden="true"></i>
 </a>
-<a href=https://github.com/raihanstack/Django_Expense_Manage target=_blank rel="noopener noreferrer" class="inline-flex items-center justify-center bg-transparent border border-gray-500 text-gray-300 font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:border-teal-500 hover:text-teal-400 hover:shadow-md">
-Code <i class="fa-solid fa-code ml-2"></i>
+<a href=https://github.com/raihanstack/Django_Expense_Manage target=_blank rel="noopener noreferrer" class="inline-flex items-center justify-center bg-transparent border border-gray-500 text-gray-300 font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:border-teal-500 hover:text-teal-400 hover:shadow-md" aria-label="View Code for Expense Tracker on GitHub">
+Code <i class="fa-solid fa-code ml-2" aria-hidden="true"></i>
 </a>
 </div>
 </div>
-</div>
-<div class="liquid-glass-card group opacity-0 animate-fadeIn">
+</article>
+<article class="liquid-glass-card group opacity-0 animate-fadeIn" aria-labelledby="project-ecommerce-title">
 <div class="relative aspect-video overflow-hidden rounded-2xl">
-<img src=img/django-ecommerce.webp alt="Django E-commerce Project screenshot by raihanstack" title="Django E-commerce Project" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading=lazy>
+<img src=img/django-ecommerce.webp alt="Django E-commerce - Modern online store with admin dashboard" title="Django E-commerce Project" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading=lazy>
 <div class="overlay-gradient absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
 </div>
 <div class="p-6 sm:p-8 flex flex-col flex-grow">
-<h3 class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors">Django E-commerce</h3>
+<h3 id="project-ecommerce-title" class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors">Django E-commerce</h3>
 <p class="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
-Fully functional online store, product filtering, and robust admin dashboard.
+Robust e-commerce backend with **custom ORM filtering** and secure Stripe payment integration.
 </p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] font-bold px-2 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 uppercase tracking-tighter"><i class="fa-solid fa-shield-halved mr-1"></i> Secure Architecture</span>
+<span class="text-[10px] font-bold px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20 uppercase tracking-tighter"><i class="fa-solid fa-database mr-1"></i> Query Optimized</span>
+</div>
 <div class="flex flex-wrap gap-2 mb-3">
 <span class="text-xs font-medium px-2 py-1 rounded-full bg-teal-500/20 text-teal-300">Django</span>
 <span class="text-xs font-medium px-2 py-1 rounded-full bg-purple-500/20 text-purple-300">PostgreSQL</span>
@@ -440,24 +453,28 @@ Fully functional online store, product filtering, and robust admin dashboard.
 </div>
 <div class="flex flex-wrap gap-3 mt-3">
 <a href=https://babyandfashion.vercel.app target=_blank rel="noopener noreferrer" class="inline-flex items-center justify-center bg-teal-500 text-white font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:bg-teal-600 hover:shadow-lg">
-Live <i class="fa-solid fa-earth-africa ml-2"></i>
+Live <i class="fa-solid fa-earth-africa ml-2" aria-hidden="true"></i>
 </a>
-<a href=https://github.com/raihanstack/Django_Shop_783827 target=_blank rel="noopener noreferrer" class="inline-flex items-center justify-center bg-transparent border border-gray-500 text-gray-300 font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:border-teal-500 hover:text-teal-400 hover:shadow-md">
-Code <i class="fa-solid fa-code ml-2"></i>
+<a href=https://github.com/raihanstack/Django_Shop_783827 target=_blank rel="noopener noreferrer" class="inline-flex items-center justify-center bg-transparent border border-gray-500 text-gray-300 font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:border-teal-500 hover:text-teal-400 hover:shadow-md" aria-label="View Code for Django E-commerce on GitHub">
+Code <i class="fa-solid fa-code ml-2" aria-hidden="true"></i>
 </a>
 </div>
 </div>
-</div>
-<div class="liquid-glass-card group opacity-0 animate-fadeIn">
+</article>
+<article class="liquid-glass-card group opacity-0 animate-fadeIn" aria-labelledby="project-nextshop-title">
 <div class="relative aspect-video overflow-hidden rounded-2xl">
-<img src=img/shopnextjs.webp alt="NextJS Shop Cart Project screenshot by Mostafa Raihan" title="NextJS Shop Cart Project" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading=lazy>
+<img src=img/shopnextjs.webp alt="Next.js Shop Cart - High-performance e-commerce with MongoDB" title="Next.js Shop Cart Project" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading=lazy>
 <div class="overlay-gradient absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
 </div>
 <div class="p-6 sm:p-8 flex flex-col flex-grow">
-<h3 class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors">Next.js Shop Cart</h3>
+<h3 id="project-nextshop-title" class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors">Next.js Shop Cart</h3>
 <p class="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
-Featuring MongoDB integration and smooth cart state management.
+High-concurrency cart system with **MongoDB aggregation** and serverless function handlers.
 </p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] font-bold px-2 py-1 rounded bg-orange-500/10 text-orange-400 border border-orange-500/20 uppercase tracking-tighter"><i class="fa-solid fa-bolt mr-1"></i> High Performance</span>
+<span class="text-[10px] font-bold px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-tighter"><i class="fa-solid fa-server mr-1"></i> Cloud Native</span>
+</div>
 <div class="flex flex-wrap gap-2 mb-3">
 <span class="text-xs font-medium px-2 py-1 rounded-full bg-teal-500/20 text-teal-300">Next.js</span>
 <span class="text-xs font-medium px-2 py-1 rounded-full bg-purple-500/20 text-purple-300">MongoDB</span>
@@ -465,165 +482,145 @@ Featuring MongoDB integration and smooth cart state management.
 </div>
 <div class="flex flex-wrap gap-3 mt-3">
 <a href=https://shop-cart-project-icst.vercel.app target=_blank rel="noopener noreferrer" class="inline-flex items-center justify-center bg-teal-500 text-white font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:bg-teal-600 hover:shadow-lg">
-Live <i class="fa-solid fa-earth-africa ml-2"></i>
+Live <i class="fa-solid fa-earth-africa ml-2" aria-hidden="true"></i>
 </a>
-<a href=https://github.com/raihanstack/Shop-Cart-Project-Next.js-MongoDB-ICST-Project target=_blank rel="noopener noreferrer" class="inline-flex items-center justify-center bg-transparent border border-gray-500 text-gray-300 font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:border-teal-500 hover:text-teal-400 hover:shadow-md">
-Code <i class="fa-solid fa-code ml-2"></i>
+<a href=https://github.com/raihanstack/Shop-Cart-Project-Next.js-MongoDB-ICST-Project target=_blank rel="noopener noreferrer" class="inline-flex items-center justify-center bg-transparent border border-gray-500 text-gray-300 font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:border-teal-500 hover:text-teal-400 hover:shadow-md" aria-label="View Code for Next.js Shop Cart on GitHub">
+Code <i class="fa-solid fa-code ml-2" aria-hidden="true"></i>
 </a>
 </div>
 </div>
-</div>
+</article>
 </div>
 </div>
 </section>
-<section id=skills class="py-20 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="absolute top-1/4 left-0 w-96 h-96 bg-teal-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow -z-20"></div>
-<div class="absolute bottom-1/4 right-0 w-80 h-80 bg-cyan-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-delay -z-20"></div>
-<div class="text-center mb-10">
-<h3 class="text-sm font-bold tracking-[0.4em] text-teal-400 uppercase mb-4 opacity-0 animate-fadeIn">Skills</h3>
-<p class="mt-4 text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">
-Modern technologies I use to build secure, scalable, and maintainable web applications.
+<section id=skills class="py-24 lg:py-32 relative max-w-7xl mx-auto px-6 lg:px-12 border-t border-white/5">
+<div class="text-center mb-20 animate-fadeIn">
+<h2 class="text-sm font-bold tracking-[0.4em] text-cyan-400 uppercase mb-4">Technical Stack</h2>
+<h3 class="section-title text-white">Engineered for Performance</h3>
+<p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+Utilizing industry-leading technologies to build secure, maintainable, and highly efficient web systems.
 </p>
 </div>
-<div class="relative flex justify-center">
-<div class="absolute top-0 w-1 bg-white/20 h-full z-0"></div>
-<div class="flex flex-col gap-6 z-10 w-full max-w-4xl">
-<div class="relative flex justify-start w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://www.djangoproject.com/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg alt=Django class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-teal-400">Django</span>
-</a>
+<div class="space-y-16">
+<!-- Category: Backend -->
+<div class="animate-fadeIn">
+<h4 class="text-xs font-bold tracking-[0.3em] text-teal-500 uppercase mb-8 flex items-center gap-4">
+<span class="h-[1px] w-8 bg-teal-500/30"></span> Backend Systems
+</h4>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-yellow-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png alt=Python class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">Python</span>
 </div>
-<div class="absolute right-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line"></div>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-teal-500/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg alt=Django class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">Django</span>
 </div>
-<div class="relative flex justify-end w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://www.django-rest-framework.org/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://www.django-rest-framework.org/img/logo.png alt=DRF class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-teal-400">DRF</span>
-</a>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-teal-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://www.django-rest-framework.org/img/logo.png alt=DRF class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">Django DRF</span>
 </div>
-<div class="absolute left-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line right-line"></div>
 </div>
-<div class="relative flex justify-start w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://www.python.org/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png alt=Python class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-yellow-400">Python</span>
-</a>
 </div>
-<div class="absolute right-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line"></div>
+<!-- Category: Frontend -->
+<div class="animate-fadeIn" style="animation-delay: 0.1s;">
+<h4 class="text-xs font-bold tracking-[0.3em] text-cyan-500 uppercase mb-8 mt-12 flex items-center gap-4">
+<span class="h-[1px] w-8 bg-cyan-500/30"></span> Frontend Engineering
+</h4>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-yellow-300/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png alt=JavaScript class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">JavaScript</span>
 </div>
-<div class="relative flex justify-end w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png alt=JavaScript class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-yellow-300">JavaScript</span>
-</a>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-cyan-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg alt=ReactJS class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">ReactJS</span>
 </div>
-<div class="absolute left-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line right-line"></div>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-white/30 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg alt=NextJS class="w-12 h-12 object-contain invert" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">NextJS</span>
 </div>
-<div class="relative flex justify-start w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://reactjs.org/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg alt=ReactJS class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-cyan-400">ReactJS</span>
-</a>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-orange-500/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg alt=HTML5 class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">HTML5</span>
 </div>
-<div class="absolute right-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line"></div>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-blue-500/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg alt=CSS3 class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">CSS3</span>
 </div>
-<div class="relative flex justify-end w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://nextjs.org/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg alt=NextJS class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-gray-400">NextJS</span>
-</a>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-cyan-300/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg alt=TailwindCSS class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">Tailwind</span>
 </div>
-<div class="absolute left-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line right-line"></div>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-purple-500/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg alt=Bootstrap class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">Bootstrap</span>
 </div>
-<div class="relative flex justify-start w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://tailwindcss.com/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg alt=TailwindCSS class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-cyan-300">TailwindCSS</span>
-</a>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-purple-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png alt=Redux class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">Redux / Store</span>
 </div>
-<div class="absolute right-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line"></div>
 </div>
-<div class="relative flex justify-end w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://getbootstrap.com/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg alt=Bootstrap class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-purple-400">Bootstrap</span>
-</a>
 </div>
-<div class="absolute left-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line right-line"></div>
+<!-- Category: Databases -->
+<div class="animate-fadeIn" style="animation-delay: 0.2s;">
+<h4 class="text-xs font-bold tracking-[0.3em] text-blue-500 uppercase mb-8 mt-12 flex items-center gap-4">
+<span class="h-[1px] w-8 bg-blue-500/30"></span> Database Architecture
+</h4>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-blue-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg alt=PostgreSQL class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">PostgreSQL</span>
 </div>
-<div class="relative flex justify-start w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://www.mysql.com/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg alt=MySQL class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-blue-400">MySQL</span>
-</a>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-blue-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg alt=MySQL class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">MySQL</span>
 </div>
-<div class="absolute right-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line"></div>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-green-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://images.seeklogo.com/logo-png/44/1/mongodb-logo-png_seeklogo-444844.png alt=MongoDB class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">MongoDB</span>
 </div>
-<div class="relative flex justify-end w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://www.postgresql.org/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg alt=PostgreSQL class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-blue-400">PostgreSQL</span>
-</a>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-orange-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg alt=Postman class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">Postman / API</span>
 </div>
-<div class="absolute left-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line right-line"></div>
 </div>
-<div class="relative flex justify-start w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://www.mongodb.com/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://images.seeklogo.com/logo-png/44/1/mongodb-logo-png_seeklogo-444844.png alt=MongoDB class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-green-400">MongoDB</span>
-</a>
 </div>
-<div class="absolute right-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line"></div>
+<!-- Category: Tools -->
+<div class="animate-fadeIn" style="animation-delay: 0.3s;">
+<h4 class="text-xs font-bold tracking-[0.3em] text-gray-400 uppercase mb-8 mt-12 flex items-center gap-4">
+<span class="h-[1px] w-8 bg-gray-400/30"></span> DevOps & Tools
+</h4>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-orange-500/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_libgit2_logo.svg alt=Git class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">Git Control</span>
 </div>
-<div class="relative flex justify-end w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://git-scm.com/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png alt=Git class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-red-400">Git</span>
-</a>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-gray-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg alt=GitHub class="w-12 h-12 object-contain invert" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">GitHub</span>
 </div>
-<div class="absolute left-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line right-line"></div>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-white/20 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg alt=Linux class="w-12 h-12 object-contain" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">Linux (CLI)</span>
 </div>
-<div class="relative flex justify-start w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://github.com/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png alt=GitHub class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-gray-400">GitHub</span>
-</a>
+<div class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-white/40 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+<img src=https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png alt=Vercel class="w-12 h-12 object-contain invert" loading=lazy>
+<span class="text-white font-semibold text-xs tracking-wider uppercase">Vercel / Dev</span>
 </div>
-<div class="absolute right-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line"></div>
 </div>
-<div class="relative flex justify-end w-full">
-<div class="flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20 shadow-lg hover:scale-105 transition-transform duration-200 w-44 h-44 hover:shadow-xl hover:border-white/40 group">
-<a href=https://www.linux.org/ rel="noopener noreferrer" class="flex flex-col items-center">
-<img src=https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png alt=Linux class="w-16 h-16 mb-2 object-contain">
-<span class="text-white font-semibold text-sm group-hover:text-purple-400">Linux</span>
-</a>
-</div>
-<div class="absolute left-1/2 top-1/2 h-1 hidden md:block w-[calc(50%-5rem)] gradient-line right-line"></div>
 </div>
 </div>
 </div>
 </section>
-<section class="contact-section py-20 relative overflow-hidden" id=contact>
+<section class="contact-section py-24 relative overflow-hidden border-t border-white/5" id=contact>
 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--accent-teal)_0%,transparent_70%)] opacity-5 -z-10"></div>
-<div class="container max-w-6xl mx-auto px-6 relative z-10">
-<div class="text-center mb-12">
-<h3 class="text-sm font-bold tracking-[0.4em] text-teal-400 uppercase mb-3 opacity-0 animate-fadeIn">Contact</h3>
-<p class="text-gray-400 text-base max-w-xl mx-auto">
-Available for new projects and collaborations. Let's build something extraordinary together.
+<div class="container max-w-7xl mx-auto px-6 relative z-10">
+<div class="text-center mb-20">
+<h2 class="text-sm font-bold tracking-[0.4em] text-teal-400 uppercase mb-4 animate-fadeIn">Get In Touch</h2>
+<h3 class="section-title text-white">Let's Build Something Great</h3>
+<p class="text-gray-400 text-lg max-w-xl mx-auto mt-4">
+Currently available for freelance opportunities and full-time positions.
 </p>
 </div>
 <div class="liquid-glass-card p-6 md:p-10 flex flex-col lg:flex-row gap-6 items-stretch">
@@ -669,8 +666,21 @@ Available for new projects and collaborations. Let's build something extraordina
 </div>
 </section>
 </main>
-<footer class="py-8 text-center border-t border-white/5">
-<p class="text-xs tracking-widest text-gray-500 uppercase">© 2026 Mostafa Raihan.</p>
+<footer class="py-12 border-t border-white/5 bg-dark-900/50 backdrop-blur-md">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="text-left space-y-2">
+<p class="text-xs tracking-widest text-gray-500 uppercase">© 2026 Mostafa Raihan. All Rights Reserved.</p>
+<div class="flex items-center gap-4 text-[10px] font-mono text-gray-600 uppercase tracking-widest">
+<span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Systems: Operational</span>
+<span class="border-l border-white/10 pl-4">Latency: 24ms</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Architected with Python & Django</span>
+</div>
+</div>
+</div>
 </footer>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MRK9FZWL');</script>
