@@ -18,14 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
           .to(".animate-fadeIn", { opacity: 1, y: 0, stagger: 0.1 }, "-=1");
     }
 
-    // 2. Custom Cursor System with Hover States
+    // 2. Custom Cursor System (Magnetic Dot & Ring)
     const cursor = document.getElementById("custom-cursor");
-    const cursorBlur = document.getElementById("cursor-blur");
     
-    if (cursor && cursorBlur && window.innerWidth > 768) {
+    if (cursor && window.innerWidth > 768) {
         let mouseX = 0, mouseY = 0;
         let cursorX = 0, cursorY = 0;
-        let blurX = 0, blurY = 0;
 
         window.addEventListener("mousemove", (e) => {
             mouseX = e.clientX;
@@ -33,27 +31,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         const animateCursor = () => {
-            // Smooth interpolation for cursor (faster)
-            cursorX += (mouseX - cursorX) * 0.15;
-            cursorY += (mouseY - cursorY) * 0.15;
-            
-            // Lagger interpolation for blur (more fluid)
-            blurX += (mouseX - blurX) * 0.05;
-            blurY += (mouseY - blurY) * 0.05;
+            // Smooth interpolation
+            cursorX += (mouseX - cursorX) * 0.2;
+            cursorY += (mouseY - cursorY) * 0.2;
 
-            cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
-            cursorBlur.style.transform = `translate3d(${blurX}px, ${blurY}px, 0) translate(-50%, -50%)`;
+            cursor.style.left = `${cursorX}px`;
+            cursor.style.top = `${cursorY}px`;
+            cursor.style.transform = `translate(-50%, -50%)`;
 
             requestAnimationFrame(animateCursor);
         };
         requestAnimationFrame(animateCursor);
 
-        // Interaction States
-        const interactiveElements = document.querySelectorAll('a, button, .liquid-glass-card, .social-icon');
+        // Interactive States
+        const interactiveElements = document.querySelectorAll('a, button, .liquid-glass-card, .social-icon, article');
         interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('cursor-active');
+                gsap.to(cursor, { scale: 1.5, duration: 0.3 });
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('cursor-active');
+                gsap.to(cursor, { scale: 1, duration: 0.3 });
+            });
         });
+    }
+
+    // 2.1 Live System Status Simulation
+    const latencyElements = document.querySelectorAll('.latency-val, [data-latency]');
+    if (latencyElements.length > 0) {
+        setInterval(() => {
+            const randomLatency = Math.floor(Math.random() * 15) + 10;
+            latencyElements.forEach(el => {
+                el.innerText = `LATENCY: ${randomLatency}ms`;
+            });
+        }, 3000);
     }
 
     // 3. Mobile Menu Toggle Logic
