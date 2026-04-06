@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Primary SEO Meta Tags -->
-  <title>Mostafa Raihan (raihanstack) | Full Stack Developer – Django, React & Next.js</title>
+  <title>Mostafa Raihan | Professional Backend Systems Architect – Django & Python</title>
   <meta name="description"
-    content="Mostafa Raihan (raihanstack) is a professional Full Stack Developer from Bangladesh specializing in Django, REST APIs, Next.js, and React.js. Available for freelance & full-time projects.">
+    content="Mostafa Raihan is a Professional Backend Systems Architect specializing in Django, High-Concurrency APIs, and Cloud Infrastructure. Scaling digital systems with precision.">
   <meta name="keywords"
-    content="raihanstack, Mostafa Raihan, Full Stack Developer, Django Developer, REST API Specialist, React.js Developer, Next.js Developer, Python Developer, Web Engineer Bangladesh, Portfolio">
+    content="raihanstack, Mostafa Raihan, Backend Architect, System Designer, Django Expert, Python API Developer, Scalable Systems, Backend Engineer Bangladesh">
   <meta name="author" content="Mostafa Raihan">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="revisit-after" content="7 days">
   <meta http-equiv="Content-Language" content="en">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="theme-color" content="#020617">
+  <meta name="theme-color" content="#0b0e14">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="msapplication-TileColor" content="#020617">
@@ -155,7 +155,10 @@
 
   <!-- Tailwind CDN (development) -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { sans: ["Inter", "sans-serif"], mono: ["Fira Code", "monospace"] }, colors: { dark: { 950: "#02040a", 900: "#020617", 800: "#0f172a" }, teal: { 400: "#2dd4bf", 500: "#14b8a6" } } } } }</script>
+  <script>tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { sans: ["Inter", "sans-serif"], mono: ["Fira Code", "monospace"] }, colors: { dark: { 950: "#0b0e14", 900: "#151921", 800: "#1c2333" }, teal: { 400: "#00ffc3", 500: "#00e5b0" } } } } }</script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 </head>
 
 <body class="bg-dark-900 text-gray-300 antialiased">
@@ -163,14 +166,31 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRK9FZWL" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Reading Progress -->
+  <div id="reading-progress" class="fixed top-0 left-0 w-0 h-1 bg-teal-500 z-[100] transition-all duration-100"></div>
+  <div id="scroll-stats"
+    class="fixed top-4 right-6 z-[100] font-mono text-[10px] text-teal-500/50 flex items-center gap-2 pointer-events-none hidden lg:flex">
+    <span>SCROLL_POS:</span>
+    <span id="scroll-percentage">0%</span>
+  </div>
+
+  <!-- Elite System Initializer (Loader) -->
+  <div id="loader" class="fixed inset-0 z-[2000] flex flex-col items-center justify-center space-y-6" style="background:#0b0e14">
+    <div class="relative w-48 h-1 bg-white/5 border border-white/10 overflow-hidden">
+      <div id="loader-bar" class="absolute top-0 left-0 h-full bg-teal-500 w-0 transition-all duration-300"></div>
+    </div>
+    <div class="flex flex-col items-center gap-1 font-mono text-[9px] uppercase tracking-[0.3em] text-teal-500/60">
+      <span id="loader-text">INITIALIZING_ARCHITECTURAL_NODES</span>
+      <span class="opacity-30">SEC_ID: 0x44B // DEC_LEVEL: 05</span>
+    </div>
+  </div>
+
   <div id=custom-cursor></div>
   <div id=cursor-blur></div>
-  <div class=luxury-bg>
-    <div class=bg-blob></div>
-    <div class=bg-blob></div>
+  <div class="luxury-bg fixed inset-0 -z-10" aria-hidden="true">
+    <div class="bg-blob opacity-40"></div>
   </div>
-  <canvas id=starCanvas></canvas>
-  <div class="luxury-bg fixed inset-0 -z-10" aria-hidden=true></div>
   <header id="header" class="relative">
     <nav id=navbar class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 transition-all duration-500">
       <div
@@ -281,7 +301,7 @@
               <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
             </span>
             <span
-              class="text-[10px] sm:text-xs font-bold tracking-widest text-teal-400 uppercase">~/root/raihanstack/active_instance</span>
+              class="text-[10px] sm:text-xs font-bold tracking-widest text-teal-400 uppercase">root@raihanstack:~$ whoami</span>
           </div>
           <h1
             class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight animate-slide-up-initial">
@@ -292,101 +312,217 @@
             architectures, and build robust infrastructures designed for scale.
           </p>
           <div class="flex flex-wrap gap-4 justify-center lg:justify-start animate-fadeIn">
-            <div
-              class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-3 hover:border-teal-500/50 transition-colors">
-              <i class="fa-brands fa-python text-teal-400 text-lg"></i> Python Engineering
-            </div>
-            <div
-              class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-3 hover:border-teal-500/50 transition-colors">
-              <i class="fa-solid fa-gears text-teal-400 text-lg"></i> Django & DRF
-            </div>
-            <div
-              class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-3 hover:border-teal-500/50 transition-colors">
-              <i class="fa-solid fa-server text-teal-400 text-lg"></i> Cloud Infrastructure
-            </div>
+            <a href="https://github.com/raihanstack" target="_blank"
+              class="px-5 py-3 bg-teal-500 text-white rounded-xl text-sm font-bold shadow-[0_0_20px_rgba(20,184,166,0.2)] flex items-center gap-3 hover:scale-105 transition-all">
+              <i class="fa-solid fa-download text-lg"></i> GET_SDK (Resume)
+            </a>
+            <a href="#contact"
+              class="px-5 py-3 bg-white/5 border border-white/10 rounded-xl text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-3 hover:border-teal-500/50 transition-colors">
+              <i class="fa-solid fa-plug text-teal-400 text-lg"></i> System_Integration
+            </a>
           </div>
         </div>
         <div
           class="w-full lg:w-1/2 flex justify-center lg:justify-end order-1 lg:order-2 animate-fadeIn transition-all duration-700">
           <div class="relative w-full max-w-[550px]">
-            <div
-              class="absolute -inset-4 bg-gradient-to-r from-teal-500/10 to-blue-500/10 rounded-3xl blur-2xl opacity-40 animate-pulse">
-            </div>
-            <div
-              class="relative liquid-glass-card flex flex-col p-0 rounded-2xl sm:rounded-3xl border border-white/10 bg-[#02040a]/90 backdrop-blur-2xl shadow-2xl overflow-hidden hover:border-teal-500/30 transition-all duration-500">
-              <div
-                class="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 border-b border-white/10 bg-white/5">
-                <div class="flex gap-2">
-                  <div class="w-3 h-3 rounded-full bg-[#ff5f56]/70 shadow-lg"></div>
-                  <div class="w-3 h-3 rounded-full bg-[#ffbd2e]/70 shadow-lg"></div>
-                  <div class="w-3 h-3 rounded-full bg-[#27c93f]/70 shadow-lg"></div>
-                </div>
-                <div
-                  class="text-[9px] sm:text-[10px] font-mono text-gray-500 tracking-[0.2em] uppercase flex items-center gap-2">
-                  <i class="fa-solid fa-terminal text-teal-400/70"></i>
-                  raihanstack_architect — console
-                </div>
-                <div class="w-12"></div>
+            <div class="absolute -inset-4 bg-gradient-to-r from-teal-500/10 to-blue-500/10 rounded-3xl blur-2xl opacity-40 animate-pulse"></div>
+
+            <!-- ✦ Live Code Terminal — Hero Right Side ✦ -->
+            <div class="relative flex flex-col gap-4 w-full">
+
+              <!-- Code Editor Window -->
+              <div class="blueprint liquid-glass-card overflow-hidden rounded-xl border border-white/8" style="background:#0d1117">
+                <span>
+                  <!-- Editor titlebar -->
+                  <div class="flex items-center justify-between px-4 py-2.5 border-b border-white/5" style="background:#161b22">
+                    <div class="flex gap-1.5">
+                      <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                      <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                      <div class="w-3 h-3 rounded-full" style="background:rgba(0,255,195,0.4)"></div>
+                    </div>
+                    <span class="text-[9px] font-mono tracking-widest" style="color:#484f57">views.py — raihanstack/api</span>
+                    <div class="flex items-center gap-1.5">
+                      <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#00ffc3"></span>
+                      <span class="text-[8px] font-mono" style="color:rgba(0,255,195,0.5)">LIVE</span>
+                    </div>
+                  </div>
+
+                  <!-- Code block -->
+                  <div class="p-4 font-mono text-[11px] leading-relaxed overflow-hidden" style="min-height:210px">
+                    <div class="flex gap-3">
+                      <!-- Line numbers -->
+                      <div class="flex flex-col gap-[2px] text-right select-none shrink-0" style="color:#30363d;min-width:18px">
+                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                        <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                        <span>11</span><span>12</span>
+                      </div>
+                      <!-- Syntax-highlighted code -->
+                      <div class="flex flex-col gap-[2px]" id="hero-code-block">
+                        <div><span style="color:#ff7b72">from</span> <span style="color:#e6edf3">rest_framework</span> <span style="color:#ff7b72">import</span> <span style="color:#e6edf3">viewsets, permissions</span></div>
+                        <div><span style="color:#ff7b72">from</span> <span style="color:#e6edf3">.models</span> <span style="color:#ff7b72">import</span> <span style="color:#e6edf3">Transaction</span></div>
+                        <div>&nbsp;</div>
+                        <div><span style="color:#d2a8ff">class</span> <span style="color:#79c0ff">TransactionViewSet</span><span style="color:#e6edf3">(viewsets.ModelViewSet):</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e6edf3">queryset</span> <span style="color:#ff7b72">=</span> <span style="color:#e6edf3">Transaction.objects.</span><span style="color:#79c0ff">select_related</span><span style="color:#e6edf3">(</span><span style="color:#a5d6ff">'user'</span><span style="color:#e6edf3">)</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e6edf3">permission_classes</span> <span style="color:#ff7b72">=</span> <span style="color:#e6edf3">[permissions.</span><span style="color:#79c0ff">IsAuthenticated</span><span style="color:#e6edf3">]</span></div>
+                        <div>&nbsp;</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d2a8ff">def</span> <span style="color:#79c0ff">get_queryset</span><span style="color:#e6edf3">(</span><span style="color:#ffa657">self</span><span style="color:#e6edf3">):</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#8b949e"># Filter by authenticated user only</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff7b72">return</span> <span style="color:#ffa657">super</span><span style="color:#e6edf3">().</span><span style="color:#79c0ff">get_queryset</span><span style="color:#e6edf3">()</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e6edf3">.</span><span style="color:#79c0ff">filter</span><span style="color:#e6edf3">(user</span><span style="color:#ff7b72">=</span><span style="color:#ffa657">self</span><span style="color:#e6edf3">.request.user)</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e6edf3">.</span><span style="color:#79c0ff">order_by</span><span style="color:#e6edf3">(</span><span style="color:#a5d6ff">'-created_at'</span><span style="color:#e6edf3">)</span><span id="hero-cursor" class="inline-block w-[2px] h-[13px] ml-0.5 align-middle animate-pulse" style="background:#00ffc3"></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </span>
               </div>
-              <div class="p-6 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto min-h-[300px]">
-                <div id="terminal-content" class="space-y-1.5">
-                  <!-- Terminal lines populated by script.js -->
-                  <div class="text-gray-500 italic">Initializing raihan_stack environment...</div>
+
+              <!-- Git Commit Log + Stats Row -->
+              <div class="grid grid-cols-2 gap-3">
+
+                <!-- Live Git Log -->
+                <div class="blueprint rounded-xl p-3 flex flex-col gap-2 overflow-hidden" style="background:#0d1117;border-color:rgba(255,255,255,0.05)">
+                  <span>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-[8px] font-mono tracking-widest uppercase" style="color:#484f57">git log --oneline</span>
+                      <span class="w-1.5 h-1.5 rounded-full animate-ping" style="background:#00ffc3;opacity:.6"></span>
+                    </div>
+                    <div class="flex flex-col gap-1.5 font-mono text-[9px]">
+                      <div class="flex gap-2">
+                        <span style="color:#00ffc3">a3f9c1</span>
+                        <span style="color:#8b949e;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">feat: JWT refresh token rotation</span>
+                      </div>
+                      <div class="flex gap-2">
+                        <span style="color:#79c0ff">b21d8e</span>
+                        <span style="color:#8b949e;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">fix: query N+1 on user endpoint</span>
+                      </div>
+                      <div class="flex gap-2">
+                        <span style="color:#d2a8ff">c99fa2</span>
+                        <span style="color:#8b949e;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">perf: add pg index on created_at</span>
+                      </div>
+                      <div class="flex gap-2">
+                        <span style="color:#ffa657">d01ee3</span>
+                        <span style="color:#8b949e;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">refactor: DRF serializer cleanup</span>
+                      </div>
+                    </div>
+                  </span>
                 </div>
-              </div>
-            </div>
+
+                <!-- Live Stats -->
+                <div class="flex flex-col gap-3">
+                  <div class="blueprint rounded-xl p-3" style="background:#0d1117;border-color:rgba(255,255,255,0.05)">
+                    <span>
+                      <div class="text-[8px] font-mono mb-1.5 uppercase tracking-widest" style="color:#484f57">API_RESP_TIME</div>
+                      <div class="text-xl font-bold tracking-tighter" style="color:#e6edf3">4.2<span class="text-xs ml-1" style="color:#484f57">ms</span></div>
+                      <div class="mt-2 h-1 w-full rounded-full overflow-hidden" style="background:rgba(255,255,255,0.06)">
+                        <div class="h-full rounded-full" style="width:18%;background:#00ffc3"></div>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="blueprint rounded-xl p-3" style="background:#0d1117;border-color:rgba(255,255,255,0.05)">
+                    <span>
+                      <div class="text-[8px] font-mono mb-1.5 uppercase tracking-widest" style="color:#484f57">UPTIME</div>
+                      <div class="text-xl font-bold tracking-tighter" style="color:#e6edf3">99.9<span class="text-xs ml-1" style="color:#484f57">%</span></div>
+                      <div class="flex gap-1 mt-2">
+                        <div class="h-1 flex-1 rounded-full" style="background:#00ffc3;opacity:.9"></div>
+                        <div class="h-1 flex-1 rounded-full" style="background:#00ffc3;opacity:.8"></div>
+                        <div class="h-1 flex-1 rounded-full" style="background:#00ffc3;opacity:.9"></div>
+                        <div class="h-1 flex-1 rounded-full" style="background:#00ffc3;opacity:.6"></div>
+                        <div class="h-1 flex-1 rounded-full" style="background:rgba(255,255,255,0.1)"></div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+
+              </div><!-- /grid -->
+
+            </div><!-- /hero right -->
           </div>
         </div>
       </div>
     </section>
-    <section id=services class="py-24 px-6 md:px-12 bg-dark-900/40 relative">
+    <section id=services class="py-24 px-6 md:px-12 bg-dark-900/40 relative technical-grid-bg">
+      <div class="grid-coord br">[SEC_ID: 0x441]</div>
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-20 animate-fadeIn">
-          <span class="section-label">~/root/raihanstack/services.sh</span>
-          <h2 class="text-sm font-bold tracking-[0.4em] text-teal-400 uppercase mb-4">Core Services</h2>
-          <h3 class="section-title text-white">Full-Stack Expertise</h3>
-          <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Providing end-to-end digital solutions with a focus on
-            performance, scalability, and security.</p>
+          <span class="section-label">> GET /api/v1/capabilities</span>
+          <h2 class="section-title text-white">Full-Stack Solutions</h2>
+          <p class="scannable-text text-gray-400 mt-4 text-center">
+            Deploying high-performance digital systems focused on **low-latency**, **multi-tenant security**, and
+            **architectural scalability**.
+          </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
-          <article class="liquid-glass-card group p-8 hover:bg-white/5 transition-all">
-            <div
-              class="w-14 h-14 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-code text-2xl text-teal-400"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-3">REST API Design</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">Architecting high-performance RESTful APIs using Django
-              REST Framework with a focus on security, documentation, and scalability.</p>
+          <article class="blueprint liquid-glass-card group p-8 hover:bg-white/5 transition-all">
+            <span>
+              <div
+                class="w-14 h-14 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-code text-2xl text-teal-400"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-3 tracking-tight">REST API Orchestration</h3>
+              <p class="text-gray-400 text-sm leading-relaxed mb-4">Architecting high-performance RESTful APIs using
+                **Django REST Framework** with a focus on strict documentation, tiered authentication, and
+                high-throughput scalability.</p>
+              <ul class="space-y-2 text-[10px] sm:text-xs font-mono text-gray-500">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> JWT & OAuth2
+                  Security</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Auto-generated
+                  Swagger Docs</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Rate Limiting
+                  & Throttling</li>
+              </ul>
+            </span>
           </article>
           <article
-            class="liquid-glass-card group p-8 bg-teal-500/5 border-teal-500/30 shadow-[0_0_30px_rgba(45,212,191,0.1)] hover:bg-teal-500/10 transition-all">
-            <div class="w-14 h-14 bg-teal-500/20 rounded-2xl flex items-center justify-center mb-6">
-              <i class="fa-solid fa-database text-2xl text-teal-400 animate-pulse"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-3">Database Architecture</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">Designing complex **MySQL** and MongoDB schemas. Optimizing
-              queries and ensuring data integrity through advanced ORM techniques.</p>
+            class="blueprint liquid-glass-card group p-8 bg-teal-500/5 border-teal-500/30 shadow-[0_0_30px_rgba(45,212,191,0.1)] hover:bg-teal-500/10 transition-all">
+            <span>
+              <div class="w-14 h-14 bg-teal-500/20 rounded-2xl flex items-center justify-center mb-6">
+                <i class="fa-solid fa-database text-2xl text-teal-400 animate-pulse"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-3 tracking-tight">Database Engineering</h3>
+              <p class="text-gray-400 text-sm leading-relaxed mb-4">Designing highly-normalized schemas for
+                **PostgreSQL** and MySQL. Specializing in query optimization, indexing strategies, and data integrity at
+                scale.</p>
+              <ul class="space-y-2 text-[10px] sm:text-xs font-mono text-gray-500">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Complex SQL
+                  Normalization</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Index & Query
+                  Profiling</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> NoSQL Data
+                  Structuring</li>
+              </ul>
+            </span>
           </article>
-          <article class="liquid-glass-card group p-8 hover:bg-white/5 transition-all">
-            <div
-              class="w-14 h-14 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-shield-halved text-2xl text-teal-400"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-3">Cloud Engineering</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">Hardening backend systems, implementing JWT/OAuth2
-              security, and deploying scalable services using **MongoDB Atlas** and Cloud CI/CD.</p>
+          <article class="blueprint liquid-glass-card group p-8 hover:bg-white/5 transition-all">
+            <span>
+              <div
+                class="w-14 h-14 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-shield-halved text-2xl text-teal-400"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-3 tracking-tight">Cloud Infrastructure</h3>
+              <p class="text-gray-400 text-sm leading-relaxed mb-4">Hardening backend systems with advanced encryption,
+                implementing modern CI/CD pipelines, and deploying robust serverless compute nodes.</p>
+              <ul class="space-y-2 text-[10px] sm:text-xs font-mono text-gray-500">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> AWS & Vercel
+                  Deployment</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> SSL/TLS
+                  Hardening</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Environment
+                  Containerization</li>
+              </ul>
+            </span>
           </article>
         </div>
       </div>
     </section>
     <section id=about class="relative py-24 lg:py-32 overflow-hidden border-t border-white/5">
       <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <header class="text-center mb-20 animate-fadeIn">
-          <span class="section-label">~/root/raihanstack/developer_profile.md</span>
+        <header class="text-center mb-20 animate-fadeIn relative">
+          <div class="grid-coord tl">[COORD_X:02 // Y:01]</div>
+          <span class="section-label">> IDENTIFY --target=raihanstack</span>
           <h2 class="section-title text-white">The Engineering Mindset</h2>
-          <p class="mt-6 text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            I architect modern web applications that prioritize performance and user experience. My philosophy is rooted
-            in simplicity, efficiency, and robust engineering.
+          <p class="scannable-text mt-6 text-gray-400">
+            I engineer modern systems that prioritize absolute performance. My methodology is defined by **mathematical
+            precision**, **structural efficiency**, and **high-concurrency logic**.
           </p>
         </header>
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -439,21 +575,38 @@
               <span
                 class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-gray-600/20 text-gray-400">GitHub</span>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-              <div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-500/30 transition-colors">
-                <h4 class="text-sm font-bold text-teal-400 uppercase tracking-widest mb-3">Core Expertise</h4>
-                <ul class="space-y-2 text-sm text-gray-400">
-                  <li><i class="fa-solid fa-check text-teal-500 mr-2"></i> REST API Engineering</li>
-                  <li><i class="fa-solid fa-check text-teal-500 mr-2"></i> Database Architecture</li>
-                  <li><i class="fa-solid fa-check text-teal-500 mr-2"></i> System Security & Auth</li>
-                </ul>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
+              <div
+                class="blueprint p-6 rounded-xl bg-white/5 border border-white/10 hover:border-teal-500/30 transition-all group/node">
+                <span>
+                  <h4 class="text-xs font-bold text-teal-400 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-teal-500 rounded-full animate-pulse"></span> Architectural Values
+                  </h4>
+                  <ul class="space-y-3 text-sm text-gray-400">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-microchip mt-1 text-teal-500/50"></i>
+                      <span>Scalable Cluster Design</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-lock mt-1 text-teal-500/50"></i>
+                      <span>Multi-Layered Security</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-gauge mt-1 text-teal-500/50"></i>
+                      <span>Sub-Millisecond Latency</span></li>
+                  </ul>
+                </span>
               </div>
-              <div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition-colors">
-                <h4 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-3">Education</h4>
-                <div class="space-y-1">
-                  <p class="text-white font-bold text-sm">Diploma in Computer Science</p>
-                  <p class="text-gray-400 text-xs">ICST (2023–2026)</p>
-                </div>
+              <div
+                class="blueprint p-6 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all group/node">
+                <span>
+                  <h4 class="text-xs font-bold text-blue-400 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span> Technical Foundation
+                  </h4>
+                  <div class="space-y-4">
+                    <div>
+                      <p class="text-white font-bold text-sm tracking-tight">Diploma in Computer Science</p>
+                      <p class="text-teal-500/70 text-[10px] font-mono mt-1">ICST BD // 2023–2026</p>
+                    </div>
+                    <p class="text-xs text-gray-500 leading-relaxed">Focused on Advanced Data Structures, Backend
+                      Systems, and Scalable Database Management.</p>
+                  </div>
+                </span>
               </div>
             </div>
           </div>
@@ -462,151 +615,154 @@
     </section>
     <section id=projects class="py-24 lg:py-32 relative overflow-hidden border-t border-white/5">
       <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <div class="text-center mb-20 animate-fadeIn">
-          <span class="section-label">~/root/raihanstack/architectural_cases.log</span>
-          <h2 class="section-title text-white">Featured Digital Products</h2>
+        <div class="text-center mb-20 animate-fadeIn relative">
+          <div class="grid-coord tl">[COORD_X:03 // Y:01]</div>
+          <span class="section-label">> CAT /var/log/architectural_cases.log</span>
+          <h2 class="section-title text-white">Architectural Deployments</h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <article class="liquid-glass-card group opacity-0 animate-fadeIn"
+          <article class="blueprint liquid-glass-card group opacity-0 animate-fadeIn"
             aria-labelledby="project-expensetracker-title">
-            <div class="relative aspect-video overflow-hidden rounded-2xl">
-              <img src=img/amertakaproject.webp alt="Expense Tracker - Real-time expense analytics dashboard"
-                title="Expense Tracker Project"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading=lazy>
-              <div class="overlay-gradient absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div class="px-4 py-2 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
+               <span class="text-[8px] font-mono text-gray-500 uppercase">NODE_ID: EXP-ANALYTICS-01</span>
+               <span data-uptime class="text-[8px] font-mono text-teal-500/50">UPTIME: 99.98%</span>
             </div>
-            <div class="p-6 sm:p-8 flex flex-col flex-grow">
-              <h3 id="project-expensetracker-title"
-                class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors">
-                Expense Tracker</h3>
-              <p class="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
-                Real-time analytics engine with **Django Signals** and PostgreSQL indexing for high-speed tracking.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="text-[10px] font-bold px-2 py-1 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20 uppercase tracking-tighter"><i
-                    class="fa-solid fa-microchip mr-1"></i> Scalability Optimized</span>
-                <span
-                  class="text-[10px] font-bold px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-tighter"><i
-                    class="fa-solid fa-code-fork mr-1"></i> API First</span>
+            <span>
+              <div class="relative aspect-video overflow-hidden rounded-xl m-1">
+                <img src=img/amertakaproject.webp alt="Expense Tracker - Real-time expense analytics dashboard"
+                  title="Expense Tracker Project"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading=lazy>
+                <div class="overlay-gradient absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
-              <div class="flex flex-wrap gap-2 mb-3">
-                <span class="text-xs font-medium px-2 py-1 rounded-full bg-teal-500/20 text-teal-300">Django</span>
-                <span
-                  class="text-xs font-medium px-2 py-1 rounded-full bg-purple-500/20 text-purple-300">PostgreSQL</span>
-                <span class="text-xs font-medium px-2 py-1 rounded-full bg-blue-500/20 text-blue-300">Python</span>
+              <div class="p-6 sm:p-8 flex flex-col flex-grow">
+                <h3 id="project-expensetracker-title"
+                  class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors tracking-tight">
+                  Expense Analytics Engine</h3>
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
+                  Engineered a real-time tracking system utilizing **Django Signals** for asynchronous metric updates
+                  and optimized **PostgreSQL indexing** to handle high-velocity transaction data.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div class="flex flex-col gap-1">
+                    <span class="text-[9px] font-mono text-teal-500 uppercase tracking-widest">Logic_Layer</span>
+                    <span class="text-xs text-gray-300">Asynchronous Signals</span>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="text-[9px] font-mono text-teal-500 uppercase tracking-widest">Data_Store</span>
+                    <span class="text-xs text-gray-300">Indexed Postgres</span>
+                  </div>
+                </div>
+                <div class="flex gap-3 mt-auto">
+                  <a href=https://amertaka.vercel.app target=_blank rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center bg-teal-500 text-white font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:bg-teal-600 hover:shadow-lg">
+                    System Deploy <i class="fa-solid fa-cloud ml-2" aria-hidden="true"></i>
+                  </a>
+                </div>
               </div>
-              <div class="flex flex-wrap gap-3 mt-3">
-                <a href=https://amertaka.vercel.app target=_blank rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center bg-teal-500 text-white font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:bg-teal-600 hover:shadow-lg">
-                  Live <i class="fa-solid fa-earth-africa ml-2" aria-hidden="true"></i>
-                </a>
-                <a href=https://github.com/raihanstack/Django_Expense_Manage target=_blank rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center bg-transparent border border-gray-500 text-gray-300 font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:border-teal-500 hover:text-teal-400 hover:shadow-md"
-                  aria-label="View Code for Expense Tracker on GitHub">
-                  Code <i class="fa-solid fa-code ml-2" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
+            </span>
           </article>
-          <article class="liquid-glass-card group opacity-0 animate-fadeIn" aria-labelledby="project-ecommerce-title">
-            <div class="relative aspect-video overflow-hidden rounded-2xl">
-              <img src=img/django-ecommerce.webp alt="Django E-commerce - Modern online store with admin dashboard"
-                title="Django E-commerce Project"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading=lazy>
-              <div class="overlay-gradient absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          <article class="blueprint liquid-glass-card group opacity-0 animate-fadeIn"
+            aria-labelledby="project-ecommerce-title">
+            <div class="px-4 py-2 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
+               <span class="text-[8px] font-mono text-gray-500 uppercase">NODE_ID: ECOM-SCALER-04</span>
+               <span data-load class="text-[8px] font-mono text-teal-500/50">LOAD: 0.14ms</span>
             </div>
-            <div class="p-6 sm:p-8 flex flex-col flex-grow">
-              <h3 id="project-ecommerce-title"
-                class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors">
-                Django E-commerce</h3>
-              <p class="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
-                Robust e-commerce backend with **custom ORM filtering** and secure Stripe payment integration.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="text-[10px] font-bold px-2 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 uppercase tracking-tighter"><i
-                    class="fa-solid fa-shield-halved mr-1"></i> Secure Architecture</span>
-                <span
-                  class="text-[10px] font-bold px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20 uppercase tracking-tighter"><i
-                    class="fa-solid fa-database mr-1"></i> Query Optimized</span>
+            <span>
+              <div class="relative aspect-video overflow-hidden rounded-xl m-1">
+                <img src=img/django-ecommerce.webp alt="Django E-commerce - Modern online store with admin dashboard"
+                  title="Django E-commerce Project"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading=lazy>
+                <div class="overlay-gradient absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
-              <div class="flex flex-wrap gap-2 mb-3">
-                <span class="text-xs font-medium px-2 py-1 rounded-full bg-teal-500/20 text-teal-300">Django</span>
-                <span
-                  class="text-xs font-medium px-2 py-1 rounded-full bg-purple-500/20 text-purple-300">PostgreSQL</span>
-                <span class="text-xs font-medium px-2 py-1 rounded-full bg-blue-500/20 text-blue-300">Javascript</span>
+              <div class="p-6 sm:p-8 flex flex-col flex-grow">
+                <h3 id="project-ecommerce-title"
+                  class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors tracking-tight">
+                  Scalable E-Commerce Node</h3>
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
+                  Developed a robust commercial backend featuring **complex ORM query filtering**, secure multi-step
+                  **checkout pipelines**, and hardened Stripe API integration.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div class="flex flex-col gap-1">
+                    <span class="text-[9px] font-mono text-cyan-500 uppercase tracking-widest">Auth_Layer</span>
+                    <span class="text-xs text-gray-300">Hardened Middleware</span>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="text-[9px] font-mono text-cyan-500 uppercase tracking-widest">Query_Opt</span>
+                    <span class="text-xs text-gray-300">Select_Related Only</span>
+                  </div>
+                </div>
+                <div class="flex gap-3 mt-auto">
+                  <a href=https://babyandfashion.vercel.app target=_blank rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center bg-teal-500 text-white font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:bg-teal-600 hover:shadow-lg">
+                    Node Deploy <i class="fa-solid fa-server ml-2" aria-hidden="true"></i>
+                  </a>
+                </div>
               </div>
-              <div class="flex flex-wrap gap-3 mt-3">
-                <a href=https://babyandfashion.vercel.app target=_blank rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center bg-teal-500 text-white font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:bg-teal-600 hover:shadow-lg">
-                  Live <i class="fa-solid fa-earth-africa ml-2" aria-hidden="true"></i>
-                </a>
-                <a href=https://github.com/raihanstack/Django_Shop_783827 target=_blank rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center bg-transparent border border-gray-500 text-gray-300 font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:border-teal-500 hover:text-teal-400 hover:shadow-md"
-                  aria-label="View Code for Django E-commerce on GitHub">
-                  Code <i class="fa-solid fa-code ml-2" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
+            </span>
           </article>
-          <article class="liquid-glass-card group opacity-0 animate-fadeIn" aria-labelledby="project-nextshop-title">
-            <div class="relative aspect-video overflow-hidden rounded-2xl">
-              <img src=img/shopnextjs.webp alt="Next.js Shop Cart - High-performance e-commerce with MongoDB"
-                title="Next.js Shop Cart Project"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading=lazy>
-              <div class="overlay-gradient absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            </div>
-            <div class="p-6 sm:p-8 flex flex-col flex-grow">
-              <h3 id="project-nextshop-title"
-                class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors">
-                Next.js Shop Cart</h3>
-              <p class="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
-                High-concurrency cart system with **MongoDB aggregation** and serverless function handlers.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="text-[10px] font-bold px-2 py-1 rounded bg-orange-500/10 text-orange-400 border border-orange-500/20 uppercase tracking-tighter"><i
-                    class="fa-solid fa-bolt mr-1"></i> High Performance</span>
-                <span
-                  class="text-[10px] font-bold px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-tighter"><i
-                    class="fa-solid fa-server mr-1"></i> Cloud Native</span>
+          <article class="blueprint liquid-glass-card group opacity-0 animate-fadeIn"
+            aria-labelledby="project-nextshop-title">
+            <span>
+              <div class="relative aspect-video overflow-hidden rounded-xl m-1">
+                <img src=img/shopnextjs.webp alt="Next.js Shop Cart - High-performance e-commerce with MongoDB"
+                  title="Next.js Shop Cart Project"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading=lazy>
+                <div class="overlay-gradient absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
-              <div class="flex flex-wrap gap-2 mb-3">
-                <span class="text-xs font-medium px-2 py-1 rounded-full bg-teal-500/20 text-teal-300">Next.js</span>
-                <span class="text-xs font-medium px-2 py-1 rounded-full bg-purple-500/20 text-purple-300">MongoDB</span>
-                <span class="text-xs font-medium px-2 py-1 rounded-full bg-blue-500/20 text-blue-300">Stripe</span>
+              <div class="p-6 sm:p-8 flex flex-col flex-grow">
+                <h3 id="project-nextshop-title"
+                  class="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors tracking-tight">
+                  High-Concurrency Cart</h3>
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
+                  Built a high-performance shopping cart utilizing **MongoDB Aggregation Pipelines** for real-time
+                  inventory syncing and **serverless Node.js handlers** for atomic updates.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div class="flex flex-col gap-1">
+                    <span class="text-[9px] font-mono text-orange-500 uppercase tracking-widest">Compute_Model</span>
+                    <span class="text-xs text-gray-300">Serverless Lambda</span>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="text-[9px] font-mono text-orange-500 uppercase tracking-widest">Persistence</span>
+                    <span class="text-xs text-gray-300">NoSQL Document</span>
+                  </div>
+                </div>
+                <div class="flex gap-3 mt-auto">
+                  <a href=https://shop-cart-project-icst.vercel.app target=_blank rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center bg-teal-500 text-white font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:bg-teal-600 hover:shadow-lg">
+                    Edge Deploy <i class="fa-solid fa-bolt ml-2" aria-hidden="true"></i>
+                  </a>
+                </div>
               </div>
-              <div class="flex flex-wrap gap-3 mt-3">
-                <a href=https://shop-cart-project-icst.vercel.app target=_blank rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center bg-teal-500 text-white font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:bg-teal-600 hover:shadow-lg">
-                  Live <i class="fa-solid fa-earth-africa ml-2" aria-hidden="true"></i>
-                </a>
-                <a href=https://github.com/raihanstack/Shop-Cart-Project-Next.js-MongoDB-ICST-Project target=_blank
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center bg-transparent border border-gray-500 text-gray-300 font-semibold text-sm sm:text-base px-4 py-2 rounded-lg transition transform hover:scale-105 hover:border-teal-500 hover:text-teal-400 hover:shadow-md"
-                  aria-label="View Code for Next.js Shop Cart on GitHub">
-                  Code <i class="fa-solid fa-code ml-2" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
+            </span>
           </article>
         </div>
       </div>
     </section>
-    <section id=skills class="py-24 lg:py-32 relative max-w-7xl mx-auto px-6 lg:px-12 border-t border-white/5">
-      <div class="text-center mb-20 animate-fadeIn">
-        <span class="section-label">~/root/raihanstack/stack.json</span>
-        <h2 class="section-title text-white">Advanced Technical Stack</h2>
-        <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
-          Utilizing industry-leading technologies to build secure, maintainable, and highly efficient web systems.
+    <section id=skills
+      class="py-24 lg:py-32 relative max-w-7xl mx-auto px-6 lg:px-12 border-t border-white/5 technical-grid-bg">
+      <div class="grid-coord tl">[COORD_X:04 // Y:01]</div>
+      <div class="text-center mb-20 animate-fadeIn relative">
+        <span class="section-label">> FETCH /usr/bin/tech_stack</span>
+        <h2 class="section-title text-white">Advanced Technology Cluster</h2>
+        <p class="scannable-text mt-6 text-gray-400">
+          Utilizing industry-leading technologies to build secure, maintainable, and highly efficient distributed
+          systems.
         </p>
       </div>
       <div class="space-y-16">
         <!-- Category: Backend -->
         <div class="animate-fadeIn">
-          <h4 class="text-xs font-bold tracking-[0.3em] text-teal-500 uppercase mb-8 flex items-center gap-4">
-            <span class="h-[1px] w-8 bg-teal-500/30"></span> Backend Systems
+          <h4 class="text-xs font-bold tracking-[0.3em] text-teal-500 uppercase mb-8 flex items-center justify-between">
+            <span class="flex items-center gap-4"><span class="h-[1px] w-8 bg-teal-500/30"></span> Backend
+              Systems</span>
+            <span
+              class="text-[9px] font-mono opacity-50 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20">STATUS:
+              NOMINAL</span>
           </h4>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
             <div
@@ -632,8 +788,13 @@
         </div>
         <!-- Category: Frontend -->
         <div class="animate-fadeIn" style="animation-delay: 0.1s;">
-          <h4 class="text-xs font-bold tracking-[0.3em] text-cyan-500 uppercase mb-8 mt-12 flex items-center gap-4">
-            <span class="h-[1px] w-8 bg-cyan-500/30"></span> Frontend Engineering
+          <h4
+            class="text-xs font-bold tracking-[0.3em] text-cyan-500 uppercase mb-8 mt-12 flex items-center justify-between">
+            <span class="flex items-center gap-4"><span class="h-[1px] w-8 bg-cyan-500/30"></span> Frontend
+              Engineering</span>
+            <span
+              class="text-[9px] font-mono opacity-50 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">STATUS:
+              OPTIMIZED</span>
           </h4>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
             <div
@@ -688,8 +849,13 @@
         </div>
         <!-- Category: Databases -->
         <div class="animate-fadeIn" style="animation-delay: 0.2s;">
-          <h4 class="text-xs font-bold tracking-[0.3em] text-blue-500 uppercase mb-8 mt-12 flex items-center gap-4">
-            <span class="h-[1px] w-8 bg-blue-500/30"></span> Database Architecture
+          <h4
+            class="text-xs font-bold tracking-[0.3em] text-blue-500 uppercase mb-8 mt-12 flex items-center justify-between">
+            <span class="flex items-center gap-4"><span class="h-[1px] w-8 bg-blue-500/30"></span> Database
+              Architecture</span>
+            <span
+              class="text-[9px] font-mono opacity-50 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">STATUS:
+              SECURE</span>
           </h4>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
             <div
@@ -821,20 +987,24 @@
       </div>
     </section>
   </main>
-  <footer class="py-12 border-t border-white/5 bg-dark-900/50 backdrop-blur-md">
+  <footer class="py-12 border-t border-white/5 bg-dark-900/50 backdrop-blur-md relative overflow-hidden">
+    <div class="grid-coord br">[SEC_ID: 0x999]</div>
     <div class="container mx-auto px-6">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="text-left space-y-2">
-          <p class="text-xs tracking-widest text-gray-500 uppercase">© 2026 Mostafa Raihan. All Rights Reserved.</p>
-          <div class="flex items-center gap-4 text-[10px] font-mono text-gray-600 uppercase tracking-widest">
-            <span class="flex items-center gap-1.5"><span
-                class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Systems: Operational</span>
-            <span class="border-l border-white/10 pl-4">Latency: 24ms</span>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="text-center md:text-left space-y-3">
+          <p class="text-[10px] font-mono tracking-[0.2em] text-gray-500 uppercase">© 2026 ARCHITECTURAL_INSTANCE //
+            RAIHANSTACK</p>
+          <div
+            class="flex items-center justify-center md:justify-start gap-4 text-[9px] font-mono text-teal-500/40 uppercase tracking-widest">
+            <span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-teal-500 animate-pulse"></span>
+              STATUS: OPERATIONAL</span>
+            <span class="border-l border-white/10 pl-4">LATENCY: 12MS</span>
+            <span class="border-l border-white/10 pl-4 text-gray-600">BUILD: v4.2.0</span>
           </div>
         </div>
-        <div class="flex items-center gap-4">
-          <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Architected with Python &
-            Django</span>
+        <div class="flex flex-col items-center md:items-end gap-1">
+          <span class="text-[9px] font-mono text-gray-500 uppercase tracking-widest">Auth_Stack</span>
+          <p class="text-xs font-bold text-white tracking-tighter">PYTHON // DJANGO // DRF</p>
         </div>
       </div>
     </div>

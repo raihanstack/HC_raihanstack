@@ -6,16 +6,76 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. GSAP Initial Entrance Animations
-    if (typeof gsap !== "undefined") {
-        const tl = gsap.timeline({
-            defaults: { ease: "power4.out", duration: 1.4 }
+    // 1. Loader & GSAP Initial Entrance Animations
+    const loader = document.getElementById("loader");
+    const loaderBar = document.getElementById("loader-bar");
+    const loaderText = document.getElementById("loader-text");
+
+    if (loader && loaderBar && typeof gsap !== "undefined") {
+        const statusMsgs = [
+            "INITIALIZING_ARCHITECTURAL_NODES",
+            "DECRYPTING_DATA_MODELS",
+            "ESTABLISHING_TLS_ENCRYPTION",
+            "AUTHORIZING_SYSTEM_USER",
+            "SYSTEM_READY"
+        ];
+
+        let currentMsg = 0;
+        const msgInterval = setInterval(() => {
+            if (currentMsg < statusMsgs.length - 1) {
+                currentMsg++;
+                if (loaderText) loaderText.innerText = statusMsgs[currentMsg];
+            }
+        }, 300);
+
+        // Animate Loader Bar
+        gsap.to(loaderBar, {
+            width: "100%",
+            duration: 1.5,
+            ease: "power2.inOut",
+            onComplete: () => {
+                clearInterval(msgInterval);
+                loader.classList.add("loaded");
+                
+                // Start entrance animations
+                const tl = gsap.timeline({
+                    defaults: { ease: "power4.out", duration: 1.4 }
+                });
+
+                gsap.set(".animate-slide-up-initial, .animate-fadeIn", { opacity: 0, y: 40 });
+                tl.to(".animate-slide-up-initial", { opacity: 1, y: 0, stagger: 0.15 })
+                  .to(".animate-fadeIn", { opacity: 1, y: 0, stagger: 0.1 }, "-=1");
+            }
+        });
+    }
+
+    // 1.1 Lenis Smooth Scroll (Professional 'Sorol' Feel)
+    if (typeof Lenis !== "undefined") {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4ba6
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
         });
 
-        gsap.set(".animate-slide-up-initial, .animate-fadeIn", { opacity: 0, y: 40 });
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
 
-        tl.to(".animate-slide-up-initial", { opacity: 1, y: 0, stagger: 0.15 })
-          .to(".animate-fadeIn", { opacity: 1, y: 0, stagger: 0.1 }, "-=1");
+        // Sync scroll links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                lenis.scrollTo(this.getAttribute('href'));
+            });
+        });
     }
 
     // 2. Custom Cursor System (Magnetic Dot & Ring)
@@ -57,15 +117,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 2.1 Live System Status Simulation
+    // 2.1 Live System Status Simulation - Full Telemetry
     const latencyElements = document.querySelectorAll('.latency-val, [data-latency]');
     if (latencyElements.length > 0) {
         setInterval(() => {
-            const randomLatency = Math.floor(Math.random() * 15) + 10;
+            const randomLatency = Math.floor(Math.random() * 12) + 8;
             latencyElements.forEach(el => {
                 el.innerText = `LATENCY: ${randomLatency}ms`;
             });
-        }, 3000);
+        }, 2500);
+    }
+
+    // 2.2 Live Project Node Metrics
+    const uptimeNodes = document.querySelectorAll('[data-uptime]');
+    const loadNodes   = document.querySelectorAll('[data-load]');
+
+    if (uptimeNodes.length > 0 || loadNodes.length > 0) {
+        setInterval(() => {
+            const up   = (99.8 + Math.random() * 0.19).toFixed(2);
+            const load = (Math.random() * 0.3).toFixed(2);
+            uptimeNodes.forEach(el => el.innerText = `UPTIME: ${up}%`);
+            loadNodes.forEach(el   => el.innerText = `LOAD: ${load}ms`);
+        }, 4000);
     }
 
     // 3. Mobile Menu Toggle Logic
@@ -127,15 +200,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 6. Navbar Scroll States
+    // 6. Navbar & Progress Scroll States
     const navbar = document.getElementById("navbar");
-    if (navbar) {
+    const progressBar = document.getElementById("reading-progress");
+    
+    if (navbar || progressBar || scrollPercent) {
         window.addEventListener("scroll", () => {
-            const scrolled = window.scrollY > 50;
-            navbar.classList.toggle("backdrop-blur-2xl", scrolled);
-            navbar.classList.toggle("bg-white/5", scrolled);
-            navbar.classList.toggle("shadow-2xl", scrolled);
-            navbar.style.transform = `translateX(-50%) translateY(${scrolled ? '10px' : '0'}) scale(${scrolled ? 0.98 : 1})`;
+            const scrolledHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / scrolledHeight) * 100;
+
+            if (progressBar) progressBar.style.width = `${progress}%`;
+            if (scrollPercent) scrollPercent.innerText = `${Math.round(progress)}%`;
+
+            if (navbar) {
+                const scrolled = window.scrollY > 50;
+                navbar.classList.toggle("backdrop-blur-2xl", scrolled);
+                navbar.classList.toggle("bg-white/5", scrolled);
+                navbar.classList.toggle("shadow-2xl", scrolled);
+                navbar.style.transform = `translateX(-50%) translateY(${scrolled ? '10px' : '0'}) scale(${scrolled ? 0.98 : 1})`;
+            }
         }, { passive: true });
     }
 
@@ -166,57 +249,25 @@ document.addEventListener("DOMContentLoaded", () => {
         emailText.innerText = `${u}@${d}`;
     }
 
-    // 9. Hero Terminal Logic
-    initTerminal();
-});
-
-/**
- * Hero Terminal Typing Animation
- * Simulates a Django server/Backend environment
- */
-function initTerminal() {
-    const terminal = document.getElementById('terminal-content');
-    if (!terminal) return;
-
-    const lines = [
-        { text: '>>> from django.core import management', color: 'text-blue-400' },
-        { text: '>>> management.call_command("check")', color: 'text-blue-400' },
-        { text: 'System check identified no issues (0 silenced).', color: 'text-gray-500' },
-        { text: '>>> starting_server...', color: 'text-teal-400' },
-        { text: 'Watching for file changes with StatReloader', color: 'text-gray-500' },
-        { text: 'Performing system checks...', color: 'text-gray-500' },
-        { text: 'Django version 5.0.3, using settings "raihan_stack.settings"', color: 'text-gray-400' },
-        { text: 'Starting development server at http://127.0.0.1:8000/', color: 'text-teal-500' },
-        { text: 'Quit the server with CONTROL-C.', color: 'text-gray-500' },
-        { text: '[20/May/2026 19:42:15] "GET /api/v1/projects/ HTTP/1.1" 200', color: 'text-green-400' },
-        { text: '[20/May/2026 19:42:16] "GET /api/v1/profile/ HTTP/1.1" 200', color: 'text-green-400' },
-        { text: '>>> _', color: 'text-white' }
-    ];
-
-    let lineIndex = 0;
-    
-    function typeLine() {
-        if (lineIndex < lines.length) {
-            const lineData = lines[lineIndex];
-            const lineElement = document.createElement('div');
-            lineElement.className = `opacity-0 transfrom translate-y-1 transition-all duration-500 ${lineData.color}`;
-            lineElement.innerHTML = `<span class="mr-2 text-gray-600">»</span>${lineData.text}`;
-            terminal.appendChild(lineElement);
-            
-            // Trigger animation
-            setTimeout(() => {
-                lineElement.classList.remove('opacity-0', 'translate-y-1');
-            }, 50);
-
-            lineIndex++;
-            setTimeout(typeLine, Math.random() * 800 + 400);
-        }
+    // 9. Hero Dashboard Micro-Interactions (Parallax)
+    const monitor = document.querySelector('.blueprint-container');
+    if (monitor) {
+        window.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.clientX) / 40;
+            const y = (window.innerHeight / 2 - e.clientY) / 40;
+            gsap.to(monitor, {
+                rotateY: x,
+                rotateX: -y,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        });
     }
 
-    // Clear and start
-    terminal.innerHTML = '';
-    setTimeout(typeLine, 1000);
-}
+    // 10. Scroll Percentage Reference
+    const scrollPercent = document.getElementById("scroll-percentage");
+});
+
 
 // 9. Star Canvas Background Optimization
 const canvas = document.getElementById("starCanvas");
@@ -234,9 +285,9 @@ if (canvas) {
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 1.5;
-            this.speed = Math.random() * 0.5 + 0.1;
-            this.opacity = Math.random() * 0.5 + 0.2;
+            this.size = Math.random() * 1.2;
+            this.speed = Math.random() * 0.2 + 0.05; /* Slower for premium feel */
+            this.opacity = Math.random() * 0.4 + 0.1;
         }
         draw() {
             ctx.beginPath();
