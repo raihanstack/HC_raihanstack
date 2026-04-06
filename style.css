@@ -560,4 +560,5 @@ button[class*="px-5"] {
   html { font-size: 13.5px; }
   .section-label { font-size: 9px; padding: 2px 8px; }
   .scannable-text { font-size: .88rem; }
+  .hero-right { padding-top:40px; }
 }
