@@ -250,22 +250,132 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 9. Hero Dashboard Micro-Interactions (Parallax)
-    const monitor = document.querySelector('.blueprint-container');
+    const monitor = document.querySelector('.hero-right');
     if (monitor) {
         window.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.clientX) / 40;
-            const y = (window.innerHeight / 2 - e.clientY) / 40;
+            const x = (window.innerWidth / 2 - e.clientX) / 50;
+            const y = (window.innerHeight / 2 - e.clientY) / 50;
             gsap.to(monitor, {
                 rotateY: x,
                 rotateX: -y,
-                duration: 0.8,
+                duration: 1.2,
                 ease: "power2.out"
             });
         });
     }
 
-    // 10. Scroll Percentage Reference
-    const scrollPercent = document.getElementById("scroll-percentage");
+    // 10. ADVANCED DJANGO TERMINAL SIMULATION
+    const codeBlock = document.getElementById("hero-code-block");
+    const snippets = [
+        {
+            lines: [
+                `<span style="color:#8b949e">raihanstack@django-cluster:~$</span> <span style="color:#e6edf3">python manage.py shell</span>`,
+                `<span style="color:#484f57">Python 3.11.4 (main, Jun 2023) [GCC 11.2.0]</span>`,
+                `<span style="color:#484f57">Type "help" for more information. (InteractiveConsole)</span>`,
+                `<span style="color:#00ffc3">>>></span> <span style="color:#e6edf3">from django.contrib.auth.models import User</span>`,
+                `<span style="color:#00ffc3">>>></span> <span style="color:#e6edf3">User.objects.filter(is_superuser=True).count()</span>`,
+                `<span style="color:#79c0ff">1</span>`
+            ]
+        },
+        {
+            lines: [
+                `<span style="color:#8b949e">raihanstack@django-cluster:~$</span> <span style="color:#e6edf3">python manage.py runserver</span>`,
+                `<span style="color:#484f57">Watching for file changes with StatReloader...</span>`,
+                `<span style="color:#00ffc3">Performing system checks...</span>`,
+                `<span style="color:#484f57">System check identified no issues (0 silenced).</span>`,
+                `<span style="color:#484f57">Django version 4.2.5, using settings 'config.settings'</span>`,
+                `<span style="color:#79c0ff">Starting development server at http://127.0.0.1:8000/</span>`
+            ]
+        }
+    ];
+
+    let snippetIndex = 0;
+    let lineIndex = 0;
+
+    const typeCode = () => {
+        if (!codeBlock) return;
+        
+        const currentSnippet = snippets[snippetIndex];
+        if (lineIndex === 0) codeBlock.innerHTML = "";
+
+        if (lineIndex < currentSnippet.lines.length) {
+            const line = document.createElement("div");
+            line.innerHTML = currentSnippet.lines[lineIndex] + `<span id="hero-cursor" class="inline-block w-[2px] h-[12px] ml-1 bg-teal-500 animate-pulse"></span>`;
+            
+            // Remove previous cursor
+            const prevCursor = document.getElementById("hero-cursor");
+            if (prevCursor) prevCursor.remove();
+
+            codeBlock.appendChild(line);
+            lineIndex++;
+            
+            // Random delay between lines - commands take longer to "type", output is instant
+            const isCommand = currentSnippet.lines[lineIndex-1].includes("~$") || currentSnippet.lines[lineIndex-1].includes(">>>");
+            const delay = isCommand ? (800 + Math.random() * 600) : (100 + Math.random() * 200);
+            
+            setTimeout(typeCode, delay);
+        } else {
+            // Snippet finished, wait and restart or go to next
+            setTimeout(() => {
+                lineIndex = 0;
+                snippetIndex = (snippetIndex + 1) % snippets.length;
+                typeCode();
+            }, 4000);
+        }
+    };
+
+    if (codeBlock) typeCode();
+
+    // 11. OSCILLATING TELEMETRY
+    const liveLatency = document.getElementById("live-latency");
+    const latencyBar = document.getElementById("latency-bar");
+    const liveUptime = document.getElementById("live-uptime");
+    const healthTicks = document.querySelectorAll(".health-tick");
+
+    setInterval(() => {
+        if (liveLatency && latencyBar) {
+            const val = (2.1 + Math.random() * 1.2).toFixed(1);
+            liveLatency.innerHTML = `${val}<span class="text-xs ml-1" style="color:#484f57">ms</span>`;
+            latencyBar.style.width = `${10 + Math.random() * 8}%`;
+        }
+    }, 2000);
+
+    setInterval(() => {
+        if (liveUptime) {
+            const val = (99.9 + Math.random() * 0.09).toFixed(1);
+            liveUptime.innerHTML = `${val}<span class="text-xs ml-1" style="color:#484f57">%</span>`;
+        }
+        healthTicks.forEach(tick => {
+            tick.style.opacity = 0.6 + Math.random() * 0.4;
+        });
+    }, 4000);
+
+    // 12. DJANGO SERVER LOG STREAM
+    const logStream = document.getElementById("hero-log-stream");
+    const logPool = [
+        { type: "200", msg: "GET /api/v1/users/me/", method: "GET", color: "#00ffc3" },
+        { type: "201", msg: "POST /api/v1/auth/login/", method: "POST", color: "#79c0ff" },
+        { type: "200", msg: "GET /api/v1/systems/health/", method: "GET", color: "#00ffc3" },
+        { type: "101", msg: "SWITCHING_PROTOCOLS :: WebSocket", method: "WS", color: "#d2a8ff" },
+        { type: "304", msg: "GET /static/json/schema.json", method: "GET", color: "#8b949e" }
+    ];
+
+    setInterval(() => {
+        if (logStream) {
+            const entry = logPool[Math.floor(Math.random() * logPool.length)];
+            const div = document.createElement("div");
+            const now = new Date();
+            const timeStr = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+            
+            div.className = "flex gap-2 animate-fadeIn";
+            div.innerHTML = `<span style="color:#484f57">[${timeStr}]</span> <span style="color:${entry.color}">"${entry.msg} HTTP/1.1" ${entry.type}</span>`;
+            
+            logStream.prepend(div);
+            if (logStream.children.length > 5) {
+                logStream.lastElementChild.remove();
+            }
+        }
+    }, 3500);
 });
 
 
