@@ -203,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 6. Navbar & Progress Scroll States
     const navbar = document.getElementById("navbar");
     const progressBar = document.getElementById("reading-progress");
+    const scrollPercent = document.getElementById("scroll-percentage");
     
     if (navbar || progressBar || scrollPercent) {
         window.addEventListener("scroll", () => {
