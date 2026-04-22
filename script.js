@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (loader && loaderBar && typeof gsap !== "undefined") {
         const statusMsgs = [
-            "INITIALIZING_ARCHITECTURAL_NODES",
+            "INITIALIZING_BACKEND_SYSTEMS",
             "DECRYPTING_DATA_MODELS",
             "ESTABLISHING_TLS_ENCRYPTION",
             "AUTHORIZING_SYSTEM_USER",
