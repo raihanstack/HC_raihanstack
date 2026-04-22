@@ -547,18 +547,22 @@ button[class*="px-5"] {
 }
 @media (max-width: 1024px) {
   html { font-size: 14.5px; }
+  .display-text { font-size: 3.5rem; }
 }
 @media (max-width: 768px) {
   body { cursor: auto; }
   #custom-cursor { display: none !important; }
   .grid-coord { display: none; }
-  section { padding: 52px 16px !important; }
+  section { padding: 64px 20px !important; }
   .liquid-glass-card { border-radius: 10px; }
-  section h2.section-title { font-size: clamp(1.35rem, 7vw, 1.9rem); }
+  section h2.section-title { font-size: 1.8rem; }
+  .display-text { font-size: 2.8rem; }
 }
 @media (max-width: 480px) {
   html { font-size: 13.5px; }
   .section-label { font-size: 9px; padding: 2px 8px; }
   .scannable-text { font-size: .88rem; }
-  .hero-right { padding-top:40px; }
+  .hero-right { padding-top:20px; }
+  .display-text { font-size: 2.4rem; }
+  section { padding: 48px 16px !important; }
 }
