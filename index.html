@@ -1208,16 +1208,24 @@
         </div>
         <div class="liquid-glass-card p-4 sm:p-6 md:p-10 flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
           <div class="flex-1 flex flex-col gap-6 justify-center">
-            <a id=email-link href=#
-              class="contact-card group flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-500/30 transition-all duration-300">
-              <div class="w-12 h-12 rounded-full bg-teal-500/10 flex items-center justify-center text-xl">
-                <i class="fas fa-envelope text-teal-400"></i>
+            <div id=email-container class="relative">
+              <a id=email-link href="mailto:raihan.invite@gmail.com"
+                class="contact-card group flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-500/30 transition-all duration-300">
+                <div class="w-12 h-12 rounded-full bg-teal-500/10 flex items-center justify-center text-xl">
+                  <i class="fas fa-envelope text-teal-400"></i>
+                </div>
+                <div class="flex-grow">
+                  <h3 class="text-white font-bold text-lg mb-1">Email Me</h3>
+                  <p id=email-text class="text-gray-400 font-medium italic">raihan.invite@gmail.com</p>
+                </div>
+                <button onclick="copyEmail(event)" class="p-2.5 rounded-lg bg-white/5 text-gray-500 hover:text-teal-400 hover:bg-teal-500/10 transition-all" title="Copy Email">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </a>
+              <div id="copy-toast" class="absolute -top-10 left-1/2 -translate-x-1/2 px-4 py-2 rounded-lg bg-teal-500 text-[#0b0e14] text-xs font-bold opacity-0 transition-all pointer-events-none">
+                COPIED_TO_CLIPBOARD
               </div>
-              <div>
-                <h3 class="text-white font-bold text-lg mb-1">Email Me</h3>
-                <p id=email-text class="text-gray-400 font-medium italic">Loading...</p>
-              </div>
-            </a>
+            </div>
             <div
               class="contact-card group flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-900/40 transition-all duration-300">
               <div class="w-12 h-12 rounded-full bg-teal-900/20 flex items-center justify-center text-xl">
@@ -1270,7 +1278,8 @@
             class="flex items-center justify-center md:justify-start gap-4 text-[9px] font-mono text-teal-500/40 uppercase tracking-widest">
             <span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-teal-500 animate-pulse"></span>
               STATUS: OPERATIONAL</span>
-            <span class="border-l border-white/10 pl-4">LATENCY: 12MS</span>
+            <span class="border-l border-white/10 pl-4">LATENCY: <span class="latency-val">12MS</span></span>
+            <span class="border-l border-white/10 pl-4">CPU: <span id="cpu-usage">12%</span></span>
             <span class="border-l border-white/10 pl-4 text-gray-600">BUILD: v4.2.0</span>
           </div>
         </div>

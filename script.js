@@ -119,13 +119,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2.1 Live System Status Simulation - Full Telemetry
     const latencyElements = document.querySelectorAll('.latency-val, [data-latency]');
+    const cpuElement      = document.getElementById('cpu-usage');
+    
+    async function updateTelemetry() {
+        // Measure real latency to a fast CDN (Cloudflare)
+        let latency = 0;
+        try {
+            const start = performance.now();
+            await fetch('https://1.1.1.1/cdn-cgi/trace', { mode: 'no-cors', cache: 'no-cache' });
+            latency = Math.round(performance.now() - start);
+        } catch (e) {
+            latency = Math.floor(Math.random() * 10) + 15; // Fallback
+        }
+
+        latencyElements.forEach(el => {
+            el.innerText = `${latency}MS`;
+        });
+
+        if (cpuElement) {
+            // CPU jitter simulation
+            const cpu = (Math.random() * 8 + 4).toFixed(1);
+            cpuElement.innerText = `${cpu}%`;
+        }
+    }
+
     if (latencyElements.length > 0) {
-        setInterval(() => {
-            const randomLatency = Math.floor(Math.random() * 12) + 8;
-            latencyElements.forEach(el => {
-                el.innerText = `LATENCY: ${randomLatency}ms`;
-            });
-        }, 2500);
+        updateTelemetry(); // Initial check
+        setInterval(updateTelemetry, 5000);
     }
 
     // 2.2 Live Project Node Metrics
@@ -134,12 +154,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (uptimeNodes.length > 0 || loadNodes.length > 0) {
         setInterval(() => {
-            const up   = (99.8 + Math.random() * 0.19).toFixed(2);
-            const load = (Math.random() * 0.3).toFixed(2);
+            const up   = (99.95 + Math.random() * 0.04).toFixed(2);
+            const load = (Math.random() * 0.15 + 0.05).toFixed(2);
             uptimeNodes.forEach(el => el.innerText = `UPTIME: ${up}%`);
             loadNodes.forEach(el   => el.innerText = `LOAD: ${load}ms`);
-        }, 4000);
+        }, 5000);
     }
+
+    // 2.3 Clipboard Logic
+    window.copyEmail = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const email = "raihan.invite@gmail.com";
+        navigator.clipboard.writeText(email).then(() => {
+            const toast = document.getElementById('copy-toast');
+            if (toast) {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translate(-50%, -10px)';
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translate(-50%, 0)';
+                }, 2000);
+            }
+        });
+    };
 
     // 3. Mobile Menu Toggle Logic
     window.toggleMenu = function () {
@@ -150,17 +188,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const isHidden = menu.classList.contains("hidden");
         if (isHidden) {
             menu.classList.remove("hidden");
-            gsap.fromTo(menu, 
-                { opacity: 0, scale: 0.95, y: -10 }, 
-                { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(1.7)" }
+            icon.classList.replace("fa-bars", "fa-xmark");
+            gsap.fromTo("#mobileMenu", 
+                { height: 0, opacity: 0, overflow: 'hidden' },
+                { height: 'auto', opacity: 1, duration: 0.5, ease: "power4.out" }
             );
-            icon.className = "fa-solid fa-xmark";
+            gsap.fromTo("#mobileMenu a", 
+                { y: 15, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.4, stagger: 0.08, ease: "back.out(1.7)", delay: 0.1 }
+            );
         } else {
-            gsap.to(menu, {
-                opacity: 0, scale: 0.95, y: -10, duration: 0.3, ease: "power2.in",
-                onComplete: () => menu.classList.add("hidden")
+            gsap.to("#mobileMenu", {
+                height: 0,
+                opacity: 0,
+                duration: 0.3,
+                ease: "power2.in",
+                onComplete: () => {
+                    menu.classList.add("hidden");
+                    icon.classList.replace("fa-xmark", "fa-bars");
+                }
             });
-            icon.className = "fa-solid fa-bars";
         }
     };
 
