@@ -8,8 +8,9 @@
   --bg-base:        #0b0e14;
   --bg-surface:     #0d1117;
   --bg-elevated:    #161b22;
-  --accent:         #00ffc3;
-  --accent-dim:     rgba(0,255,195,0.12);
+  --accent:         #10b981;
+  --accent-focus:   #092E20;
+  --accent-dim:     rgba(16,185,129,0.12);
   --accent-blue:    #2f81f7;
   --accent-purple:  #bc8cff;
   --accent-orange:  #ffa657;
@@ -22,11 +23,11 @@
   /* Glass */
   --glass:          rgba(13,17,23,0.85);
   --border:         rgba(255,255,255,0.06);
-  --border-accent:  rgba(0,255,195,0.2);
+  --border-accent:  rgba(16,185,129,0.2);
 
   /* Shadows */
   --shadow-card:    0 8px 32px rgba(0,0,0,0.55);
-  --glow:           0 0 24px rgba(0,255,195,0.1);
+  --glow:           0 0 24px rgba(9,46,32,0.4);
 
   /* Transitions */
   --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
@@ -280,6 +281,9 @@ body.cursor-active #custom-cursor::after {
    NAVBAR
 ════════════════════════════════════════════════════════════ */
 #navbar .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: "Fira Code", monospace;
   font-size: 11px;
   font-weight: 500;
