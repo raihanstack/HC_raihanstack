@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Animate Loader Bar
         gsap.to(loaderBar, {
             width: "100%",
-            duration: 1.5,
-            ease: "power2.inOut",
+            duration: 0.8, // Ultra-fast "micro-second" feel
+            ease: "expo.out",
             onComplete: () => {
                 clearInterval(msgInterval);
                 loader.classList.add("loaded");
@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 5. Intersection Observer for Scroll Animations
-    const animatedElements = document.querySelectorAll("section:not(#home), .contact-card");
+    const animatedElements = document.querySelectorAll("section:not(#home), .contact-card, .reveal-on-scroll");
     if ("IntersectionObserver" in window && typeof gsap !== "undefined") {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -424,6 +424,40 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }, 3500);
+
+    // 13. Theme Toggle Logic
+    const themeToggle = document.getElementById("theme-toggle");
+    const htmlElement = document.documentElement;
+    const themeIcon = themeToggle ? themeToggle.querySelector("i") : null;
+
+    const savedTheme = localStorage.getItem("theme");
+    const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    const initialTheme = savedTheme || systemTheme;
+
+    const setTheme = (theme) => {
+        if (theme === "light") {
+            htmlElement.classList.add("light");
+            if (themeIcon) themeIcon.classList.replace("fa-moon", "fa-sun");
+        } else {
+            htmlElement.classList.remove("light");
+            if (themeIcon) themeIcon.classList.replace("fa-sun", "fa-moon");
+        }
+        localStorage.setItem("theme", theme);
+    };
+
+    setTheme(initialTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const currentTheme = htmlElement.classList.contains("light") ? "dark" : "light";
+            setTheme(currentTheme);
+            
+            // Micro-animation for the button
+            if (typeof gsap !== "undefined") {
+                gsap.fromTo(themeIcon, { rotate: 0 }, { rotate: 360, duration: 0.5, ease: "back.out(1.7)" });
+            }
+        });
+    }
 });
 
 

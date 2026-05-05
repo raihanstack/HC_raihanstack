@@ -208,7 +208,40 @@
 
   <!-- Tailwind CDN (development) -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { sans: ["Inter", "sans-serif"], mono: ["Fira Code", "monospace"] }, colors: { bg: { base: "#0b0e14", surface: "#0d1117", elevated: "#161b22" }, accent: { DEFAULT: "#10b981", focus: "#092E20", blue: "#2f81f7", purple: "#bc8cff" }, teal: { 400: "#34d399", 500: "#10b981", 600: "#059669", 700: "#047857", 800: "#065f46", 900: "#092E20" }, text: { primary: "#e6edf3", secondary: "#8b949e", dim: "#484f58" } } } } }</script>
+  <script>
+    tailwind.config = { 
+      darkMode: "class", 
+      theme: { 
+        extend: { 
+          fontFamily: { 
+            sans: ["Inter", "sans-serif"], 
+            mono: ["Fira Code", "monospace"] 
+          }, 
+          boxShadow: {
+            pro: "var(--shadow-pro)"
+          },
+          colors: { 
+            bg: { 
+              base: "var(--bg-base)", 
+              surface: "var(--bg-surface)", 
+              elevated: "var(--bg-elevated)" 
+            }, 
+            accent: { 
+              DEFAULT: "var(--accent)", 
+              focus: "var(--accent-focus)", 
+              blue: "var(--accent-blue)", 
+              purple: "var(--accent-purple)" 
+            },
+            text: { 
+              primary: "var(--text-primary)", 
+              secondary: "var(--text-secondary)", 
+              dim: "var(--text-tertiary)" 
+            } 
+          } 
+        } 
+      } 
+    }
+  </script>
 
   <!-- Lenis Smooth Scroll -->
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
@@ -216,22 +249,20 @@
 
 <body class="bg-dark-900 text-gray-300 antialiased">
   <!-- Reading Progress -->
-  <div id="reading-progress" class="fixed top-0 left-0 w-0 h-1 bg-teal-500 z-[100] transition-all duration-100"></div>
+  <div id="reading-progress" class="fixed top-0 left-0 w-0 h-1 bg-accent z-[100] transition-all duration-100"></div>
   <div id="scroll-stats"
-    class="fixed top-4 right-6 z-[100] font-mono text-[10px] text-teal-500/50 flex items-center gap-2 pointer-events-none hidden lg:flex">
+    class="fixed top-4 right-6 z-[100] font-mono text-[10px] text-accent/50 flex items-center gap-2 pointer-events-none hidden lg:flex">
     <span>SCROLL_POS:</span>
     <span id="scroll-percentage">0%</span>
   </div>
 
-  <!-- Elite System Initializer (Loader) -->
-  <div id="loader" class="fixed inset-0 z-[2000] flex flex-col items-center justify-center space-y-6"
-    style="background:#0b0e14">
-    <div class="relative w-48 h-1 bg-white/5 border border-white/10 overflow-hidden">
-      <div id="loader-bar" class="absolute top-0 left-0 h-full bg-teal-500 w-0 transition-all duration-300"></div>
+  <div id="loader" class="fixed inset-0 z-[2000] flex flex-col items-center justify-center space-y-4 bg-bg-base">
+    <div class="relative w-48 h-[2px] bg-bg-elevated/20 overflow-hidden">
+      <div id="loader-bar" class="absolute top-0 left-0 h-full bg-accent w-0 transition-all duration-300 ease-out"></div>
     </div>
-    <div class="flex flex-col items-center gap-1 font-mono text-[9px] uppercase tracking-[0.3em] text-teal-500/60">
-      <span id="loader-text">INITIALIZING_BACKEND_SYSTEMS</span>
-      <span class="opacity-30">SEC_ID: 0x44B // DEC_LEVEL: 05</span>
+    <div class="flex flex-col items-center gap-1 font-mono text-[8px] uppercase tracking-[0.4em] text-text-primary">
+      <span id="loader-text" class="animate-flicker">AUTHORIZING_SYSTEM_USER</span>
+      <span class="opacity-30 text-[7px]">SEC_ID: 0x44B // DEC_LEVEL: 05</span>
     </div>
   </div>
 
@@ -243,16 +274,16 @@
   <header id="header" class="relative">
     <nav id=navbar class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 transition-all duration-500">
       <div
-        class="flex items-center justify-between px-6 py-3 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl">
+        class="flex items-center justify-between px-6 py-3 rounded-2xl backdrop-blur-xl bg-bg-surface/50 border border-bg-elevated shadow-2xl">
         <div class=m-0>
           <a href=#home title=raihanstack class="flex items-center gap-2 sm:gap-3 group">
             <span
               class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-500 flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110"
               aria-hidden=true>
-              <i class="fa-solid fa-code text-white text-xs sm:text-sm"></i>
+              <i class="fa-solid fa-code text-text-primary text-xs sm:text-sm"></i>
             </span>
             <span
-              class="text-white font-semibold tracking-wide text-md sm:text-lg transition duration-300 group-hover:text-teal-400"
+              class="text-text-primary font-semibold tracking-wide text-md sm:text-lg transition duration-300 group-hover:text-accent"
               aria-label="raihanstack – Mostafa Raihan Portfolio">
               raihanstack
             </span>
@@ -283,12 +314,9 @@
             <i class="fa-solid fa-envelope" aria-hidden="true"></i>
             <span>Contact</span>
           </a>
-          <div
-            class="hidden xl:flex items-center gap-3 ml-4 pl-4 border-l border-white/10 font-mono text-[10px] tracking-tighter text-teal-400/70">
-            <span class="flex h-1.5 w-1.5 rounded-full bg-teal-500 animate-pulse"></span>
-            <span>SYS: OK</span>
-            <span class="h-3 w-[1px] bg-white/10 mx-1"></span>
-            <span class="latency-val">LATENCY: 14ms</span>
+          <div class="hidden xl:flex items-center gap-6 text-[9px] font-mono tracking-[0.2em] text-text-secondary/60 border-l border-bg-elevated pl-6">
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-[0_0_8px_var(--accent)]"></span> SYSTEM_NODE: ACTIVE</span>
+            <span class="opacity-50">LATENCY: <span class="latency-val">12MS</span></span>
           </div>
         </div>
         <div class="flex items-center gap-3">
@@ -302,192 +330,92 @@
               class="social-icon" aria-label="LinkedIn Profile">
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
+            <button id="theme-toggle" class="social-icon" aria-label="Toggle Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
           </div>
-          <button onclick=toggleMenu() class="lg:hidden text-white text-xl ml-2" aria-label="Toggle mobile menu">
+          <button onclick=toggleMenu() class="lg:hidden text-text-primary text-xl ml-2" aria-label="Toggle mobile menu">
             <i id=menuIcon class="fa-solid fa-bars" aria-hidden="true"></i>
           </button>
         </div>
       </div>
       <div id=mobileMenu
-        class="lg:hidden hidden mt-4 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 p-6">
+        class="lg:hidden hidden mt-4 rounded-2xl backdrop-blur-xl bg-bg-surface border border-bg-elevated p-6 shadow-2xl">
         <div class="grid grid-cols-2 gap-4 text-center">
-          <a href=#home class=mobile-link-pro>
+          <a href=#home class="flex flex-col items-center justify-center p-4 rounded-xl bg-bg-elevated border border-bg-elevated text-text-secondary hover:text-accent hover:border-accent/50 transition-all duration-300">
             <i class="fa-solid fa-house mb-1"></i>
-            <span>Home</span>
+            <span class="text-[10px] font-mono font-bold tracking-widest uppercase">Home</span>
           </a>
-          <a href=#about class=mobile-link-pro>
-            <i class="fa-solid fa-user mb-1"></i>
-            <span>About</span>
+          <a href=#services class="flex flex-col items-center justify-center p-4 rounded-xl bg-bg-elevated border border-bg-elevated text-text-secondary hover:text-accent hover:border-accent/50 transition-all duration-300">
+            <i class="fa-solid fa-layer-group mb-1"></i>
+            <span class="text-[10px] font-mono font-bold tracking-widest uppercase">Expertise</span>
           </a>
-          <a href=#services class=mobile-link-pro>
-            <i class="fa-solid fa-briefcase mb-1"></i>
-            <span>Services</span>
+          <a href=#about class="flex flex-col items-center justify-center p-4 rounded-xl bg-bg-elevated border border-bg-elevated text-text-secondary hover:text-accent hover:border-accent/50 transition-all duration-300">
+            <i class="fa-solid fa-user-gear mb-1"></i>
+            <span class="text-[10px] font-mono font-bold tracking-widest uppercase">About</span>
           </a>
-          <a href=#skills class=mobile-link-pro>
-            <i class="fa-solid fa-code mb-1"></i>
-            <span>Skills</span>
-          </a>
-          <a href=#projects class=mobile-link-pro>
-            <i class="fa-solid fa-diagram-project mb-1"></i>
-            <span>Projects</span>
-          </a>
-          <a href=#contact class=mobile-link-pro>
-            <i class="fa-solid fa-envelope mb-1"></i>
-            <span>Contact</span>
+          <a href=#projects class="flex flex-col items-center justify-center p-4 rounded-xl bg-bg-elevated border border-bg-elevated text-text-secondary hover:text-accent hover:border-accent/50 transition-all duration-300">
+            <i class="fa-solid fa-code-merge mb-1"></i>
+            <span class="text-[10px] font-mono font-bold tracking-widest uppercase">Systems</span>
           </a>
         </div>
       </div>
     </nav>
   </header>
   <main>
-    <section id=home class="relative pt-20 pb-12 md:pt-36 md:pb-16 px-6 overflow-hidden">
+    <section id=home class="relative pt-12 pb-6 md:pt-16 md:pb-8 px-6 overflow-hidden min-h-[75vh] flex items-center">
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-16">
         <div class="w-full md:w-1/2 text-center md:text-left z-10 order-2 md:order-1">
           <div
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 mb-6 animate-slide-up-initial font-mono">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
-            </span>
-            <span
-              class="text-[9px] sm:text-[10px] font-mono font-medium tracking-[.18em] text-[#00ffc3] uppercase">root@raihanstack:~$
-              whoami</span>
+            class="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-accent/10 border border-accent/20 mb-4 animate-slide-up-initial font-mono">
+            <span class="text-[9px] font-mono font-medium tracking-widest text-accent uppercase">root@raihanstack:~$ whoami</span>
           </div>
-          <h1 class="display-text animate-slide-up-initial mb-6">
-            Building <span class="glow-text">High-Performance</span> &amp;
-            <span class="glow-text">Secure</span> Backend Systems
+          <h1 class="display-text animate-slide-up-initial mb-4">
+            Backend Systems <span class="glow-text">Engineer</span>
           </h1>
-          <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed mx-auto lg:mx-0 animate-fadeIn">
-            **Python & Django** Backend Developer specializing in high-performance systems and secure cloud
-            infrastructure.
+          <p class="text-text-secondary text-base md:text-lg max-w-xl mb-8 leading-relaxed mx-auto lg:mx-0 animate-fadeIn">
+            I engineer <span class="text-accent font-bold">high-concurrency</span> Python ecosystems, 
+            robust API orchestrations, and mission-critical cloud infrastructure. 
+            Focused on delivering <span class="text-text-primary font-bold">scalable</span>, secure, and 
+            computationally efficient backend solutions that power modern, data-intensive digital 
+            platforms at scale.
           </p>
           <div class="flex flex-wrap gap-3 justify-center lg:justify-start animate-fadeIn">
             <a href="https://github.com/raihanstack" target="_blank"
-              class="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg font-mono text-[11px] font-semibold tracking-[.1em] text-[#0b0e14] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,255,195,0.3)]"
+              class="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg font-mono text-[11px] font-semibold tracking-[.1em] text-bg-base transition-all duration-300 hover:scale-105 hover:shadow-pro"
               style="background:var(--accent)">
               <i class="fa-solid fa-download text-sm"></i> DOWNLOAD_RESUME
             </a>
             <a href="#contact"
               class="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg font-mono text-[11px] font-semibold tracking-[.1em] transition-all duration-300 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
-              style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);color:var(--text-secondary)">
+              style="background:var(--accent-dim);border:1px solid var(--border);color:var(--text-secondary)">
               <i class="fa-solid fa-plug text-sm" style="color:var(--accent)"></i> INIT_CONNECTION
             </a>
           </div>
         </div>
         <div
           class="w-full md:w-1/2 flex justify-center md:justify-end order-1 md:order-2 animate-fadeIn transition-all duration-700 hero-right">
-          <div class="relative w-full max-w-[550px]">
+          <div class="relative w-full max-w-[600px] flex items-center justify-center">
             <div
-              class="absolute -inset-4 bg-gradient-to-r from-teal-900/40 to-teal-500/20 rounded-3xl blur-2xl opacity-40 animate-pulse">
+              class="absolute -inset-10 bg-gradient-to-r from-teal-500/20 to-blue-500/10 rounded-full blur-3xl opacity-30 animate-pulse">
             </div>
 
-            <!-- ✦ Live Code Terminal — Hero Right Side ✦ -->
-            <div class="relative flex flex-col gap-4 w-full">
-
-              <!-- Code Editor Window -->
-              <div class="blueprint liquid-glass-card overflow-hidden rounded-xl border border-white/8"
-                style="background:#0d1117">
-                <span>
-                  <!-- Editor titlebar -->
-                  <div class="flex items-center justify-between px-4 py-2.5 border-b border-white/5"
-                    style="background:#161b22">
-                    <div class="flex gap-1.5">
-                      <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
-                      <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                      <div class="w-3 h-3 rounded-full" style="background:rgba(0,255,195,0.4)"></div>
-                    </div>
-                    <span class="text-[9px] font-mono tracking-widest" style="color:#484f57">bash —
-                      raihanstack@django-cluster: ~</span>
-                    <div class="flex items-center gap-1.5">
-                      <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#00ffc3"></span>
-                      <span class="text-[8px] font-mono" style="color:rgba(0,255,195,0.5)">LIVE</span>
-                    </div>
-                  </div>
-
-                  <!-- Terminal Console -->
-                  <div class="p-4 font-mono text-[11px] leading-relaxed overflow-hidden" style="min-height:210px">
-                    <div class="flex flex-col gap-2" id="hero-code-block">
-                      <div class="animate-pulse text-gray-600 text-[10px] font-mono">// ESTABLISHING_DJANGO_SHELL...
-                      </div>
-                    </div>
-                  </div>
-                </span>
-              </div>
-
-              <!-- Git Commit Log + Stats Row -->
-              <div class="grid grid-cols-2 gap-3">
-
-                <!-- Live Git Log -->
-                <div
-                  class="blueprint rounded-xl p-3 flex flex-col gap-2 overflow-hidden h-full max-h-[160px] md:max-h-none"
-                  style="background:#0d1117;border-color:rgba(255,255,255,0.05)">
-                  <span>
-                    <div class="flex items-center justify-between mb-2">
-                      <span class="text-[8px] font-mono tracking-widest uppercase" style="color:#484f57">django server
-                        --logs</span>
-                      <span class="w-1.5 h-1.5 rounded-full animate-ping" style="background:#00ffc3;opacity:.6"></span>
-                    </div>
-                    <div class="flex flex-col gap-1.5 font-mono text-[9px]" id="hero-log-stream">
-                      <div class="flex gap-2">
-                        <span style="color:#484f57">[23:16:05]</span>
-                        <span style="color:#00ffc3">"GET /api/v1/health/ HTTP/1.1" 200</span>
-                      </div>
-                      <div class="flex gap-2">
-                        <span style="color:#484f57">[23:16:04]</span>
-                        <span style="color:#79c0ff">"POST /api/v1/auth/login/ HTTP/1.1" 201</span>
-                      </div>
-                      <div class="flex gap-2">
-                        <span style="color:#484f57">[23:16:02]</span>
-                        <span style="color:#00ffc3">"GET /api/v1/metrics/ HTTP/1.1" 200</span>
-                      </div>
-                    </div>
-                  </span>
-                </div>
-
-                <!-- Live Stats -->
-                <div class="flex flex-col gap-3 h-full justify-between">
-                  <div class="blueprint rounded-xl p-3 flex-1 flex flex-col justify-center"
-                    style="background:#0d1117;border-color:rgba(255,255,255,0.05)">
-                    <span>
-                      <div class="text-[8px] font-mono mb-1.5 uppercase tracking-widest" style="color:#484f57">
-                        LATENCY_OPTIMIZATION</div>
-                      <div class="text-xl font-bold tracking-tighter" style="color:#e6edf3" id="live-latency">4.2<span
-                          class="text-xs ml-1" style="color:#484f57">ms</span></div>
-                      <div class="mt-2 h-1 w-full rounded-full overflow-hidden"
-                        style="background:rgba(255,255,255,0.06)">
-                        <div class="h-full rounded-full transition-all duration-500"
-                          style="width:18%;background:#00ffc3" id="latency-bar"></div>
-                      </div>
-                    </span>
-                  </div>
-                  <div class="blueprint rounded-xl p-3 flex-1 flex flex-col justify-center"
-                    style="background:#0d1117;border-color:rgba(255,255,255,0.05)">
-                    <span>
-                      <div class="text-[8px] font-mono mb-1.5 uppercase tracking-widest" style="color:#484f57">
-                        CLUSTER_HEALTH
-                      </div>
-                      <div class="text-xl font-bold tracking-tighter" style="color:#e6edf3" id="live-uptime">99.9<span
-                          class="text-xs ml-1" style="color:#484f57">%</span></div>
-                      <div class="flex gap-1 mt-2">
-                        <div class="h-1 flex-1 rounded-full transition-all duration-300 health-tick"
-                          style="background:#00ffc3;opacity:.9"></div>
-                        <div class="h-1 flex-1 rounded-full transition-all duration-300 health-tick"
-                          style="background:#00ffc3;opacity:.8"></div>
-                        <div class="h-1 flex-1 rounded-full transition-all duration-300 health-tick"
-                          style="background:#00ffc3;opacity:.9"></div>
-                        <div class="h-1 flex-1 rounded-full transition-all duration-300 health-tick"
-                          style="background:#00ffc3;opacity:.6"></div>
-                        <div class="h-1 flex-1 rounded-full transition-all duration-300 health-tick"
-                          style="background:rgba(255,255,255,0.1)"></div>
-                      </div>
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-            </div><!-- /grid -->
-
-          </div><!-- /hero right -->
+            <!-- ✦ Main Pro Illustration ✦ -->
+            <div class="relative w-full aspect-square animate-float z-10">
+               <img src="img/illustration_v2.png" alt="Backend Architecture Illustration" 
+                 class="w-full h-full object-contain hero-illustration-light">
+               <img src="img/illustration_dark.png" alt="Backend Architecture Illustration" 
+                 class="w-full h-full object-contain hero-illustration-dark">
+            </div>
+            
+            <!-- Tech Stack Floating Badges -->
+            <div class="absolute top-0 left-0 p-4 bg-bg-surface border border-teal-500/30 shadow-pro rounded-2xl animate-bounce-slow hidden sm:block z-20">
+               <i class="fa-brands fa-python text-2xl text-yellow-500"></i>
+            </div>
+            <div class="absolute bottom-10 right-0 p-4 bg-bg-surface border border-accent/30 shadow-pro rounded-2xl animate-bounce-slow delay-700 hidden sm:block z-20">
+               <i class="fa-solid fa-database text-2xl text-accent"></i>
+            </div>
+          </div>
         </div>
     </section>
     <section id=services class="py-24 px-6 md:px-12 bg-dark-900/40 relative technical-grid-bg">
@@ -502,78 +430,78 @@
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          <article class="blueprint liquid-glass-card group p-6 hover:bg-white/5 transition-all">
+          <article class="blueprint liquid-glass-card group p-6 hover:bg-bg-surface/50 transition-all hover-lift">
             <span>
               <div
-                class="w-12 h-12 bg-teal-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-code text-xl text-teal-400"></i>
+                class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-code text-xl text-accent"></i>
               </div>
-              <h3 class="text-lg font-bold text-white mb-3 tracking-tight">Scalable API Orchestration</h3>
-              <p class="text-gray-400 text-xs leading-relaxed mb-4">Designing high-throughput RESTful interfaces with a
-                focus on tiered authentication, strict schema validation, and stateless scalability.</p>
+              <h3 class="text-lg font-bold text-text-primary mb-3 tracking-tight">API Ecosystem Design</h3>
+              <p class="text-text-secondary text-xs leading-relaxed mb-4">Designing hyper-scalable REST & GraphQL interfaces 
+                with zero-trust authentication, strict schema enforcement, and stateless load-balancing logic.</p>
               <ul class="space-y-2 text-[10px] font-mono text-gray-500">
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> JWT & OAuth2
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> JWT & OAuth2
                   Security</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Swagger &
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> Swagger &
                   OpenAPI</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Rate Limiting
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> Rate Limiting
                   Logic</li>
               </ul>
             </span>
           </article>
           <article
-            class="blueprint liquid-glass-card group p-6 bg-teal-500/5 border-teal-500/30 shadow-[0_0_30px_rgba(45,212,191,0.1)] hover:bg-teal-500/10 transition-all">
+            class="blueprint liquid-glass-card group p-6 bg-accent/5 border-teal-500/30 shadow-[0_0_30px_rgba(45,212,191,0.1)] hover:bg-accent/10 transition-all hover-lift">
             <span>
-              <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
-                <i class="fa-solid fa-database text-xl text-teal-400 animate-pulse"></i>
+              <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mb-6">
+                <i class="fa-solid fa-database text-xl text-accent animate-pulse"></i>
               </div>
-              <h3 class="text-lg font-bold text-white mb-3 tracking-tight">Database Systems Engineering</h3>
-              <p class="text-gray-400 text-xs leading-relaxed mb-4">Engineering complex relational schemas and NoSQL
-                models optimized for low-latency retrieval and multi-dimensional data integrity.</p>
+              <h3 class="text-lg font-bold text-text-primary mb-3 tracking-tight">Database Engineering</h3>
+              <p class="text-text-secondary text-xs leading-relaxed mb-4">Architecting optimized relational models and 
+                NoSQL schemas with a focus on ACID compliance, indexing strategy, and read/write performance.</p>
               <ul class="space-y-2 text-[10px] font-mono text-gray-500">
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> SQL
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> SQL
                   Normalization</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Index
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> Index
                   Profiling</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> NoSQL
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> NoSQL
                   Structuring</li>
               </ul>
             </span>
           </article>
-          <article class="blueprint liquid-glass-card group p-6 hover:bg-white/5 transition-all">
+          <article class="blueprint liquid-glass-card group p-6 hover:bg-bg-surface/50 transition-all hover-lift">
             <span>
               <div
-                class="w-12 h-12 bg-teal-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-shield-halved text-xl text-teal-400"></i>
+                class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-shield-halved text-xl text-accent"></i>
               </div>
-              <h3 class="text-lg font-bold text-white mb-3 tracking-tight">Cloud Native Infrastructure</h3>
-              <p class="text-gray-400 text-xs leading-relaxed mb-4">Orchestrating robust CI/CD pipelines and hardening
-                production environments with advanced security protocols and edge compute nodes.</p>
+              <h3 class="text-lg font-bold text-text-primary mb-3 tracking-tight">Cloud Infrastructure</h3>
+              <p class="text-text-secondary text-xs leading-relaxed mb-4">Deploying mission-critical workloads on 
+                containerized environments (AWS/Vercel) with hardened SSL/TLS security and automated CI/CD.</p>
               <ul class="space-y-2 text-[10px] font-mono text-gray-500">
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> AWS & Vercel
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> AWS & Vercel
                   Ops</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> SSL/TLS
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> SSL/TLS
                   Hardening</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Container
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> Container
                   Strategies</li>
               </ul>
             </span>
           </article>
-          <article class="blueprint liquid-glass-card group p-6 hover:bg-white/5 transition-all">
+          <article class="blueprint liquid-glass-card group p-6 hover:bg-bg-surface/50 transition-all hover-lift">
             <span>
               <div
-                class="w-12 h-12 bg-teal-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-network-wired text-xl text-teal-400"></i>
+                class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-network-wired text-xl text-accent"></i>
               </div>
-              <h3 class="text-lg font-bold text-white mb-3 tracking-tight">Distributed Systems</h3>
-              <p class="text-gray-400 text-xs leading-relaxed mb-4">Designing resilient, loosely-coupled architectures
+              <h3 class="text-lg font-bold text-text-primary mb-3 tracking-tight">Distributed Systems</h3>
+              <p class="text-text-secondary text-xs leading-relaxed mb-4">Designing resilient, loosely-coupled architectures
                 using message queues and event-driven logic.</p>
               <ul class="space-y-2 text-[10px] font-mono text-gray-500">
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Kafka &
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> Kafka &
                   RabbitMQ</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Microservices
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> Microservices
                   Patterns</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-teal-500"></i> Fault
+                <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-accent"></i> Fault
                   Tolerance
                 </li>
               </ul>
@@ -600,7 +528,7 @@
                 class="absolute -inset-4 sm:-inset-6 rounded-[2rem] blur-3xl bg-gradient-to-r from-white/10 via-teal-200/5 to-blue-500/10 opacity-60 group-hover:opacity-100 transition-opacity duration-1000">
               </div>
               <div
-                class="relative w-full h-full liquid-glass-card flex items-center justify-center z-10 rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                class="relative w-full h-full liquid-glass-card flex items-center justify-center z-10 rounded-3xl overflow-hidden border border-bg-elevated shadow-2xl">
                 <img src=img/profile.webp alt="Mostafa Raihan - Full Stack Developer" title="Mostafa Raihan"
                   class="w-full h-full object-cover rounded-3xl transition-transform duration-700 group-hover:scale-105"
                   loading=eager>
@@ -608,80 +536,84 @@
             </figure>
           </div>
           <div class="space-y-6 lg:space-y-8 text-center lg:text-left">
-            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
-              Professional <span class="text-teal-400">Backend Developer</span>
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-primary leading-tight">
+              Backend Systems <span class="text-accent">Engineer</span>
             </h3>
-            <p class="text-gray-300 text-lg leading-relaxed font-medium">
-              I specialize in engineering **high-concurrency**, **scalable**, and **secure** backend architectures. With
-              a
-              deep focus on **Python & Django**, I architect robust APIs and optimize complex database systems that
-              power modern
-              digital infrastructures.
+            <p class="text-text-secondary text-base leading-relaxed mb-6">
+              Architecting <span class="text-text-primary font-bold">high-concurrency</span> and <span class="text-text-primary font-bold">fault-tolerant</span> ecosystems. 
+              Specializing in <span class="text-accent font-bold">Python & Django</span>, I build mission-critical APIs that prioritize 
+              performance and data integrity.
             </p>
+
             <div class="flex flex-wrap gap-2 mt-4 sm:mt-6 justify-center lg:justify-start">
               <span
-                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">Django</span>
-              <span class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">Django
+                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-accent/10 text-accent">Django</span>
+              <span class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-accent/10 text-accent">Django
                 DRF</span>
               <span
-                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400">Python</span>
+                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-600">Python</span>
               <span
-                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-300">JavaScript</span>
+                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-blue-500/10 text-blue-600">JavaScript</span>
               <span
-                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300">ReactJS</span>
+                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600">ReactJS</span>
               <span
-                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-gray-500/20 text-gray-300">NextJS</span>
+                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-bg-elevated text-text-secondary">NextJS</span>
               <span
-                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">TailwindCSS</span>
+                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-accent/10 text-accent">TailwindCSS</span>
               <span
-                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-300">Bootstrap</span>
+                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-purple-500/10 text-purple-600">Bootstrap</span>
               <span
-                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-red-500/20 text-red-300">MySQL</span>
+                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-red-500/10 text-red-600">MySQL</span>
               <span
-                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-green-500/20 text-green-300">PostgreSQL</span>
+                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-green-500/10 text-green-600">PostgreSQL</span>
               <span
-                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-orange-500/20 text-orange-300">MongoDB</span>
-              <span class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-red-600/20 text-red-400">Git</span>
+                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-orange-500/10 text-orange-600">MongoDB</span>
+              <span class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-red-600/10 text-red-600">Git</span>
               <span
-                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-gray-600/20 text-gray-400">GitHub</span>
+                class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-gray-600/20 text-text-secondary">GitHub</span>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
               <div
-                class="blueprint p-6 rounded-xl bg-white/5 border border-white/10 hover:border-teal-500/30 transition-all group/node">
-                <span>
-                  <h4 class="text-xs font-bold text-teal-400 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 bg-teal-500 rounded-full animate-pulse"></span> Architectural Values
-                  </h4>
-                  <ul class="space-y-3 text-sm text-gray-400">
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-microchip mt-1 text-teal-500/50"></i>
-                      <span>Scalable Cluster Design</span>
-                    </li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-lock mt-1 text-teal-500/50"></i>
-                      <span>Multi-Layered Security</span>
-                    </li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-gauge mt-1 text-teal-500/50"></i>
-                      <span>Sub-Millisecond Latency</span>
-                    </li>
-                  </ul>
-                </span>
-              </div>
-              <div
-                class="blueprint p-6 rounded-xl bg-white/5 border border-white/10 hover:border-teal-900/40 transition-all group/node">
-                <span>
-                  <h4 class="text-xs font-bold text-teal-600 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 bg-teal-600 rounded-full"></span> Education
-                  </h4>
-                  <div class="space-y-4">
-                    <div>
-                      <p class="text-white font-bold text-sm tracking-tight">Diploma in Computer Science</p>
-                      <p class="text-red-500/70 text-[12px] font-mono mt-1">Institute of Computer Science & Technology
-                      </p>
-                      <p class="text-teal-500/70 text-[10px] font-mono mt-1"> - March 2023 - February 2027</p>
+                class="blueprint p-4 rounded-xl bg-bg-surface border border-bg-elevated hover:border-accent/30 transition-all group/node shadow-lg">
+                <h4 class="text-[10px] font-bold text-accent uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span> Architectural Core
+                </h4>
+                <div class="space-y-5">
+                  <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                      <i class="fa-solid fa-microchip text-xs text-accent"></i>
                     </div>
-                    <p class="text-xs text-gray-500 leading-relaxed">Focused on Backend Systems, and Scalable Database
-                      Management.</p>
+                    <div>
+                      <p class="text-sm font-bold text-text-primary tracking-tight">Horizontal Scaling</p>
+                      <p class="text-[10px] text-text-secondary leading-tight mt-1">Multi-node cluster management and load optimization.</p>
+                    </div>
                   </div>
-                </span>
+                  <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                      <i class="fa-solid fa-shield-halved text-xs text-accent"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-bold text-text-primary tracking-tight">Zero-Trust Auth</p>
+                      <p class="text-[10px] text-text-secondary leading-tight mt-1">Hardened JWT & OAuth2 orchestration protocols.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div
+                class="blueprint p-4 rounded-xl bg-bg-surface border border-bg-elevated hover:border-accent/30 transition-all group/node shadow-lg">
+                <h4 class="text-[10px] font-bold text-accent uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span> Education_Log
+                </h4>
+                <div class="relative pl-6 border-l border-bg-elevated/50 space-y-4">
+                  <div class="relative">
+                    <span class="absolute -left-[29px] top-1 w-2 h-2 rounded-full bg-accent border-4 border-bg-base"></span>
+                    <p class="text-sm font-bold text-text-primary tracking-tight">Diploma in Computer Science</p>
+                    <p class="text-[10px] text-red-500 font-mono mt-1 opacity-80">ICST - Polytechnic Institute</p>
+                    <p class="text-[8px] text-text-secondary font-mono mt-0.5">2023 — 2027 (Active_Node)</p>
+                  </div>
+                  <p class="text-[10px] text-text-secondary leading-relaxed">Specializing in <span class="text-text-primary">Backend System Internals</span>.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -693,7 +625,7 @@
         <div class="text-center mb-20 animate-fadeIn relative">
           <div class="grid-coord tl">[COORD_X:03 // Y:01]</div>
           <span class="section-label">> CAT /var/log/backend_deployments.log</span>
-          <h2 class="section-title text-white">Engineering Case Studies</h2>
+          <h2 class="section-title text-text-primary">Engineering Case Studies</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
           <!-- Main Showcase: 8 Cols -->
@@ -709,8 +641,8 @@
               <span class="text-[9px] font-mono text-gray-500 uppercase tracking-widest hidden sm:block">NODE_ID:
                 EXP-ANALYTICS-01</span>
               <div class="flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full animate-pulse bg-teal-500"></span>
-                <span data-uptime class="text-[9px] font-mono text-teal-500/70">UPTIME: 99.98%</span>
+                <span class="w-1.5 h-1.5 rounded-full animate-pulse bg-accent"></span>
+                <span data-uptime class="text-[9px] font-mono text-accent/70">UPTIME: 99.98%</span>
               </div>
             </div>
 
@@ -728,27 +660,27 @@
                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6 w-full">
                   <div>
                     <div
-                      class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-teal-500/10 border border-teal-500/20 mb-3 backdrop-blur-md">
-                      <i class="fa-solid fa-chart-line text-[9px] text-teal-400"></i>
-                      <span class="text-[9px] font-mono text-teal-400 uppercase tracking-widest">FinTech Platform</span>
+                      class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20 mb-3 backdrop-blur-md">
+                      <i class="fa-solid fa-chart-line text-[9px] text-accent"></i>
+                      <span class="text-[9px] font-mono text-accent uppercase tracking-widest">FinTech Platform</span>
                     </div>
                     <h3 id="project-expensetracker-title"
-                      class="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight group-hover:text-teal-400 transition-colors">
-                      Expense Analytics Engine</h3>
+                      class="text-2xl sm:text-3xl font-bold text-text-primary mb-2 tracking-tight group-hover:text-accent transition-colors">
+                      Financial Data Orchestrator</h3>
                     <p class="text-gray-300 text-sm sm:text-base max-w-lg leading-relaxed">
-                      Engineered a real-time tracking system utilizing <span class="text-white font-medium">Django
-                        Signals</span> for asynchronous metric updates and optimized Postgres indexing.
+                      A high-integrity <span class="text-text-primary font-bold">Django REST</span> platform for real-time 
+                      fiscal tracking, featuring complex aggregation logic and asynchronous report generation.
                     </p>
                   </div>
                   <div class="flex flex-col sm:flex-row gap-3 shrink-0 w-full sm:w-auto">
                     <a href="https://amertaka.vercel.app" target="_blank" rel="noopener noreferrer"
                       aria-label="Visit the Expense Analytics Engine live demo"
-                      class="flex-1 sm:flex-none inline-flex items-center justify-center bg-teal-500/10 text-teal-400 border border-teal-500/30 hover:bg-teal-500 hover:text-[#0b0e14] font-mono text-[11px] font-semibold xl:text-xs px-5 py-3 rounded-lg transition-all transform hover:scale-105 hover:shadow-[0_0_15px_rgba(0,255,195,0.4)] backdrop-blur-md">
+                      class="flex-1 sm:flex-none inline-flex items-center justify-center bg-accent/10 text-accent border border-teal-500/30 hover:bg-accent hover:text-[#0b0e14] font-mono text-[11px] font-semibold xl:text-xs px-5 py-3 rounded-lg transition-all transform hover:scale-105 hover:shadow-[0_0_15px_rgba(0,255,195,0.4)] backdrop-blur-md">
                       LIVE_DEMO <i class="fa-solid fa-cloud ml-2 text-[10px]"></i>
                     </a>
                     <a href="https://github.com/raihanstack/Django_Expense_Manage" target="_blank"
                       rel="noopener noreferrer" aria-label="View the Expense Analytics Engine source code on GitHub"
-                      class="flex-1 sm:flex-none inline-flex items-center justify-center bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 hover:text-white font-mono text-[11px] font-semibold xl:text-xs px-5 py-3 rounded-lg transition-all transform hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] backdrop-blur-md">
+                      class="flex-1 sm:flex-none inline-flex items-center justify-center bg-bg-surface/50 text-gray-300 border border-bg-elevated hover:bg-white/10 hover:text-text-primary font-mono text-[11px] font-semibold xl:text-xs px-5 py-3 rounded-lg transition-all transform hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] backdrop-blur-md">
                       GITHUB_CODE <i class="fa-brands fa-github ml-2 text-[10px]"></i>
                     </a>
                   </div>
@@ -760,25 +692,25 @@
               <div
                 class="flex flex-col gap-1 p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:border-teal-500/30 transition-colors">
                 <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-1.5"><i
-                    class="fa-solid fa-microchip text-teal-500/70"></i> LOGIC_LAYER</span>
+                    class="fa-solid fa-microchip text-accent/70"></i> LOGIC_LAYER</span>
                 <span class="text-[11px] text-gray-300 font-medium">Async Signals</span>
               </div>
               <div
                 class="flex flex-col gap-1 p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:border-teal-500/30 transition-colors">
                 <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-1.5"><i
-                    class="fa-solid fa-database text-teal-500/70"></i> DATA_STORE</span>
+                    class="fa-solid fa-database text-accent/70"></i> DATA_STORE</span>
                 <span class="text-[11px] text-gray-300 font-medium">Indexed Postgres</span>
               </div>
               <div
                 class="flex flex-col gap-1 p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:border-teal-500/30 transition-colors">
                 <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-1.5"><i
-                    class="fa-solid fa-server text-teal-500/70"></i> ORM_QUERY</span>
+                    class="fa-solid fa-server text-accent/70"></i> ORM_QUERY</span>
                 <span class="text-[11px] text-gray-300 font-medium">Select Related</span>
               </div>
               <div
                 class="flex flex-col gap-1 p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:border-teal-500/30 transition-colors">
                 <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-1.5"><i
-                    class="fa-solid fa-gauge-high text-teal-500/70"></i> PERFORMANCE</span>
+                    class="fa-solid fa-gauge-high text-accent/70"></i> PERFORMANCE</span>
                 <span class="text-[11px] text-gray-300 font-medium">Sub-50ms query</span>
               </div>
             </div>
@@ -786,7 +718,7 @@
 
           <!-- Vertical Card: 4 Cols -->
           <article
-            class="blueprint liquid-glass-card group opacity-0 animate-fadeIn md:col-span-12 lg:col-span-4 flex flex-col"
+            class="blueprint liquid-glass-card group opacity-0 animate-fadeIn md:col-span-12 lg:col-span-4 flex flex-col hover-lift"
             aria-labelledby="project-ecommerce-title" style="animation-delay: 0.1s;">
             <div
               class="px-5 py-3 border-b border-white/5 flex justify-between items-center bg-white/[0.02] shrink-0 xl:min-h-[49px]">
@@ -794,8 +726,8 @@
               <span
                 class="text-[9px] font-mono text-gray-500 uppercase tracking-widest hidden xl:block">ECOM-SCALER-04</span>
               <div class="flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full animate-pulse bg-teal-500"></span>
-                <span data-load class="text-[9px] font-mono text-teal-500/70">LOAD: 0.14ms</span>
+                <span class="w-1.5 h-1.5 rounded-full animate-pulse bg-accent"></span>
+                <span data-load class="text-[9px] font-mono text-accent/70">LOAD: 0.14ms</span>
               </div>
             </div>
 
@@ -807,20 +739,20 @@
               <div
                 class="absolute inset-0 bg-gradient-to-t from-[#0b0e14] via-[#0b0e14]/50 to-transparent opacity-90 pb-4 flex items-end justify-center">
                 <div
-                  class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-teal-500/10 border border-teal-500/20 backdrop-blur-md">
-                  <i class="fa-solid fa-cart-shopping text-[9px] text-teal-400"></i>
-                  <span class="text-[9px] font-mono text-teal-400 uppercase tracking-widest">E-Commerce Arch</span>
+                  class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20 backdrop-blur-md">
+                  <i class="fa-solid fa-cart-shopping text-[9px] text-accent"></i>
+                  <span class="text-[9px] font-mono text-accent uppercase tracking-widest">E-Commerce Arch</span>
                 </div>
               </div>
             </div>
 
             <div class="px-5 sm:px-6 py-6 flex flex-col flex-grow relative z-10">
               <h3 id="project-ecommerce-title"
-                class="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-teal-400 transition-colors">
-                Scalable Django E-Commerce</h3>
-              <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                Robust commercial backend with complex ORM filtering, multi-step checkout pipelines, and hardened
-                infrastructure.
+                class="text-xl font-bold text-text-primary mb-2 tracking-tight group-hover:text-accent transition-colors">
+                Commercial Cloud Engine</h3>
+              <p class="text-text-secondary text-sm leading-relaxed mb-6">
+                A high-availability commercial backend featuring multi-tier caching, hardened JWT orchestration, 
+                and automated multi-step transaction pipelines.
               </p>
 
               <div class="space-y-4 mb-8 mt-auto">
@@ -828,14 +760,14 @@
                   class="flex justify-between items-end border-b border-white/5 pb-2 hover:border-teal-500/30 transition-colors">
                   <span
                     class="text-[9px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-1.5"><i
-                      class="fa-solid fa-shield-halved text-teal-500/50"></i> AUTH_LAYER</span>
+                      class="fa-solid fa-shield-halved text-accent/50"></i> AUTH_LAYER</span>
                   <span class="text-xs text-gray-300 font-medium">Hardened JWT</span>
                 </div>
                 <div
                   class="flex justify-between items-end border-b border-white/5 pb-2 hover:border-teal-500/30 transition-colors">
                   <span
                     class="text-[9px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-1.5"><i
-                      class="fa-solid fa-credit-card text-teal-500/50"></i> PAYMENT_SEC</span>
+                      class="fa-solid fa-credit-card text-accent/50"></i> PAYMENT_SEC</span>
                   <span class="text-xs text-gray-300 font-medium">Stripe Webhooks</span>
                 </div>
               </div>
@@ -843,12 +775,12 @@
               <div class="shrink-0 mt-auto flex flex-col sm:flex-row gap-3">
                 <a href="https://babyandfashion.vercel.app" target="_blank" rel="noopener noreferrer"
                   aria-label="Visit the Scalable Django E-Commerce Node live demo"
-                  class="flex-1 flex justify-center items-center bg-teal-500/10 text-teal-400 border border-teal-500/30 hover:bg-teal-500 hover:text-[#0b0e14] font-mono text-[11px] font-semibold xl:text-xs px-4 py-3 rounded-lg transition-all transform hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] backdrop-blur-md">
+                  class="flex-1 flex justify-center items-center bg-accent/10 text-accent border border-teal-500/30 hover:bg-accent hover:text-[#0b0e14] font-mono text-[11px] font-semibold xl:text-xs px-4 py-3 rounded-lg transition-all transform hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] backdrop-blur-md">
                   LIVE_DEMO <i class="fa-solid fa-server ml-2 text-[10px]"></i>
                 </a>
                 <a href="https://github.com/raihanstack/Django_Shop_783827" target="_blank" rel="noopener noreferrer"
                   aria-label="View the Scalable Django E-Commerce Node source code on GitHub"
-                  class="flex-1 flex justify-center items-center bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 hover:text-white font-mono text-[11px] font-semibold xl:text-xs px-4 py-3 rounded-lg transition-all transform hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] backdrop-blur-md">
+                  class="flex-1 flex justify-center items-center bg-bg-surface/50 text-gray-300 border border-bg-elevated hover:bg-white/10 hover:text-text-primary font-mono text-[11px] font-semibold xl:text-xs px-4 py-3 rounded-lg transition-all transform hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] backdrop-blur-md">
                   GITHUB_CODE <i class="fa-brands fa-github ml-2 text-[10px]"></i>
                 </a>
               </div>
@@ -887,11 +819,11 @@
 
             <div class="px-5 sm:px-6 py-6 flex flex-col flex-grow relative z-10">
               <h3 id="project-nextshop-title"
-                class="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-orange-400 transition-colors">
-                High-Concurrency Edge Cart</h3>
-              <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                Distributed shopping cart built on MongoDB Aggregation Pipelines for highly-concurrent inventory
-                syncing.
+                class="text-xl font-bold text-text-primary mb-2 tracking-tight group-hover:text-orange-400 transition-colors">
+                Distributed Edge Orchestrator</h3>
+              <p class="text-text-secondary text-sm leading-relaxed mb-6">
+                A globally distributed inventory system leveraging MongoDB Aggregation Pipelines and serverless 
+                edge compute for sub-15ms consistency.
               </p>
 
               <div class="space-y-4 mb-8 mt-auto">
@@ -919,7 +851,7 @@
                 </a>
                 <a href="https://github.com/raihanstack/Shop-Cart-Project-Next.js-MongoDB-ICST-Project" target="_blank"
                   rel="noopener noreferrer" aria-label="View the High-Concurrency Edge Cart source code on GitHub"
-                  class="flex-1 flex justify-center items-center bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 hover:text-white font-mono text-[11px] font-semibold xl:text-xs px-4 py-3 rounded-lg transition-all transform hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] backdrop-blur-md">
+                  class="flex-1 flex justify-center items-center bg-bg-surface/50 text-gray-300 border border-bg-elevated hover:bg-white/10 hover:text-text-primary font-mono text-[11px] font-semibold xl:text-xs px-4 py-3 rounded-lg transition-all transform hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] backdrop-blur-md">
                   GITHUB_CODE <i class="fa-brands fa-github ml-2 text-[10px]"></i>
                 </a>
               </div>
@@ -939,8 +871,8 @@
               <span class="text-[9px] font-mono text-gray-500 uppercase tracking-widest hidden sm:block">NODE_ID:
                 VISION-PROC-01</span>
               <div class="flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full animate-pulse bg-teal-500"></span>
-                <span data-status class="text-[9px] font-mono text-teal-500/70">STATUS: OPERATIONAL</span>
+                <span class="w-1.5 h-1.5 rounded-full animate-pulse bg-accent"></span>
+                <span data-status class="text-[9px] font-mono text-accent/70">STATUS: OPERATIONAL</span>
               </div>
             </div>
 
@@ -958,28 +890,27 @@
                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6 w-full">
                   <div>
                     <div
-                      class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-teal-500/10 border border-teal-500/20 mb-3 backdrop-blur-md">
-                      <i class="fa-solid fa-camera text-[9px] text-teal-400"></i>
-                      <span class="text-[9px] font-mono text-teal-400 uppercase tracking-widest">AI & Computer
+                      class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20 mb-3 backdrop-blur-md">
+                      <i class="fa-solid fa-camera text-[9px] text-accent"></i>
+                      <span class="text-[9px] font-mono text-accent uppercase tracking-widest">AI & Computer
                         Vision</span>
                     </div>
                     <h3 id="project-bgremover-title"
-                      class="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight group-hover:text-teal-400 transition-colors">
-                      AI Background Remover</h3>
+                      class="text-2xl sm:text-3xl font-bold text-text-primary mb-2 tracking-tight group-hover:text-accent transition-colors">
+                      Neural Vision Processor</h3>
                     <p class="text-gray-300 text-sm sm:text-base max-w-lg leading-relaxed">
-                      Engineered a precise subject isolation tool using <span class="text-white font-medium">Python &
-                        Django</span>. Integrated automated image processing pipelines for seamless background removal
-                      at scale.
+                      A computationally intensive <span class="text-text-primary font-bold">Computer Vision</span> utility 
+                      integrated into a Django-managed pipeline for automated, high-precision subject isolation.
                     </p>
                   </div>
                   <div class="flex flex-col sm:flex-row gap-3 shrink-0 w-full sm:w-auto">
                     <a href="https://rsbgeraser.vercel.app/" target="_blank" rel="noopener noreferrer"
-                      class="flex-1 sm:flex-none inline-flex items-center justify-center bg-teal-500/10 text-teal-400 border border-teal-500/30 hover:bg-teal-500 hover:text-[#0b0e14] font-mono text-[11px] font-semibold xl:text-xs px-5 py-3 rounded-lg transition-all transform hover:scale-105 hover:shadow-[0_0_15px_rgba(0,255,195,0.4)] backdrop-blur-md">
+                      class="flex-1 sm:flex-none inline-flex items-center justify-center bg-accent/10 text-accent border border-teal-500/30 hover:bg-accent hover:text-[#0b0e14] font-mono text-[11px] font-semibold xl:text-xs px-5 py-3 rounded-lg transition-all transform hover:scale-105 hover:shadow-[0_0_15px_rgba(0,255,195,0.4)] backdrop-blur-md">
                       LIVE_DEMO <i class="fa-solid fa-bolt ml-2 text-[10px]"></i>
                     </a>
                     <a href="https://github.com/raihanstack/Django_Bg_Remove_Project" target="_blank"
                       rel="noopener noreferrer"
-                      class="flex-1 sm:flex-none inline-flex items-center justify-center bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 hover:text-white font-mono text-[11px] font-semibold xl:text-xs px-5 py-3 rounded-lg transition-all transform hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] backdrop-blur-md">
+                      class="flex-1 sm:flex-none inline-flex items-center justify-center bg-bg-surface/50 text-gray-300 border border-bg-elevated hover:bg-white/10 hover:text-text-primary font-mono text-[11px] font-semibold xl:text-xs px-5 py-3 rounded-lg transition-all transform hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] backdrop-blur-md">
                       GITHUB_CODE <i class="fa-brands fa-github ml-2 text-[10px]"></i>
                     </a>
                   </div>
@@ -991,25 +922,25 @@
               <div
                 class="flex flex-col gap-1 p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:border-teal-500/30 transition-colors">
                 <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-1.5"><i
-                    class="fa-solid fa-microchip text-teal-500/70"></i> ENGINE</span>
+                    class="fa-solid fa-microchip text-accent/70"></i> ENGINE</span>
                 <span class="text-[11px] text-gray-300 font-medium">Python 3.x</span>
               </div>
               <div
                 class="flex flex-col gap-1 p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:border-teal-500/30 transition-colors">
                 <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-1.5"><i
-                    class="fa-solid fa-cube text-teal-500/70"></i> FRAMEWORK</span>
+                    class="fa-solid fa-cube text-accent/70"></i> FRAMEWORK</span>
                 <span class="text-[11px] text-gray-300 font-medium">Django OS</span>
               </div>
               <div
                 class="flex flex-col gap-1 p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:border-teal-500/30 transition-colors">
                 <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-1.5"><i
-                    class="fa-solid fa-wand-sparkles text-teal-500/70"></i> VISION</span>
+                    class="fa-solid fa-wand-sparkles text-accent/70"></i> VISION</span>
                 <span class="text-[11px] text-gray-300 font-medium">OpenCV / PIL</span>
               </div>
               <div
                 class="flex flex-col gap-1 p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:border-teal-500/30 transition-colors">
                 <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-1.5"><i
-                    class="fa-solid fa-cloud-arrow-up text-teal-500/70"></i> STORAGE</span>
+                    class="fa-solid fa-cloud-arrow-up text-accent/70"></i> STORAGE</span>
                 <span class="text-[11px] text-gray-300 font-medium">Cloud Pipeline</span>
               </div>
             </div>
@@ -1022,7 +953,7 @@
       <div class="grid-coord tl">[COORD_X:04 // Y:01]</div>
       <div class="text-center mb-20 animate-fadeIn relative">
         <span class="section-label">> FETCH /usr/bin/tech_stack</span>
-        <h2 class="section-title" style="color:var(--text-primary)">Advanced Technology Cluster</h2>
+        <h2 class="section-title" style="color:var(--text-primary)">Technology Ecosystem</h2>
         <p class="scannable-text mt-6">
           Utilizing industry-leading technologies to build secure, maintainable,
           and highly efficient distributed systems.
@@ -1031,93 +962,93 @@
       <div class="space-y-16">
         <!-- Category: Backend -->
         <div class="animate-fadeIn">
-          <h4 class="text-xs font-bold tracking-[0.3em] text-teal-500 uppercase mb-8 flex items-center justify-between">
-            <span class="flex items-center gap-4"><span class="h-[1px] w-8 bg-teal-500/30"></span> Backend
+          <h4 class="text-xs font-bold tracking-[0.3em] text-accent uppercase mb-8 flex items-center justify-between">
+            <span class="flex items-center gap-4"><span class="h-[1px] w-8 bg-accent/30"></span> Backend
               Systems</span>
             <span
-              class="text-[9px] font-mono opacity-50 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20">STATUS:
+              class="text-[9px] font-mono font-bold bg-accent/10 px-2 py-0.5 rounded border border-accent/20 text-accent">STATUS:
               NOMINAL</span>
           </h4>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:scale-105 hover:border-teal-500/50 hover:bg-white/10 flex flex-col items-center justify-center gap-3 sm:gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:scale-105 hover:border-accent/50 hover:bg-bg-elevated/50 flex flex-col items-center justify-center gap-3 sm:gap-4 text-center">
               <img
                 src=https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png
                 alt=Python class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">Python</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">Python</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-teal-500/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-accent/50 hover:bg-bg-elevated/50 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg alt=Django
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">Django</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">Django</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-teal-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-teal-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://www.django-rest-framework.org/img/logo.png alt=DRF class="w-12 h-12 object-contain"
                 loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">Django DRF</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">Django DRF</span>
             </div>
           </div>
         </div>
         <!-- Category: Frontend -->
         <div class="animate-fadeIn" style="animation-delay: 0.1s;">
           <h4
-            class="text-xs font-bold tracking-[0.3em] text-teal-500 uppercase mb-8 mt-12 flex items-center justify-between">
-            <span class="flex items-center gap-4"><span class="h-[1px] w-8 bg-teal-500/30"></span> Frontend
+            class="text-xs font-bold tracking-[0.3em] text-accent uppercase mb-8 mt-12 flex items-center justify-between">
+            <span class="flex items-center gap-4"><span class="h-[1px] w-8 bg-accent/30"></span> Frontend
               Engineering</span>
             <span
-              class="text-[9px] font-mono opacity-50 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20">STATUS:
+              class="text-[9px] font-mono font-bold bg-accent/10 px-2 py-0.5 rounded border border-accent/20 text-accent">STATUS:
               OPTIMIZED</span>
           </h4>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-yellow-300/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-yellow-300/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png alt=JavaScript
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">JavaScript</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">JavaScript</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-teal-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-teal-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg alt=ReactJS
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">ReactJS</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">ReactJS</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-white/30 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-accent/50 hover:bg-bg-elevated/50 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg alt=NextJS
-                class="w-12 h-12 object-contain invert" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">NextJS</span>
+                class="w-12 h-12 object-contain adaptive-invert" loading=lazy>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">NextJS</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-orange-500/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-accent/50 hover:bg-bg-elevated/50 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg alt=HTML5
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">HTML5</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">HTML5</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-blue-500/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-accent/50 hover:bg-bg-elevated/50 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg alt=CSS3
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">CSS3</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">CSS3</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-teal-300/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-teal-300/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg alt=TailwindCSS
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">Tailwind</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">Tailwind</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-purple-500/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-accent/50 hover:bg-bg-elevated/50 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg alt=Bootstrap
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">Bootstrap</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">Bootstrap</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-purple-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-purple-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png alt=Redux
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">Redux / Store</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">Redux / Store</span>
             </div>
           </div>
         </div>
@@ -1128,65 +1059,65 @@
             <span class="flex items-center gap-4"><span class="h-[1px] w-8 bg-blue-500/30"></span> Database
               Architecture</span>
             <span
-              class="text-[9px] font-mono opacity-50 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">STATUS:
+              class="text-[9px] font-mono font-bold bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20 text-blue-500">STATUS:
               SECURE</span>
           </h4>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-blue-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-blue-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg alt=PostgreSQL
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">PostgreSQL</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">PostgreSQL</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-blue-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-blue-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg alt=MySQL
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">MySQL</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">MySQL</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-green-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-green-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://images.seeklogo.com/logo-png/44/1/mongodb-logo-png_seeklogo-444844.png alt=MongoDB
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">MongoDB</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">MongoDB</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-orange-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-orange-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg alt=Postman
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">Postman / API</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">Postman / API</span>
             </div>
           </div>
         </div>
         <!-- Category: Tools -->
         <div class="animate-fadeIn" style="animation-delay: 0.3s;">
-          <h4 class="text-xs font-bold tracking-[0.3em] text-gray-400 uppercase mb-8 mt-12 flex items-center gap-4">
+          <h4 class="text-xs font-bold tracking-[0.3em] text-text-secondary uppercase mb-8 mt-12 flex items-center gap-4">
             <span class="h-[1px] w-8 bg-gray-400/30"></span> DevOps & Tools
           </h4>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-teal-500/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-accent/50 hover:bg-bg-elevated/50 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://git-scm.com/images/logos/downloads/Git-Icon-1788C.svg alt=Git
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">Git Control</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">Git Control</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-gray-400/50 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-accent/50 hover:bg-bg-elevated/50 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg alt=GitHub
-                class="w-12 h-12 object-contain invert" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">GitHub</span>
+                class="w-12 h-12 object-contain adaptive-invert" loading=lazy>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">GitHub</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-white/20 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-accent/50 hover:bg-bg-elevated/50 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg alt=Linux
                 class="w-12 h-12 object-contain" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">Linux (CLI)</span>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">Linux (CLI)</span>
             </div>
             <div
-              class="group relative bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-white/40 hover:bg-white/10 flex flex-col items-center justify-center gap-4 text-center">
+              class="group relative bg-bg-surface/50 border border-bg-elevated backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-accent/50 hover:bg-bg-elevated/50 flex flex-col items-center justify-center gap-4 text-center">
               <img src=https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png alt=Vercel
-                class="w-12 h-12 object-contain invert" loading=lazy>
-              <span class="text-white font-semibold text-xs tracking-wider uppercase">Vercel</span>
+                class="w-12 h-12 object-contain adaptive-invert" loading=lazy>
+              <span class="text-text-primary font-semibold text-xs tracking-wider uppercase">Vercel</span>
             </div>
           </div>
         </div>
@@ -1200,8 +1131,8 @@
       <div class="container max-w-7xl mx-auto px-6 relative z-10">
         <div class="text-center mb-20">
           <span class="section-label">~/root/raihanstack/initiate_connection.api</span>
-          <h2 class="section-title text-white">Engineering Consultations</h2>
-          <p class="text-gray-400 text-lg max-w-xl mx-auto mt-4">
+          <h2 class="section-title text-text-primary" style="background: linear-gradient(120deg, var(--text-primary) 20%, var(--accent) 60%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Engineering Consultations</h2>
+          <p class="text-text-secondary text-lg max-w-xl mx-auto mt-4">
             Currently accepting inquiries for complex system audits, architectural design reviews, and high-stakes
             backend developments.
           </p>
@@ -1210,60 +1141,60 @@
           <div class="flex-1 flex flex-col gap-6 justify-center">
             <div id=email-container class="relative">
               <a id=email-link href="mailto:raihan.invite@gmail.com"
-                class="contact-card group flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-500/30 transition-all duration-300">
-                <div class="w-12 h-12 rounded-full bg-teal-500/10 flex items-center justify-center text-xl">
-                  <i class="fas fa-envelope text-teal-400"></i>
+                class="contact-card group flex items-center gap-4 p-5 rounded-2xl bg-bg-surface/50 border border-bg-elevated hover:border-teal-500/30 transition-all duration-300">
+                <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-xl">
+                  <i class="fas fa-envelope text-accent"></i>
                 </div>
                 <div class="flex-grow">
-                  <h3 class="text-white font-bold text-lg mb-1">Email Me</h3>
-                  <p id=email-text class="text-gray-400 font-medium italic">raihan.invite@gmail.com</p>
+                  <h3 class="text-text-primary font-bold text-lg mb-1">Email Me</h3>
+                  <p id=email-text class="text-text-secondary font-medium italic">raihan.invite@gmail.com</p>
                 </div>
                 <button onclick="copyEmail(event)"
-                  class="p-2.5 rounded-lg bg-white/5 text-gray-500 hover:text-teal-400 hover:bg-teal-500/10 transition-all"
+                  class="p-2.5 rounded-lg bg-bg-surface/50 text-gray-500 hover:text-accent hover:bg-accent/10 transition-all"
                   title="Copy Email">
                   <i class="fa-regular fa-copy"></i>
                 </button>
               </a>
               <div id="copy-toast"
-                class="absolute -top-10 left-1/2 -translate-x-1/2 px-4 py-2 rounded-lg bg-teal-500 text-[#0b0e14] text-xs font-bold opacity-0 transition-all pointer-events-none">
+                class="absolute -top-10 left-1/2 -translate-x-1/2 px-4 py-2 rounded-lg bg-accent text-[#0b0e14] text-xs font-bold opacity-0 transition-all pointer-events-none">
                 COPIED_TO_CLIPBOARD
               </div>
             </div>
             <div
-              class="contact-card group flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-900/40 transition-all duration-300">
+              class="contact-card group flex items-center gap-4 p-4 rounded-2xl bg-bg-surface/50 border border-bg-elevated hover:border-teal-900/40 transition-all duration-300">
               <div class="w-12 h-12 rounded-full bg-teal-900/20 flex items-center justify-center text-xl">
                 <i class="fas fa-map-marker-alt text-teal-600"></i>
               </div>
               <div>
-                <h3 class="text-white font-bold text-lg mb-1">Location</h3>
-                <p class="text-gray-400 font-medium">Feni, Chattogram, Bangladesh</p>
+                <h3 class="text-text-primary font-bold text-lg mb-1">Location</h3>
+                <p class="text-text-secondary font-medium">Feni, Chattogram, Bangladesh</p>
               </div>
             </div>
-            <div class="mt-3 p-4 rounded-2xl bg-white/5 border border-white/10">
-              <p class="text-sm font-bold text-teal-400 uppercase tracking-widest mb-4 text-center lg:text-left">Follow
+            <div class="mt-3 p-4 rounded-2xl bg-bg-surface/50 border border-bg-elevated">
+              <p class="text-sm font-bold text-accent uppercase tracking-widest mb-4 text-center lg:text-left">Follow
                 Me Socially</p>
               <div class="flex gap-3 justify-center lg:justify-start">
                 <a href=https://github.com/raihanstack rel="noopener noreferrer"
-                  class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-300"><i
+                  class="w-10 h-10 rounded-full bg-bg-surface/50 border border-bg-elevated flex items-center justify-center hover:bg-accent hover:text-primary-dark transition-all duration-300"><i
                     class="fab fa-github"></i></a>
                 <a href=https://www.linkedin.com/in/raihanstack rel="noopener noreferrer"
-                  class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-teal-500 hover:text-primary-dark transition-all duration-300"><i
+                  class="w-10 h-10 rounded-full bg-bg-surface/50 border border-bg-elevated flex items-center justify-center hover:bg-accent hover:text-primary-dark transition-all duration-300"><i
                     class="fab fa-linkedin-in"></i></a>
               </div>
             </div>
           </div>
           <div
-            class="flex-1 aspect-square md:aspect-auto min-h-[300px] md:min-h-[350px] rounded-2xl overflow-hidden border border-white/10 relative group bg-gradient-to-br from-teal-500/5 to-teal-900/20 flex items-center justify-center">
+            class="flex-1 aspect-square md:aspect-auto min-h-[300px] md:min-h-[350px] rounded-2xl overflow-hidden border border-bg-elevated relative group bg-gradient-to-br from-teal-500/5 to-teal-900/20 flex items-center justify-center">
             <div
               class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20">
             </div>
             <div class="relative text-center p-6 md:p-10">
               <div
-                class="w-16 h-16 md:w-20 md:h-20 bg-teal-500/20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
-                <i class="fas fa-paper-plane text-2xl md:text-3xl text-teal-400"></i>
+                class="w-16 h-16 md:w-20 md:h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                <i class="fas fa-paper-plane text-2xl md:text-3xl text-accent"></i>
               </div>
-              <h4 class="text-lg md:text-xl font-bold text-white mb-1">Let's Chat!</h4>
-              <p class="text-gray-400 text-sm md:text-base">I usually respond within 24 hours.</p>
+              <h4 class="text-lg md:text-xl font-bold text-text-primary mb-1">Let's Chat!</h4>
+              <p class="text-text-secondary text-sm md:text-base">I usually respond within 24 hours.</p>
             </div>
           </div>
         </div>
@@ -1278,17 +1209,17 @@
           <p class="text-[10px] font-mono tracking-[0.2em] text-gray-500 uppercase">© 2026 BACKEND_SYSTEMS_NODE //
             RAIHANSTACK</p>
           <div
-            class="flex items-center justify-center md:justify-start gap-4 text-[9px] font-mono text-teal-500/40 uppercase tracking-widest">
+            class="flex items-center justify-center md:justify-start gap-4 text-[9px] font-mono text-accent uppercase tracking-widest">
             <span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-teal-500 animate-pulse"></span>
               STATUS: OPERATIONAL</span>
-            <span class="border-l border-white/10 pl-4">LATENCY: <span class="latency-val">12MS</span></span>
-            <span class="border-l border-white/10 pl-4">CPU: <span id="cpu-usage">12%</span></span>
-            <span class="border-l border-white/10 pl-4 text-gray-600">BUILD: v4.2.0</span>
+            <span class="border-l border-bg-elevated pl-4">LATENCY: <span class="latency-val">12MS</span></span>
+            <span class="border-l border-bg-elevated pl-4">CPU: <span id="cpu-usage">12%</span></span>
+            <span class="border-l border-bg-elevated pl-4 text-gray-600">BUILD: v4.2.0</span>
           </div>
         </div>
         <div class="flex flex-col items-center md:items-end gap-1">
           <span class="text-[9px] font-mono text-gray-500 uppercase tracking-widest">Auth_Stack</span>
-          <p class="text-xs font-bold text-white tracking-tighter">PYTHON // DJANGO // DRF</p>
+          <p class="text-xs font-bold text-text-primary tracking-tighter">PYTHON // DJANGO // DRF</p>
         </div>
       </div>
     </div>
